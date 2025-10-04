@@ -275,7 +275,7 @@ const ScriptureLibrary = () => {
               </div>
               <div className="relative">
                 <button
-                  className="flex items-center gap-1 px-3 py-2 rounded-full bg-background/80 border border-yellow-400/30 text-xs font-sanskrit text-yellow-100 hover:bg-yellow-400/10 transition shadow-lg font-semibold backdrop-blur-md"
+                  className="flex items-center gap-1 px-3 py-2 rounded-full bg-background/500 border border-yellow-400/30 text-xs font-sanskrit text-yellow-100 hover:bg-yellow-400/10 transition shadow-lg font-semibold backdrop-blur-md"
                   aria-label="Filter by category"
                 >
                   <Filter className="w-5 h-5 mr-1 text-yellow-300/80" />
