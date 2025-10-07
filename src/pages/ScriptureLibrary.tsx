@@ -283,6 +283,7 @@ const ScriptureLibrary = () => {
                 </button>
                 {/* Category Filter Dropdown */}
                 <select
+                
                   className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                   value={activeCategory}
                   onChange={(e) => setActiveCategory(e.target.value)}
