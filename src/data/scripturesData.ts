@@ -46,7 +46,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "जय हनुमान ज्ञान गुन सागर। जय कपीस तिहुँ लोक उजागर॥",
         transliteration: "Jai Hanuman gyaan gun saagar. Jai Kapis tihun lok ujagar.",
         meaning: "Victory to Hanuman, ocean of knowledge and virtue! Victory to the Lord of the Vanaras, who shines throughout the three worlds.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/vidyavaan.png",
       },
       {
         number: 3,
@@ -60,7 +60,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "महाबीर बिक्रम बजरंगी। कुमति निवार सुमति के संगी॥",
         transliteration: "Mahaveer Vikram Bajrangi. Kumati nivar sumati ke sangi.",
         meaning: "O Great Hero, mighty and strong as lightning, you remove evil thoughts and bring wisdom and goodness.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/sankatkatai.png",
       },
       {
         number: 5,
@@ -81,21 +81,21 @@ export const scripturesData: Scripture[] = [
         sanskrit: "संकर सुवन केसरीनंदन। तेज प्रताप महा जग बंदन॥",
         transliteration: "Shankar suvan Kesari nandan. Tej prataap maha jag bandan.",
         meaning: "You are the son of Lord Shiva and Kesari’s child. Your glory and power are praised by the whole world.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/shankarsvyam.png",
       },
       {
         number: 8,
         sanskrit: "विद्यावान गुनी अति चातुर। राम काज करिबे को आतुर॥",
         transliteration: "Vidya vaan guni ati chatur. Ram kaaj karibe ko aatur.",
         meaning: "You are wise, virtuous, and very clever, ever eager to serve Lord Ram.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/vidyavaan.png",
       },
       {
         number: 9,
         sanskrit: "प्रभु चरित्र सुनिबे को रसिया। राम लखन सीता मन बसिया॥",
         transliteration: "Prabhu charitra sunibe ko rasiya. Ram Lakhan Sita man basiya.",
         meaning: "You delight in listening to Lord Ram’s deeds and always dwell in the hearts of Ram, Lakshman, and Sita.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/ramlakhan.png",
       },
       {
         number: 10,
@@ -109,14 +109,14 @@ export const scripturesData: Scripture[] = [
         sanskrit: "भीम रूप धरि असुर संहारे। रामचन्द्र के काज सवारे॥",
         transliteration: "Bheem roop dhari asur sanhare. Ramchandra ke kaaj savare.",
         meaning: "Taking a mighty form, you destroyed demons and completed Lord Ram’s divine tasks.",
-        imageUrl: "/bhimroop.png",
+        imageUrl: "/bhimroopasursahareramchandrakaaj.png",
       },
       {
         number: 12,
         sanskrit: "लाय संजीवन लखन जियाए। श्रीरघुबीर हरषि उर लाए॥",
         transliteration: "Laay Sanjeevan Lakhan jiyaye. Shri Raghubeer harashi ur laye.",
         meaning: "You brought the Sanjeevani herb to revive Lakshman, and Sri Ram joyfully embraced you.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/sajeevanparavat.png",
       },
       {
         number: 13,
@@ -130,7 +130,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "सहस बदन तुम्हरो जस गावैं। अस कहि श्रीपति कण्ठ लगावैं॥",
         transliteration: "Sahas badan tumharo jas gaavain. As kahi Shripati kanth lagavain.",
         meaning: "A thousand tongues sing your glory, said Lord Vishnu, as he embraced you warmly.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/kathlagaye.png",
       },
       {
         number: 15,
@@ -144,7 +144,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "जम कुबेर दिगपाल जहाँ ते। कवि कोबिद कहि सके कहाँ ते॥",
         transliteration: "Yam Kuber Digpaal jahan te. Kavi kobid kahi sake kahan te.",
         meaning: "Even Yamraj, Kuber, and the guardians of the directions fail to describe your greatness fully.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/jamkuber.png",
       },
       {
         number: 17,
@@ -165,7 +165,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "जुग सहस्र जोजन पर भानू। लील्यो ताहि मधुर फल जानू॥",
         transliteration: "Yug sahasra yojan par bhaanu. Leelyo taahi madhur phal jaanu.",
         meaning: "You flew across the sky to swallow the sun, mistaking it for a sweet fruit.",
-        imageUrl: "/prabhumudrikamukhmahi.png",
+        imageUrl: "/hanumanfal.png",
       },
       {
         number: 20,
@@ -221,7 +221,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "संकट तें हनुमान छुड़ावै। मन क्रम वचन ध्यान जो लावै॥",
         transliteration: "Sankat te Hanuman chhudavai. Man, kram, vachan dhyan jo lavai.",
         meaning: "Hanuman frees those from troubles who remember him with heart, action, and words.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/sankatkatai.png",
       },
       {
         number: 28,
@@ -242,7 +242,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "चारों जुग परताप तुम्हारा। है परसिद्ध जगत उजियारा॥",
         transliteration: "Charon yug prataap tumhara. Hai prasiddh jagat ujiyara.",
         meaning: "Your glory shines through all four ages, spreading divine light throughout the world.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/charojug.png",
       },
       {
         number: 31,
@@ -263,21 +263,21 @@ export const scripturesData: Scripture[] = [
         sanskrit: "राम रसायन तुम्हरे पासा। सदा रहो रघुपति के दासा॥",
         transliteration: "Ram rasayan tumhare paasa. Sada raho Raghupati ke daasa.",
         meaning: "You hold the elixir of devotion to Lord Ram and forever remain his humble servant.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/ramrasayan.png",
       },
       {
         number: 34,
         sanskrit: "तुम्हरे भजन राम को पावै। जनम जनम के दुख बिसरावै॥",
         transliteration: "Tumhare bhajan Ram ko paavai. Janam janam ke dukh bisraavai.",
         meaning: "By singing your praises, one attains Lord Ram and forgets sorrows of many lifetimes.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/tumaharabhajanramkobhave.png",
       },
       {
         number: 35,
         sanskrit: "अंत काल रघुबर पुर जाई। जहाँ जन्म हरिभक्त कहाई॥",
         transliteration: "Ant kaal Raghubar pur jaai. Jahan janm Haribhakt kahai.",
         meaning: "At life’s end, devotees who worship you attain the abode of Lord Ram and are reborn as his devotees.",
-        imageUrl: "/anantkalraghubaarpur.png",
+        imageUrl: "/antakalraghubarpurjai.png",
       },
       {
         number: 36,
@@ -291,7 +291,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "संकट कटै मिटै सब पीरा। जो सुमिरै हनुमत बलबीरा॥",
         transliteration: "Sankat katai mitai sab peera. Jo sumirai Hanumat Balbeera.",
         meaning: "All troubles vanish and pain is removed for those who remember the mighty and valiant Hanuman.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/sankatkatai.png",
       },
       {
         number: 38,
@@ -305,14 +305,14 @@ export const scripturesData: Scripture[] = [
         sanskrit: "जो सत बार पाठ कर कोई। छूटहि बंदि महा सुख होई॥",
         transliteration: "Jo sat baar paath kar koi. Chhoothahi bandi maha sukh hoi.",
         meaning: "Whoever recites this Chalisa a hundred times is freed from bondage and attains supreme joy.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/100hanumanchalisa.png",
       },
       {
         number: 40,
         sanskrit: "जो यह पढ़ै हनुमान चालीसा। होय सिद्धि साखी गौरीसा॥\nतुलसीदास सदा हरि चेरा। कीजै नाथ हृदय महँ डेरा॥\n॥दोहा॥\nपवन तनय संकट हरन, मंगल मूरति रूप। राम लखन सीता सहित, हृदय बसहु सुर भूप॥",
         transliteration: "Jo yah padhe Hanuman Chalisa, hoy siddhi saakhi Gaurisa. Tulsidas sada Hari chera, keejai Nath hriday mein dera. ॥ Doha ॥ Pavan tanay sankat haran, mangal moorat roop. Ram Lakhan Sita sahit, hriday basahu Sur Bhoop.",
         meaning: "Whoever reads this Hanuman Chalisa achieves success — Lord Shiva himself attests to this truth. Tulsidas, the humble devotee of Hari, prays — O Lord, dwell forever in my heart. O son of the Wind, remover of sorrows, embodiment of auspiciousness — abide in my heart with Ram, Lakshman, and Sita.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/tulsidassadaharichera.png",
       }      
     ]
   },
