@@ -1,4 +1,5 @@
 import { Card } from "./ui/card";
+import parchmentBg from "@/assets/parchment-bg.jpg"; // Use a parchment/vedic bg for effect
 
 interface VerseCardProps {
   number: number;
@@ -8,12 +9,18 @@ interface VerseCardProps {
   imageUrl?: string;
 }
 
-export const VerseCard = ({ number, sanskrit, transliteration, meaning, imageUrl }: VerseCardProps) => {
+export const VerseCard = ({
+  number,
+  sanskrit,
+  transliteration,
+  meaning,
+  imageUrl,
+}: VerseCardProps) => {
   return (
     <Card className="relative overflow-hidden border-2 border-accent/30 bg-card/95 backdrop-blur-sm shadow-2xl animate-verse-reveal">
       {/* Sacred Glow Effect */}
       <div className="absolute inset-0 bg-gradient-sacred opacity-40 pointer-events-none animate-sacred-glow" />
-      
+
       <div className="relative p-8 md:p-12">
         {/* Verse Number with Ornament */}
         <div className="flex items-center justify-center mb-6">
@@ -28,23 +35,66 @@ export const VerseCard = ({ number, sanskrit, transliteration, meaning, imageUrl
           </div>
         </div>
 
-        {/* Sanskrit Verse */}
-        <div className="mb-8 text-center">
-          <p className="font-sanskrit text-3xl md:text-4xl leading-relaxed text-foreground drop-shadow-lg">
-            {sanskrit}
-          </p>
+        {/* Sanskrit Verse with Vedic Scripture Background */}
+        <div
+          className="mb-8 text-center flex justify-center"
+          style={{
+            position: "relative",
+          }}
+        >
+          <div
+            className="relative inline-block px-6 py-6 rounded-2xl shadow-lg border-2 border-accent/30"
+            style={{
+              backgroundImage: `url(${parchmentBg})`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              boxShadow:
+                "0 4px 32px 0 rgba(234,179,8,0.10), 0 2px 8px 0 rgba(0,0,0,0.10)",
+              filter: "sepia(0.15) contrast(1.05)",
+            }}
+          >
+            <p className="font-sanskrit text-3xl md:text-4xl leading-relaxed text-foreground drop-shadow-lg" style={{
+              textShadow: "0 2px 8px #eab30855, 0 1px 0 #fff8, 0 0px 1px #0004",
+              letterSpacing: "0.01em",
+            }}>
+              {sanskrit}
+            </p>
+            {/* Subtle ancient border effect */}
+            <div className="absolute inset-0 pointer-events-none rounded-2xl border-2 border-accent/20" style={{
+              boxShadow: "0 0 0 2px #eab30822 inset, 0 2px 12px #eab30811 inset",
+            }} />
+          </div>
         </div>
 
-        {/* Image Section */}
+        {/* Image Section with Ancient Vedic Focused Effect */}
         {imageUrl && (
           <div className="mb-8 flex justify-center">
-            <div className="relative rounded-xl overflow-hidden border-2 border-accent/40 shadow-xl max-w-md">
+            <div className="relative rounded-2xl overflow-hidden border-4 border-accent/60 shadow-2xl max-w-md bg-[#f5ecd6]">
               <img
                 src={imageUrl}
                 alt={`Illustration for verse ${number}`}
-                className="w-full h-auto"
+                className="w-full h-auto object-cover"
+                style={{
+                  filter:
+                    "sepia(0.25) contrast(1.08) brightness(0.97) drop-shadow(0 4px 24px #eab30833)",
+                  borderRadius: "1rem",
+                  boxShadow:
+                    "0 0 0 8px #eab30822 inset, 0 8px 32px #eab30822",
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent pointer-events-none" />
+              {/* Vedic overlay effect */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#eab30822] via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-[url('/parchment-texture.png')] opacity-10 pointer-events-none" style={{
+                backgroundSize: "cover",
+                backgroundRepeat: "repeat",
+                backgroundPosition: "center",
+                mixBlendMode: "multiply",
+              }} />
+              {/* Subtle vignette for focus */}
+              <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{
+                boxShadow: "0 0 64px 16px #eab30833 inset, 0 0 0 2px #eab30822 inset",
+              }} />
             </div>
           </div>
         )}
