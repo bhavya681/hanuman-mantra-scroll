@@ -71,30 +71,65 @@ export const VerseCard = ({
         {imageUrl && (
           <div className="mb-8 flex justify-center">
             <div className="relative rounded-2xl overflow-hidden border-4 border-accent/60 shadow-2xl max-w-md bg-[#f5ecd6]">
+              {/* Ancient Vedic look: faded, yellowed, textured, with hand-drawn border */}
+              <div
+                className="absolute inset-0 pointer-events-none z-10"
+                style={{
+                  background: "radial-gradient(ellipse at 60% 40%, #fffbe6cc 60%, #e2c98a99 100%)",
+                  mixBlendMode: "multiply",
+                  opacity: 0.85,
+                }}
+              />
               <img
                 src={imageUrl}
                 alt={`Illustration for verse ${number}`}
                 className="w-full h-auto object-cover"
                 style={{
                   filter:
-                    "sepia(0.25) contrast(1.08) brightness(0.97) drop-shadow(0 4px 24px #eab30833)",
+                    "sepia(0.45) contrast(0.92) brightness(0.93) grayscale(0.18) blur(0.2px) drop-shadow(0 4px 24px #eab30833)",
                   borderRadius: "1rem",
                   boxShadow:
                     "0 0 0 8px #eab30822 inset, 0 8px 32px #eab30822",
+                  opacity: 0.96,
                 }}
               />
-              {/* Vedic overlay effect */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#eab30822] via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-[url('/parchment-texture.png')] opacity-10 pointer-events-none" style={{
-                backgroundSize: "cover",
-                backgroundRepeat: "repeat",
-                backgroundPosition: "center",
-                mixBlendMode: "multiply",
+              {/* Parchment texture overlay */}
+              <div className="absolute inset-0 pointer-events-none z-20"
+                style={{
+                  backgroundImage: "url('/parchment-texture.png')",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "repeat",
+                  backgroundPosition: "center",
+                  mixBlendMode: "multiply",
+                  opacity: 0.22,
+                }}
+              />
+              {/* Subtle hand-drawn border effect */}
+              <div className="absolute inset-0 pointer-events-none z-30"
+                style={{
+                  backgroundImage: "url('/ancient-border.png')",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  opacity: 0.32,
+                  filter: "sepia(0.5) contrast(1.1)",
+                }}
+              />
+              {/* Warm vignette for focus */}
+              <div className="absolute inset-0 rounded-2xl pointer-events-none z-40" style={{
+                boxShadow: "0 0 64px 16px #eab30855 inset, 0 0 0 2px #a97c0b44 inset",
               }} />
-              {/* Subtle vignette for focus */}
-              <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{
-                boxShadow: "0 0 64px 16px #eab30833 inset, 0 0 0 2px #eab30822 inset",
-              }} />
+              {/* Subtle cracks/age marks overlay */}
+              <div className="absolute inset-0 pointer-events-none z-50"
+                style={{
+                  backgroundImage: "url('/ancient-cracks.png')",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  opacity: 0.10,
+                  mixBlendMode: "multiply",
+                }}
+              />
             </div>
           </div>
         )}

@@ -32,7 +32,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "॥दोहा॥\nश्रीगुरु चरन सरोज रज, निजमन मुकुर सुधारि। बरनउँ रघुबर बिमल जसु, जो दायक फल चारि॥",
         transliteration: "॥ Doha ॥\nShri Guru charan saroj raj, nij man mukur sudhari. Baranau Raghubar bimal jasu, jo dayak phal chari.",
         meaning: "With the dust of my Guru’s lotus feet, I cleanse the mirror of my mind and describe the pure glory of Sri Ram, which bestows the four fruits of life — Dharma, Artha, Kama, and Moksha.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/sarojraj.png",
       },
       {
         number: 1,
@@ -74,7 +74,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "हाथ बज्र औ ध्वजा बिराजै। कांधे मूंज जनेऊ साजै॥",
         transliteration: "Haath bajra au dhwaja birajai. Kandhe moonj janeu saajai.",
         meaning: "You carry the mace and banner in your hands, and wear the sacred thread across your shoulder.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/hathvajradhavj.png",
       },
       {
         number: 7,
@@ -102,14 +102,14 @@ export const scripturesData: Scripture[] = [
         sanskrit: "सूक्ष्म रूप धरि सियहिं दिखावा। बिकट रूप धरि लंक जरावा॥",
         transliteration: "Sookshma roop dhari Siyahi dikhawa. Bikat roop dhari Lank jarawa.",
         meaning: "You appeared before Sita in a small form and burned Lanka with your fierce form.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/susmabhimvikatrrop.png",
       },
       {
         number: 11,
         sanskrit: "भीम रूप धरि असुर संहारे। रामचन्द्र के काज सवारे॥",
         transliteration: "Bheem roop dhari asur sanhare. Ramchandra ke kaaj savare.",
         meaning: "Taking a mighty form, you destroyed demons and completed Lord Ram’s divine tasks.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/bhimroop.png",
       },
       {
         number: 12,
@@ -165,14 +165,14 @@ export const scripturesData: Scripture[] = [
         sanskrit: "जुग सहस्र जोजन पर भानू। लील्यो ताहि मधुर फल जानू॥",
         transliteration: "Yug sahasra yojan par bhaanu. Leelyo taahi madhur phal jaanu.",
         meaning: "You flew across the sky to swallow the sun, mistaking it for a sweet fruit.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/prabhumudrikamukhmahi.png",
       },
       {
         number: 20,
         sanskrit: "प्रभु मुद्रिका मेलि मुख माहीं। जलधि लांघि गये अचरज नाहीं॥",
         transliteration: "Prabhu mudrika meli mukh maheen. Jaladhi langhi gaye acharaj naheen.",
         meaning: "Carrying Lord Ram’s ring in your mouth, you crossed the ocean effortlessly — a miracle indeed.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/prabhumudrikamukhmahi.png",
       },
       {
         number: 21,
@@ -200,14 +200,14 @@ export const scripturesData: Scripture[] = [
         sanskrit: "आपन तेज सम्हारो आपै। तीनों लोक हांक तें कांपै॥",
         transliteration: "Aapan tej samhaaro aapai. Teenon lok haank te kaapai.",
         meaning: "You alone control your vast power; your roar makes all three worlds tremble.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/apantezztinolok.png",
       },
       {
         number: 25,
         sanskrit: "भूत पिशाच निकट नहिं आवै। महाबीर जब नाम सुनावै॥",
         transliteration: "Bhoot pishaach nikat nahi aavai. Mahaveer jab naam sunavai.",
         meaning: "Ghosts and evil spirits flee when the mighty name of Mahaveer Hanuman is spoken.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/mahvirnamsunave.png",
       },
       {
         number: 26,
@@ -277,7 +277,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "अंत काल रघुबर पुर जाई। जहाँ जन्म हरिभक्त कहाई॥",
         transliteration: "Ant kaal Raghubar pur jaai. Jahan janm Haribhakt kahai.",
         meaning: "At life’s end, devotees who worship you attain the abode of Lord Ram and are reborn as his devotees.",
-        imageUrl: "/hanumanchalisa.png",
+        imageUrl: "/anantkalraghubaarpur.png",
       },
       {
         number: 36,
