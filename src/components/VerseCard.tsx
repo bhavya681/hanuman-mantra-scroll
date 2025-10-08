@@ -28,7 +28,7 @@ export const VerseCard = ({
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-accent" />
             <div className="px-4 py-2 bg-gradient-divine rounded-full">
               <span className="font-vedic text-primary-foreground font-bold text-sm">
-                Verse {number}
+                 {number===0 ? 'Doha' :   `Verse ${number}`}
               </span>
             </div>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-accent" />
@@ -108,7 +108,7 @@ export const VerseCard = ({
 
         {/* Meaning */}
         <div className="p-6 bg-secondary/10 rounded-lg border-l-4 border-accent">
-          <h3 className="font-vedic text-sm uppercase tracking-wide text-accent mb-3">
+          <h3 className="font-vedic text-sm uppercase tracking-wide text-accent mb-3" style={{ color: "#a97c0b" }}>
             Meaning
           </h3>
           <p className="font-ancient text-base md:text-lg leading-relaxed text-foreground">
