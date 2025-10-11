@@ -256,7 +256,7 @@ export const scripturesData: Scripture[] = [
         sanskrit: "अष्ट सिद्धि नौ निधि के दाता। अस बर दीन जानकी माता॥",
         transliteration: "Asht siddhi nau nidhi ke daata. As bar deen Janaki mata.",
         meaning: "Mother Sita has blessed you with the power to grant eight siddhis and nine types of wealth.",
-        imageUrl: "/verse32.png",
+        imageUrl: "/8shidis.png",
       },
       {
         number: 33,
@@ -309,11 +309,18 @@ export const scripturesData: Scripture[] = [
       },
       {
         number: 40,
-        sanskrit: "जो यह पढ़ै हनुमान चालीसा। होय सिद्धि साखी गौरीसा॥\nतुलसीदास सदा हरि चेरा। कीजै नाथ हृदय महँ डेरा॥\n॥दोहा॥\nपवन तनय संकट हरन, मंगल मूरति रूप। राम लखन सीता सहित, हृदय बसहु सुर भूप॥",
+        sanskrit: "जो यह पढ़ै हनुमान चालीसा। होय सिद्धि साखी गौरीसा॥\nतुलसीदास सदा हरि चेरा। कीजै नाथ हृदय महँ डेरा॥",
         transliteration: "Jo yah padhe Hanuman Chalisa, hoy siddhi saakhi Gaurisa. Tulsidas sada Hari chera, keejai Nath hriday mein dera. ॥ Doha ॥ Pavan tanay sankat haran, mangal moorat roop. Ram Lakhan Sita sahit, hriday basahu Sur Bhoop.",
-        meaning: "Whoever reads this Hanuman Chalisa achieves success — Lord Shiva himself attests to this truth. Tulsidas, the humble devotee of Hari, prays — O Lord, dwell forever in my heart. O son of the Wind, remover of sorrows, embodiment of auspiciousness — abide in my heart with Ram, Lakshman, and Sita.",
+        meaning: "Whoever reads this Hanuman Chalisa achieves success — Lord Shiva himself attests to this truth.",
         imageUrl: "/tulsidassada.png",
-      }      
+      }     ,
+      {
+        number: 0,
+        sanskrit: "॥दोहा॥\nपवन तनय संकट हरन, मंगल मूरति रूप। राम लखन सीता सहित, हृदय बसहु सुर भूप॥",
+        transliteration: "॥ Doha ॥ Pavan tanay sankat haran, mangal moorat roop. Ram Lakhan Sita sahit, hriday basahu Sur Bhoop.",
+        meaning: " Tulsidas, the humble devotee of Hari, prays — O Lord, dwell forever in my heart. O son of the Wind, remover of sorrows, embodiment of auspiciousness — abide in my heart with Ram, Lakshman, and Sita.",
+        imageUrl: "/ramlakhan.png",
+      }
     ]
   },
   {
