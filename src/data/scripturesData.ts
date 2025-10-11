@@ -246,7 +246,7 @@ export const scripturesData: Scripture[] = [
       },
       {
         number: 31,
-        sanskrit: "साधु संत के तुम रखवारे। असुर निकंदन नाम तुम्हारे॥",
+        sanskrit: "साधु संत के तुम रखवारे। असुर निकंदन राम दुलारे॥",
         transliteration: "Sadhu sant ke tum rakhvare. Asur nikandan naam tumhare.",
         meaning: "You are the protector of saints and sages; your very name destroys evil.",
         imageUrl: "/verse31.png",
