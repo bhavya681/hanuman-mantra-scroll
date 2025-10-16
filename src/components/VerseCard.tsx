@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Card } from "./ui/card";
 import parchmentBg from "@/assets/parchment-bg.jpg";
 import { motion } from "framer-motion";
 import manuscriptBg from "@/assets/parchment-bg.jpg";
+import { ChevronDown, ChevronUp } from "lucide-react";
+
 interface VerseCardProps {
   number: number;
   sanskrit: string;
@@ -17,6 +20,9 @@ export const VerseCard = ({
   meaning,
   imageUrl,
 }: VerseCardProps) => {
+  // 👇 "more" state for professional toggling
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <Card className="relative overflow-hidden border-2 border-accent/30 bg-card/95 backdrop-blur-sm shadow-2xl animate-verse-reveal max-w-full">
       {/* Sacred Glow */}
@@ -71,90 +77,141 @@ export const VerseCard = ({
           </div>
         </div>
         {imageUrl && (
-        <div className="mb-4 sm:mb-5 flex justify-center w-full  rounded-lg py-4" style={{
-          backgroundImage: `url(${manuscriptBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}>
+          <div
+            className="mb-4 sm:mb-5 flex justify-center w-full rounded-lg py-4"
+            style={{
+              backgroundImage: `url(${manuscriptBg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <motion.div
+              key={imageUrl}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="
+                group relative
+                rounded-xl overflow-hidden
+                border-2 border-accent/60 shadow-xl
+                w-full max-w-sm sm:max-w-md md:max-w-lg
+                flex items-center justify-center
+                bg-[#f8efd9]
+                cursor-pointer
+                aspect-[5/4]
+              "
+            >
+              {/* ✨ Divine Aura Pulse */}
+              <motion.div
+                className="absolute inset-0 pointer-events-none"
+                animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.03, 1] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 55%, rgba(255,230,150,0.35) 0%, transparent 75%)",
+                  filter: "blur(18px)",
+                  mixBlendMode: "soft-light",
+                }}
+              />
 
-          <motion.div
-      key={imageUrl}
-      initial={{ opacity: 0, scale: 0.97 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="
-        group relative
-        rounded-xl overflow-hidden
-        border-2 border-accent/60 shadow-xl
-        w-full max-w-sm sm:max-w-md md:max-w-lg
-        flex items-center justify-center
-        bg-[#f8efd9]
-        cursor-pointer
-        aspect-[5/4]
-      "
-    >
-      {/* ✨ Divine Aura Pulse */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.03, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(circle at 50% 55%, rgba(255,230,150,0.35) 0%, transparent 75%)",
-          filter: "blur(18px)",
-          mixBlendMode: "soft-light",
-        }}
-      />
+              {/* 🌗 Subtle Black–Golden Overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 35%, rgba(255,215,105,0.1) 100%)",
+                  mixBlendMode: "multiply",
+                  zIndex: 5,
+                }}
+              />
 
-      {/* 🌗 Subtle Black–Golden Overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 35%, rgba(255,215,105,0.1) 100%)",
-          mixBlendMode: "multiply",
-          zIndex: 5,
-        }}
-      />
+              {/* 🔶 Image */}
+              <img
+                src={imageUrl}
+                alt={`Verse illustration ${number}`}
+                className="
+                  w-full h-full object-cover rounded-xl
+                  transition-all duration-700
+                  group-hover:scale-[1.04]
+                  group-hover:saturate-125
+                  group-hover:brightness-[1.1]
+                  group-hover:drop-shadow-[0_8px_30px_#eab30899]
+                "
+                style={{
+                  filter:
+                    "sepia(0.15) contrast(1.05) brightness(0.97) drop-shadow(0 3px 18px #b9952433)",
+                  background: "#efe6cf",
+                }}
+              />
+            </motion.div>
+          </div>
+        )}
 
-      {/* 🔶 Image */}
-      <img
-        src={imageUrl}
-        alt={`Verse illustration ${number}`}
-        className="
-          w-full h-full object-cover rounded-xl
-          transition-all duration-700
-          group-hover:scale-[1.04]
-          group-hover:saturate-125
-          group-hover:brightness-[1.1]
-          group-hover:drop-shadow-[0_8px_30px_#eab30899]
-        "
-        style={{
-          filter:
-            "sepia(0.15) contrast(1.05) brightness(0.97) drop-shadow(0 3px 18px #b9952433)",
-          background: "#efe6cf",
-        }}
-      />
-    </motion.div>
-  </div>
-)}
-
-        {/* Transliteration */}
-        <div className="mb-4 xs:mb-5 sm:mb-6 p-2 xs:p-3 sm:p-4 bg-muted/40 rounded-lg border border-border/50 max-w-full">
-          <p className="font-ancient text-xs xs:text-sm sm:text-lg italic text-center text-muted-foreground leading-relaxed break-words">
-            {transliteration}
-          </p>
+        {/* Professional "Show More" Button */}
+        <div className="flex justify-center mb-2">
+          <button
+            className={`
+              flex items-center gap-2 px-4 py-2
+              rounded-full border border-accent/60
+              bg-background/80 hover:bg-accent/10
+              text-accent font-semibold transition
+              shadow
+              text-xs xs:text-xs sm:text-sm
+              outline-none focus:ring-2 focus:ring-accent/30
+            `}
+            aria-expanded={showMore}
+            aria-controls={`verse-details-${number}`}
+            onClick={() => setShowMore((v) => !v)}
+            style={{
+              minWidth: 115,
+              userSelect: "none",
+              WebkitTapHighlightColor: "transparent",
+            }}
+          >
+            {showMore ? (
+              <>
+                Hide Meaning <ChevronUp className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                More <ChevronDown className="w-4 h-4" />
+              </>
+            )}
+          </button>
         </div>
 
-        {/* Meaning */}
-        <div className="p-3 xs:p-4 sm:p-6 bg-secondary/10 rounded-lg border-l-4 border-accent max-w-full">
-          <h3 className="font-vedic text-xs sm:text-sm uppercase tracking-wide text-accent mb-2 xs:mb-2.5 sm:mb-3" style={{ color: "#a97c0b" }}>
-            Meaning
-          </h3>
-          <p className="font-ancient text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed text-foreground break-words">
-            {meaning}
-          </p>
-        </div>
+        {/* Details Section (Meaning & Translation) */}
+        <motion.div
+          initial={false}
+          animate={{ height: showMore ? "auto" : 0, opacity: showMore ? 1 : 0 }}
+          transition={{ duration: 0.22, ease: "easeInOut" }}
+          id={`verse-details-${number}`}
+          style={{
+            overflow: "hidden",
+            pointerEvents: showMore ? "auto" : "none",
+            marginBottom: showMore ? undefined : 0,
+          }}
+        >
+          {/* Transliteration */}
+          <div className="mb-4 xs:mb-5 sm:mb-6 p-2 xs:p-3 sm:p-4 bg-muted/40 rounded-lg border border-border/50 max-w-full">
+            <p className="font-ancient text-xs xs:text-sm sm:text-lg italic text-center text-muted-foreground leading-relaxed break-words">
+              {transliteration}
+            </p>
+          </div>
+
+          {/* Meaning */}
+          <div className="p-3 xs:p-4 sm:p-6 bg-secondary/10 rounded-lg border-l-4 border-accent max-w-full">
+            <h3
+              className="font-vedic text-xs sm:text-sm uppercase tracking-wide text-accent mb-2 xs:mb-2.5 sm:mb-3"
+              style={{ color: "#a97c0b" }}
+            >
+              Meaning
+            </h3>
+            <p className="font-ancient text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed text-foreground break-words">
+              {meaning}
+            </p>
+          </div>
+        </motion.div>
 
         {/* Decorative Divider */}
         <div className="mt-5 xs:mt-6 sm:mt-8 flex justify-center">
