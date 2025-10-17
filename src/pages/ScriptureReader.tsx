@@ -2,12 +2,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { scripturesData } from "@/data/scripturesData";
 import { VerseCard } from "@/components/VerseCard";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Home, Maximize2, Download } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, Maximize2, Download, Minimize2, BookOpen } from "lucide-react";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import parchmentBg from "@/assets/parchment-bg.jpg";
 import lotusMandala from "@/assets/lotus-mandala.png";
-
 // PDF & Fullscreen additions
 import jsPDF from "jspdf";
 
@@ -53,6 +52,35 @@ const pageFlipVariants = {
     },
   }),
 };
+
+const customShowMoreScrollbar = `
+  .show-more-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #e0c194 #f9f6ef;
+    transition: background 0.3s;
+  }
+  .show-more-scrollbar::-webkit-scrollbar {
+    width: 11px;
+    background: transparent;
+  }
+  .show-more-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(120deg, #bea86b 30%, #e7d6a0 100%);
+    border-radius: 14px;
+    min-height: 30px;
+    border: 2.5px solid #f9f6ef;
+    box-shadow: 0 1px 4px #d7c29966, 0 1px 2px #bead7b;
+    transition: background 0.3s;
+  }
+  .show-more-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(110deg, #e7d6a0 20%, #bea86b 90%);
+  }
+  .show-more-scrollbar::-webkit-scrollbar-track {
+    background: #f9f6ef;
+    border-radius: 16px;
+  }
+`;
+
+const HEADER_HEIGHT_PX = 66; // Controls manual height (matches py-2 with likely line heights + padding...)
 
 const ScriptureReader = () => {
   const { id } = useParams();
@@ -106,11 +134,26 @@ const ScriptureReader = () => {
     );
   }
 
-  // For "Show More": If you enter fullscreen, automatically hide show more, only arrows.
   useEffect(() => {
     if (isFullscreen && showMore) setShowMore(false);
     // eslint-disable-next-line
   }, [isFullscreen]);
+
+  // --- For professional custom scrollbar on showMore ---
+  useEffect(() => {
+    let styleTag: HTMLStyleElement | null = null;
+    if (showMore) {
+      styleTag = document.createElement("style");
+      styleTag.id = "show-more-scrollbar-style";
+      styleTag.innerHTML = customShowMoreScrollbar;
+      document.head.appendChild(styleTag);
+    }
+    return () => {
+      if (styleTag && styleTag.parentNode) {
+        styleTag.parentNode.removeChild(styleTag);
+      }
+    };
+  }, [showMore]);
 
   const goToNext = () => {
     if (showMore) return;
@@ -170,20 +213,16 @@ const ScriptureReader = () => {
 
   // --- PDF DOWNLOAD FUNCTIONALITY (new static, high-quality render as requested) ---
   const handleDownloadPDF = async () => {
-    // Prepare pdf instance
     const pdf = new jsPDF({
       orientation: "p",
       unit: "pt",
       format: "a4"
     });
 
-    // PDF styling dimensions
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
 
-    // For each verse: Create a temporary container to render the VerseCard for PDF
     for (let i = 0; i < scripture.verses.length; i++) {
-      // Create a container detached from DOM but attached to document for rendering styles
       const container = document.createElement("div");
       container.style.width = "700px";
       container.style.maxWidth = "100%";
@@ -195,7 +234,6 @@ const ScriptureReader = () => {
       container.className = "pdf-export-container";
       document.body.appendChild(container);
 
-      // Render via ReactDOM.render (since React 18+, need to check for root API)
       import("react-dom").then((ReactDOM) => {
         ReactDOM.render(
           <div style={{
@@ -211,12 +249,9 @@ const ScriptureReader = () => {
           container
         );
       });
-
-      // Wait for the card and styles to render
       // eslint-disable-next-line no-await-in-loop
       await new Promise(res => setTimeout(res, 200));
 
-      // Use html2canvas for accurate export (do not reuse mainRef so interactive state is untouched)
       const html2canvas = (await import("html2canvas")).default;
       const canvas = await html2canvas(container, {
         useCORS: true,
@@ -225,15 +260,12 @@ const ScriptureReader = () => {
         width: 700,
         windowWidth: 1200,
       });
-      // Remove temporary container
       document.body.removeChild(container);
 
       if (i > 0) pdf.addPage();
 
-      // Professional fit for A4 (max width, center, aspect)
-      let imgW = pageWidth - 80; // padding x 2
+      let imgW = pageWidth - 80;
       let imgH = (canvas.height * imgW) / canvas.width;
-      // Scale if image height exceeds page minux top/bottom margin
       if (imgH > pageHeight - 100) {
         imgH = pageHeight - 100;
         imgW = (canvas.width * imgH) / canvas.height;
@@ -245,7 +277,6 @@ const ScriptureReader = () => {
 
       pdf.addImage(imgData, "JPEG", imgX, imgY, imgW, imgH);
 
-      // Little verse label footer for navigation (optional)
       pdf.setFontSize(11);
       pdf.setTextColor("#bea86b");
       pdf.text(
@@ -260,11 +291,8 @@ const ScriptureReader = () => {
 
   const verse = scripture.verses[currentVerse];
 
-  // Responsive, fullscreen and showMore logic
-  // ShowMore: disables all other navigation except close, and shows all verses in a scrollable format.
-  // In fullscreen: only next/prev arrows are shown, "show more" removed. When "show more" open: arrows, dots, etc are hidden.
-  // Pagination respects showMore and is responsively displayed.
-
+  // Sticky header solution, always fixed and always visible (never scrolled away),
+  // manage content padding to avoid overlap.
   return (
     <div className={`min-h-screen relative overflow-hidden bg-background font-sans`}>
       {/* 📜 Background */}
@@ -296,74 +324,91 @@ const ScriptureReader = () => {
 
       {/* 🕉 Main Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        {/* Header */}
+        {/* Header - Make fixed */}
         <header
-          className={`
-            sticky top-0 z-20
-            ${isFullscreen ? "bg-background/80 backdrop-blur-md border-b border-accent/20 shadow-sm transition duration-200"
-            : "bg-card/70 backdrop-blur-md border-b border-accent/20 shadow-sm"}
-            ${isFullscreen ? "opacity-0 pointer-events-none hover:opacity-100 focus-within:opacity-100 transition-all duration-300" : ""}
-            group
-          `}
-          style={isFullscreen ? {height: 0} : {}}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: `${HEADER_HEIGHT_PX}px`,
+            zIndex: 100,
+            transition: "all 0.3s cubic-bezier(.34,1.56,.64,1)",
+            pointerEvents: isFullscreen ? "none" : "initial",
+            opacity: isFullscreen ? 0 : 1,
+            background: "linear-gradient(to bottom, rgba(245,233,200,0.95) 60%,rgba(245,233,200,0.63) 100%)",
+            backdropFilter: "blur(12px)",
+            boxShadow: "0 2.5px 7.5px 0 #e6dcc2, 0 1px 0px #dbc6953a",
+            borderBottom: "1.5px solid #eddec4bb",
+            WebkitBackdropFilter: "blur(12px)",
+          }}
         >
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-2 flex items-center gap-3 justify-between">
-            <div className="flex gap-1">
+          <div className="max-w-screen-xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-2 sm:gap-6 h-full"
+            style={{height: "100%"}}
+          >
+            {/* Left: Back Button */}
+            <div className="flex-0 flex items-center gap-2 min-w-[56px]">
               <Button
                 variant="ghost"
                 onClick={() => navigate("/")}
-                className="rounded-full hover:bg-accent/20 flex items-center gap-2 text-sm sm:text-base"
+                className="rounded-full flex items-center gap-2 text-sm sm:text-base transition-colors focus:ring-2 focus:ring-accent/60 hover:bg-accent/30"
                 aria-label="Back to Library"
+                tabIndex={isFullscreen ? -1 : 0}
+                style={{pointerEvents: isFullscreen ? "none" : "auto"}}
               >
-                <Home className="w-4 h-4" />
-                <span className="hidden sm:inline">Library</span>
-                <span className="sm:hidden">Back</span>
+                <span className="flex items-center justify-center rounded-full p-1">
+                  <Home className="w-4 h-4 text-black" />
+                </span>
+                <span className="hidden sm:inline text-foreground">Library</span>
+                <span className="sm:hidden text-foreground">Back</span>
               </Button>
             </div>
-            <div className="text-center flex-1 px-2 truncate">
-              <h1 className="font-vedic text-lg sm:text-xl md:text-2xl font-semibold text-foreground truncate">
+            {/* Center: Title */}
+            <div className="flex-1 min-w-0 text-center px-1 sm:px-3">
+              <h1 className="font-vedic text-base xs:text-lg sm:text-xl md:text-2xl font-semibold text-foreground truncate">
                 {scripture.title}
               </h1>
-              <p className="font-sanskrit text-sm sm:text-base text-primary truncate">
+              <p className="font-sanskrit text-xs sm:text-sm md:text-base text-primary truncate">
                 {scripture.titleSanskrit}
               </p>
             </div>
-            <div className="flex items-center gap-2 min-w-[80px] justify-end">
+            {/* Actions: Right */}
+            <div className="flex flex-0 items-center gap-2 min-w-[80px] justify-end">
               {/* Fullscreen button */}
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={handleToggleFullscreen}
-                aria-label={isFullscreen ? "Exit Fullscreen" : "Read Full Screen"}
-                className="rounded-full hover:bg-yellow-100 hover:scale-105 active:scale-95 transition-all"
-                title={isFullscreen ? "Exit Full Screen" : "Read in Full Screen"}
+                aria-label={isFullscreen ? "Exit Read Mode" : "Enter Read Mode"}
+                className="rounded-full transition-all hover:scale-105 active:scale-95 focus:ring-2 focus:ring-accent/50 hover:bg-accent/30"
+                title={isFullscreen ? "Exit Read Mode" : "Enter Read Mode"}
+                tabIndex={isFullscreen ? -1 : 0}
+                style={{pointerEvents: isFullscreen ? "none" : "auto"}}
               >
-                <Maximize2 className="w-5 h-5 text-accent" />
-                <span className="sr-only">{isFullscreen ? "Exit Fullscreen" : "Expand"}</span>
+                <span className="flex items-center justify-center rounded-full p-1">
+                  {isFullscreen ? (
+                    <Minimize2 className="w-5 h-5 text-black" />
+                  ) : (
+                    <BookOpen className="w-5 h-5 text-black" />
+                  )}
+                </span>
+                <span className="sr-only">{isFullscreen ? "Exit Read Mode" : "Enter Read Mode"}</span>
               </Button>
-              {/* Download button */}
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={handleDownloadPDF}
-                aria-label="Download as PDF"
-                className="rounded-full hover:bg-yellow-100 hover:scale-105 active:scale-95 transition-all"
-                title="Download PDF"
-              >
-                <Download className="w-5 h-5 text-accent" />
-                <span className="sr-only">Download PDF</span>
-              </Button>
-              {/* Show More button, hide in fullscreen */}
+              {/* Download button - hidden for now */}
+              {/*
+              <Button ... />
+              */}
+              {/* Show More button, only when not in fullscreen */}
               {!isFullscreen && (
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setShowMore(sm => !sm)}
-                  className="rounded-full ml-1 hover:bg-accent/10"
+                  className={`rounded-full ml-1 px-4 py-2 bg-black hover:bg-black focus:ring-2 focus:ring-accent/30`}
                   aria-label={showMore ? "Hide All Verses" : "Show All Verses"}
                   title={showMore ? "Hide All Verses" : "Show All Verses"}
                 >
-                  <span className="font-vedic text-[13px] sm:text-[15px] text-accent">
+                  <span className="font-vedic text-[13px] sm:text-[15px] text-white">
                     {showMore ? "Show Less" : "Show More"}
                   </span>
                 </Button>
@@ -371,6 +416,7 @@ const ScriptureReader = () => {
             </div>
           </div>
         </header>
+        {/* Main - add top padding to prevent content being hidden behind fixed header */}
         <main
           ref={mainRef}
           className={`
@@ -379,7 +425,11 @@ const ScriptureReader = () => {
           `}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          style={isFullscreen ? {paddingTop: "clamp(0rem, 3vh, 4rem)"} : undefined}
+          style={{
+            paddingTop: isFullscreen
+              ? "clamp(0rem, 3vh, 4rem)"
+              : `calc(${HEADER_HEIGHT_PX}px + 1.5rem)`, // add extra padding below header
+          }}
         >
           <section className="w-full max-w-3xl xl:max-w-4xl flex flex-col items-center">
             {/* Only show book flip or all as list depending on showMore */}
@@ -412,7 +462,23 @@ const ScriptureReader = () => {
                 </div>
               </div>
             ) : (
-              <div className="w-full pt-2 pb-6 flex flex-col gap-7 overflow-y-auto" style={{ maxHeight: "80vh", minHeight: 320 }}>
+              <div
+                className="w-full pt-2 pb-6 flex flex-col gap-7 overflow-y-auto show-more-scrollbar"
+                style={{
+                  maxHeight: `calc(80vh - ${HEADER_HEIGHT_PX}px)`,
+                  minHeight: 320,
+                  overscrollBehavior: "contain",
+                  WebkitOverflowScrolling: "touch",
+                  scrollBehavior: "smooth",
+                  background: "rgba(255,255,255,0.98)",
+                  borderRadius: "1.2rem",
+                  boxShadow: "0 2px 14px 0 #eddec4bb",
+                  border: "1.5px solid #efdeba",
+                  paddingRight: "6px",
+                }}
+                tabIndex={0}
+              >
+                <style>{showMore ? customShowMoreScrollbar : ""}</style>
                 {scripture.verses.map((v, idx) => (
                   <div key={idx} className="mb-2 verse-pdf-card">
                     <VerseCard {...v} />
@@ -476,7 +542,6 @@ const ScriptureReader = () => {
                           </span>
                         </span>
                       </div>
-                      {/* mobile-friendly dot slider */}
                       <div
                         className="mt-3 flex flex-row gap-[2.5px] justify-center w-full overflow-x-auto px-1 py-1"
                         style={{
