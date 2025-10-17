@@ -2,12 +2,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { scripturesData } from "@/data/scripturesData";
 import { VerseCard } from "@/components/VerseCard";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Home, Maximize2, Download, Minimize2, BookOpen } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, Download, Minimize2, BookOpen } from "lucide-react";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import parchmentBg from "@/assets/parchment-bg.jpg";
 import lotusMandala from "@/assets/lotus-mandala.png";
-// PDF & Fullscreen additions
 import jsPDF from "jspdf";
 
 const PAGE_TURN_DURATION = 0.73;
@@ -80,13 +79,145 @@ const customShowMoreScrollbar = `
   }
 `;
 
-const HEADER_HEIGHT_PX = 66; // Controls manual height (matches py-2 with likely line heights + padding...)
+const HEADER_HEIGHT_PX = 66; // Controls manual height
+
+// Hanuman Chalisa Lyrics - plain text for PDF download
+const HANUMAN_CHALISA_LYRICS = `
+श्रीगुरु चरन सरोज रज, निज मनु मुकुर सुधारि।
+बरनऊँ रघुबर बिमल जसु, जो दायकु फल चारि।।
+
+बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।
+बल बुद्धि विद्या देहु मोहिं, हरहु कलेस विकार॥
+
+जय हनुमान ज्ञान गुन सागर।
+जय कपीस तिहुँ लोक उजागर॥
+
+राम दूत अतुलित बल धामा।
+अंजनि-पुत्र पवनसुत नामा।।
+
+महाबीर बिक्रम बजरंगी।
+कुमति निवार सुमति के संगी॥
+
+कंचन बरन बिराज सुबेसा।
+कानन कुंडल कुंचित केसा॥
+
+हाथ बज्र और ध्वजा बिराजै।
+काँधे मूँज जनेऊ साजै॥
+
+शंकर सुवन केसरी नंदन।
+तेज प्रताप महा जग वंदन॥
+
+विद्यावान गुनी अति चातुर।
+राम काज करिबे को आतुर॥
+
+प्रभु चरित्र सुनिबे को रसिया।
+राम लखन सीता मन बसिया॥
+
+सूक्ष्म रूप धरि सियहिं दिखावा।
+बिकट रूप धरि लंक जरावा॥
+
+भीम रूप धरि असुर सँहारे।
+रामचंद्र के काज सवाँरे॥
+
+लाय सजीवन लखन जियाये।
+श्रीरघुबीर हरषि उर लाये॥
+
+रघुपति कीन्ही बहुत बड़ाई।
+तुम मम प्रिय भरत-हि सम भाई॥
+
+सहस बदन तुम्हारो जस गावैं।
+अस कहि श्रीपति कंठ लगावैं॥
+
+सनकादिक ब्रह्मादि मुनीसा।
+नारद सारद सहित अहीसा॥
+
+जम कुबेर दिगपाल जहाँ ते।
+कबि कोबिद कहि सके कहाँ ते॥
+
+तुम उपकार सुग्रीवहिं कीन्हा।
+राम मिलाय राजपद दीन्हा॥
+
+तुम्हरो मन्त्र बिभीषन माना।
+लंकेश्वर भए सब जग जाना॥
+
+जुग सहस्र जोजन पर भानू।
+लील्यो ताहि मधुर फल जानू॥
+
+प्रभु मुद्रिका मेलि मुख माहीं।
+जलधि लाँघि गये अचरज नाहीं॥
+
+ दुर्गम काज जगत के जेते।
+सुगम अनुग्रह तुम्हरे तेते॥
+
+राम दुआरे तुम रखवारे।
+होत न आज्ञा बिनु पैसारे॥
+
+सब सुख लहै तुम्हारी सरना।
+तुम रक्षक काहू को डर ना॥
+
+आपन तेज सम्हारो आपै।
+तीनों लोक हांक तें कांपे॥
+
+भूत पिशाच निकट नहिं आवै।
+महाबीर जब नाम सुनावै॥
+
+नासै रोग हरै सब पीरा।
+जपत निरंतर हनुमत बीरा॥
+
+संकट तें हनुमान छुड़ावै।
+मन क्रम बचन ध्यान जो लावै॥
+
+सब पर राम तपस्वी राजा।
+तिन के काज सकल तुम साजा॥
+
+और मनोरथ जो कोई लावै।
+सोइ अमित जीवन फल पावै॥
+
+चारों जुग परताप तुम्हारा।
+है परसिद्ध जगत उजियारा॥
+
+साधु-संत के तुम रखवारे।
+असुर निकंदन राम दुलारे॥
+
+अष्ट सिद्धि नौ निधि के दाता।
+अस बर दीन जानकी माता॥
+
+राम रसायन तुम्हरे पासा।
+सदा रहो रघुपति के दासा॥
+
+तुम्हरी भक्ति राम को पावै।
+जनम जनम के दुख बिसरावै॥
+
+अंत काल रघुबर पुर जाई।
+जहाँ जन्म हरि-भक्त कहाई॥
+
+और देवता चित्त न धरई।
+हनुमत सेइ सर्ब सुख करई॥
+
+संकट कटै मिटै सब पीरा।
+जो सुमिरै हनुमत बलबीरा॥
+
+जय जय जय हनुमान गोसाईं।
+कृपा करहु गुरुदेव की नाईं॥
+
+जो सत बार पाठ कर कोई।
+छूटहि बंदि महा सुख होई॥
+
+जो यह पढ़ै हनुमान चालीसा।
+होय सिद्धि साखी गौरीसा॥
+
+तुलसीदास सदा हरि चेरा।
+कीजै नाथ हृदय महँ डेरा॥
+
+पवनतनय संकट हरन, मंगल मूरति रूप।
+राम लखन सीता सहित, हृदय बसहु सुर भूप॥
+`;
 
 const ScriptureReader = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [currentVerse, setCurrentVerse] = useState(0);
-  const [pageDirection, setPageDirection] = useState(0); // -1 = back, 1 = forward
+  const [pageDirection, setPageDirection] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const touchStartX = useRef<number | null>(null);
@@ -139,7 +270,7 @@ const ScriptureReader = () => {
     // eslint-disable-next-line
   }, [isFullscreen]);
 
-  // --- For professional custom scrollbar on showMore ---
+  // --- Professional custom scrollbar on showMore ---
   useEffect(() => {
     let styleTag: HTMLStyleElement | null = null;
     if (showMore) {
@@ -211,85 +342,44 @@ const ScriptureReader = () => {
     };
   }
 
-  // --- PDF DOWNLOAD FUNCTIONALITY (new static, high-quality render as requested) ---
-  const handleDownloadPDF = async () => {
+  // --- PDF DOWNLOAD: Hanuman Chalisa lyrics only, text only ---
+  const handleDownloadPDF = () => {
     const pdf = new jsPDF({
       orientation: "p",
       unit: "pt",
       format: "a4"
     });
 
+    pdf.setFont("Helvetica", "normal");
+    pdf.setFontSize(15);
+
+    const margin = 50;
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
 
-    for (let i = 0; i < scripture.verses.length; i++) {
-      const container = document.createElement("div");
-      container.style.width = "700px";
-      container.style.maxWidth = "100%";
-      container.style.position = "fixed";
-      container.style.left = "0";
-      container.style.top = "-9999px";
-      container.style.background = "#fff";
-      container.style.padding = "28px 18px";
-      container.className = "pdf-export-container";
-      document.body.appendChild(container);
+    const lines = pdf.splitTextToSize(HANUMAN_CHALISA_LYRICS.trim(), pageWidth - 2 * margin);
+    let y = margin;
 
-      import("react-dom").then((ReactDOM) => {
-        ReactDOM.render(
-          <div style={{
-            width: "700px",
-            background: "#fff",
-            borderRadius: 16,
-            boxShadow: "0 3px 16px #ebddc8",
-            margin: "0 auto",
-            padding: "18px 4px",
-          }}>
-            <VerseCard {...scripture.verses[i]} />
-          </div>,
-          container
-        );
-      });
-      // eslint-disable-next-line no-await-in-loop
-      await new Promise(res => setTimeout(res, 200));
-
-      const html2canvas = (await import("html2canvas")).default;
-      const canvas = await html2canvas(container, {
-        useCORS: true,
-        scale: 2,
-        backgroundColor: "#fff",
-        width: 700,
-        windowWidth: 1200,
-      });
-      document.body.removeChild(container);
-
-      if (i > 0) pdf.addPage();
-
-      let imgW = pageWidth - 80;
-      let imgH = (canvas.height * imgW) / canvas.width;
-      if (imgH > pageHeight - 100) {
-        imgH = pageHeight - 100;
-        imgW = (canvas.width * imgH) / canvas.height;
+    lines.forEach(line => {
+      if (y > pageHeight - margin) {
+        pdf.addPage();
+        y = margin;
       }
-      const imgX = Math.max(35, (pageWidth - imgW) / 2);
-      const imgY = 50;
+      pdf.text(line, margin, y, { baseline: "top" });
+      y += 23;
+    });
 
-      const imgData = canvas.toDataURL("image/jpeg", 0.98);
+    pdf.setFontSize(12);
+    pdf.setTextColor("#a68115");
+    pdf.text("हनुमान चालीसा", pageWidth / 2, pageHeight - 25, { align: "center" });
 
-      pdf.addImage(imgData, "JPEG", imgX, imgY, imgW, imgH);
-
-      pdf.setFontSize(11);
-      pdf.setTextColor("#bea86b");
-      pdf.text(
-        `Page ${i+1} / ${scripture.verses.length} • ${scripture.titleSanskrit}`,
-        pageWidth/2,
-        pageHeight - 30,
-        {align: "center"},
-      );
-    }
-    pdf.save(`${scripture.title.replace(/\s/g, "_")}_${Date.now()}.pdf`);
+    pdf.save("Hanuman_Chalisa_Lyrics.pdf");
   };
 
   const verse = scripture.verses[currentVerse];
+
+  // Desktop detection
+  const isDesktop = typeof window !== "undefined" && window.innerWidth >= 768;
 
   // Sticky header solution, always fixed and always visible (never scrolled away),
   // manage content padding to avoid overlap.
@@ -324,7 +414,7 @@ const ScriptureReader = () => {
 
       {/* 🕉 Main Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        {/* Header - Make fixed */}
+        {/* Header - Fixed */}
         <header
           style={{
             position: "fixed",
@@ -394,10 +484,21 @@ const ScriptureReader = () => {
                 </span>
                 <span className="sr-only">{isFullscreen ? "Exit Read Mode" : "Enter Read Mode"}</span>
               </Button>
-              {/* Download button - hidden for now */}
-              {/*
-              <Button ... />
-              */}
+              {/* Download button - visible */}
+              {/* <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleDownloadPDF}
+                aria-label="Download Hanuman Chalisa Lyrics (PDF)"
+                className="rounded-full transition-all hover:scale-110 focus:ring-2 focus:ring-accent/50 hover:bg-accent/30"
+                title="Download Hanuman Chalisa Lyrics (PDF)"
+                tabIndex={0}
+              >
+                <span className="flex items-center justify-center rounded-full p-1">
+                  <Download className="w-5 h-5 text-black" />
+                </span>
+                <span className="sr-only">Download Hanuman Chalisa Lyrics</span>
+              </Button> */}
               {/* Show More button, only when not in fullscreen */}
               {!isFullscreen && (
                 <Button
@@ -487,24 +588,29 @@ const ScriptureReader = () => {
               </div>
             )}
 
-            {/* Pagination/Navigation - responsive, improved, hides when showMore is on */}
-            {!showMore && (
+            {/* Pagination/Navigation - show only on non-desktop in fullscreen, or if not in fullscreen, and not when showMore is on */}
+            {/* For fullscreen desktop ("Read Mode Expand") no arrows/dots: as per instructions */}
+            {!showMore && (!isDesktop || !isFullscreen) && (
               <nav className="mt-8 w-full flex flex-col gap-6 items-center">
                 <div className="w-full flex items-center justify-between gap-2 px-1">
-                  {/* Arrows always show, rest only if not fullscreen */}
-                  <Button
-                    tabIndex={0}
-                    onClick={goToPrev}
-                    disabled={currentVerse === 0}
-                    size="icon"
-                    className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${
-                      currentVerse === 0 ? "opacity-40 cursor-not-allowed" : ""
-                    } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
-                    aria-label="Previous verse"
-                  >
-                    <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  </Button>
-                  {/* Pager and dots - only if not fullscreen */}
+                  {/* Arrows, only if not (fullscreen on desktop) */}
+                  {!(isDesktop && isFullscreen) && (
+                    <>
+                      <Button
+                        tabIndex={0}
+                        onClick={goToPrev}
+                        disabled={currentVerse === 0}
+                        size="icon"
+                        className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${
+                          currentVerse === 0 ? "opacity-40 cursor-not-allowed" : ""
+                        } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
+                        aria-label="Previous verse"
+                      >
+                        <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                      </Button>
+                    </>
+                  )}
+                  {/* Pager and dots, only if not fullscreen or not desktop */}
                   {!isFullscreen && (
                     <div className="flex flex-col items-center flex-1 px-2 max-w-xs min-w-0">
                       <div
@@ -684,26 +790,30 @@ const ScriptureReader = () => {
                       </div>
                     </div>
                   )}
-                  <Button
-                    tabIndex={0}
-                    onClick={goToNext}
-                    disabled={currentVerse === scripture.verses.length - 1}
-                    size="icon"
-                    className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${
-                      currentVerse === scripture.verses.length - 1 ? "opacity-40 cursor-not-allowed" : ""
-                    } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
-                    aria-label="Next verse"
-                  >
-                    <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  </Button>
+                  {!(isDesktop && isFullscreen) && (
+                    <Button
+                      tabIndex={0}
+                      onClick={goToNext}
+                      disabled={currentVerse === scripture.verses.length - 1}
+                      size="icon"
+                      className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${
+                        currentVerse === scripture.verses.length - 1 ? "opacity-40 cursor-not-allowed" : ""
+                      } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
+                      aria-label="Next verse"
+                    >
+                      <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                    </Button>
+                  )}
                 </div>
                 {/* If mobile, hint for swipe gesture */}
-                <div className="block sm:hidden mt-3 text-xs font-medium text-accent/70 text-center animate-fadeInSlow">
-                  <span className="inline-flex items-center gap-2">
-                    <svg width="21" height="21" fill="none" className="inline" viewBox="0 0 21 21"><path d="M13.5 7.5L17.5 10.5L13.5 13.5" stroke="#d6be7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M7.5 13.5L3.5 10.5L7.5 7.5" stroke="#d6be7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    Swipe left/right to turn pages
-                  </span>
-                </div>
+                {!isDesktop && (
+                  <div className="block sm:hidden mt-3 text-xs font-medium text-accent/70 text-center animate-fadeInSlow">
+                    <span className="inline-flex items-center gap-2">
+                      <svg width="21" height="21" fill="none" className="inline" viewBox="0 0 21 21"><path d="M13.5 7.5L17.5 10.5L13.5 13.5" stroke="#d6be7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M7.5 13.5L3.5 10.5L7.5 7.5" stroke="#d6be7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      Swipe left/right to turn pages
+                    </span>
+                  </div>
+                )}
               </nav>
             )}
             {/* ShowMore - navigation: Only one button at the bottom to exit this mode */}
