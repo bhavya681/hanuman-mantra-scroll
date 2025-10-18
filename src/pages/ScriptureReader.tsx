@@ -22,19 +22,15 @@ const pageFlipVariants = {
     scale: 1,
     filter: "brightness(.94)",
   }),
-  animate: (direction: number) => ({
+  animate: () => ({
     x: 0,
     rotateY: 0,
     opacity: 1,
-    originX: direction > 0 ? 0 : 1,
+    originX: 0.5,
     boxShadow: "0 8px 32px 0 rgba(66,49,28,0.18)",
     zIndex: 2,
     scale: 1,
     filter: "brightness(1)",
-    transition: {
-      duration: PAGE_TURN_DURATION,
-      ease: [0.23, 1, 0.32, 1],
-    },
   }),
   exit: (direction: number) => ({
     x: 0,
@@ -45,10 +41,6 @@ const pageFlipVariants = {
     boxShadow: "0 2px 8px 1px rgba(110,89,62,0.10)",
     scale: 0.98,
     filter: "blur(0.6px) brightness(.95)",
-    transition: {
-      duration: PAGE_TURN_DURATION,
-      ease: [0.65,0,0.50,1],
-    },
   }),
 };
 
@@ -544,6 +536,7 @@ const ScriptureReader = () => {
                     initial="initial"
                     animate="animate"
                     exit="exit"
+                    transition={{ duration: PAGE_TURN_DURATION, ease: "easeOut" }}
                     className="w-full absolute left-0 top-0"
                     style={{
                       willChange: "transform, opacity",

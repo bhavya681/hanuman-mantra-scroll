@@ -4,6 +4,7 @@ import { scripturesData, categories } from "@/data/scripturesData";
 import parchmentBg from "@/assets/parchment-bg.jpg";
 import lotusMandala from "@/assets/lotus-mandala.png";
 import { ChevronLeft, ChevronRight, Search, Filter, BookOpen } from "lucide-react";
+import { motion } from "framer-motion";
 
 // --- Netflix-style Card Component (inline for custom hover logic) ---
 interface ScriptureCardProps {
@@ -219,8 +220,18 @@ const ScriptureLibrary = () => {
         }}
       />
 
-      {/* Sacred Overlay Pattern */}
-      <div className="fixed inset-0 z-0 opacity-10 pointer-events-none">
+      {/* Sacred Overlay Pattern with Slow Rotation */}
+      <motion.div
+        className="fixed inset-0 z-0 opacity-10 pointer-events-none"
+        animate={{
+          rotate: 360,
+        }}
+        transition={{
+          duration: 120,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      >
         <div
           className="w-full h-full"
           style={{
@@ -229,7 +240,25 @@ const ScriptureLibrary = () => {
             backgroundRepeat: "repeat",
           }}
         />
-      </div>
+      </motion.div>
+
+      {/* Divine Glow Pulse */}
+      <motion.div
+        className="fixed inset-0 z-0 pointer-events-none"
+        animate={{
+          opacity: [0.15, 0.3, 0.15],
+          scale: [1, 1.08, 1],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{
+          background: "radial-gradient(circle at 50% 50%, rgba(234, 179, 8, 0.25) 0%, transparent 70%)",
+          filter: "blur(80px)",
+        }}
+      />
 
       {/* Gradient Overlay */}
       <div className="fixed inset-0 z-0 bg-gradient-to-b from-background/95 via-background/80 to-background/95" />
