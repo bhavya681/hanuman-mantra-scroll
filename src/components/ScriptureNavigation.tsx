@@ -41,34 +41,34 @@ const scriptures: Scripture[] = [
 
 export const ScriptureNavigation = () => {
   return (
-    <nav className="w-full border-b border-border bg-card/50 backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-center gap-6 overflow-x-auto">
+    <nav className="w-full border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+      <div className="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
+        <div className="flex items-center justify-start sm:justify-center gap-3 sm:gap-6 overflow-x-auto scrollbar-hide pb-2 sm:pb-0">
           {scriptures.map((scripture) => {
             const Icon = scripture.icon;
             return (
               <button
                 key={scripture.id}
                 className={`
-                  group flex flex-col items-center gap-1.5 px-4 py-2 rounded-lg
-                  transition-all duration-300 min-w-fit
+                  group flex flex-col items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg
+                  transition-all duration-300 min-w-fit flex-shrink-0
                   ${
                     scripture.active
-                      ? "bg-gradient-divine text-primary-foreground shadow-lg"
-                      : "hover:bg-muted/50 text-foreground"
+                      ? "bg-gradient-divine text-primary-foreground shadow-lg scale-105"
+                      : "hover:bg-muted/50 text-foreground hover:scale-105"
                   }
                 `}
               >
                 <Icon
-                  className={`w-5 h-5 ${
+                  className={`w-4 h-4 sm:w-5 sm:h-5 ${
                     scripture.active ? "animate-divine-pulse" : "group-hover:scale-110 transition-transform"
                   }`}
                 />
                 <div className="text-center">
-                  <div className="font-vedic text-xs font-semibold">
+                  <div className="font-vedic text-[10px] sm:text-xs font-semibold whitespace-nowrap">
                     {scripture.title}
                   </div>
-                  <div className="font-sanskrit text-[10px] opacity-80">
+                  <div className="font-sanskrit text-[8px] sm:text-[10px] opacity-80 whitespace-nowrap">
                     {scripture.titleSanskrit}
                   </div>
                 </div>
