@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Card } from "./ui/card";
 import parchmentBg from "@/assets/parchment-bg.jpg";
 import { motion } from "framer-motion";
@@ -11,6 +10,8 @@ interface VerseCardProps {
   transliteration: string;
   meaning: string;
   imageUrl?: string;
+  showMore?: boolean; // 👈 NEW: Accept from parent
+  onToggleMore?: () => void; // 👈 NEW: Callback to parent
 }
 
 export const VerseCard = ({
@@ -19,10 +20,9 @@ export const VerseCard = ({
   transliteration,
   meaning,
   imageUrl,
+  showMore = false, // 👈 NEW: Default value
+  onToggleMore, // 👈 NEW: Callback
 }: VerseCardProps) => {
-  // 👇 "more" state for professional toggling
-  const [showMore, setShowMore] = useState(false);
-
   return (
     <Card className="relative overflow-hidden border-2 border-accent/30 bg-card/95 backdrop-blur-sm shadow-2xl animate-verse-reveal max-w-full">
       {/* Sacred Glow */}
@@ -161,7 +161,7 @@ export const VerseCard = ({
             `}
             aria-expanded={showMore}
             aria-controls={`verse-details-${number}`}
-            onClick={() => setShowMore((v) => !v)}
+            onClick={onToggleMore} // 👈 CHANGED: Use callback
             style={{
               minWidth: 115,
               userSelect: "none",

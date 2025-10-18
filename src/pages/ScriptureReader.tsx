@@ -1,9 +1,9 @@
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { scripturesData } from "@/data/scripturesData";
 import { VerseCard } from "@/components/VerseCard";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Home, Download, Minimize2, BookOpen } from "lucide-react";
-import { useState, useRef, useCallback, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import parchmentBg from "@/assets/parchment-bg.jpg";
 import lotusMandala from "@/assets/lotus-mandala.png";
@@ -11,11 +11,12 @@ import jsPDF from "jspdf";
 
 const PAGE_TURN_DURATION = 0.73;
 
+
 const pageFlipVariants = {
   initial: (direction: number) => ({
     x: 0,
     opacity: 1,
-    rotateY: direction > 0 ? 0 : 0,
+    rotateY: 0,
     originX: direction > 0 ? 1 : 0,
     boxShadow: "0 4px 24px 0 rgba(66,49,28,0.10)",
     zIndex: 2,
@@ -47,7 +48,7 @@ const pageFlipVariants = {
     filter: "blur(0.6px) brightness(.95)",
     transition: {
       duration: PAGE_TURN_DURATION,
-      ease: [0.65,0,0.50,1],
+      ease: [0.65, 0, 0.5, 1],
     },
   }),
 };
@@ -213,18 +214,19 @@ const HANUMAN_CHALISA_LYRICS = `
 राम लखन सीता सहित, हृदय बसहु सुर भूप॥
 `;
 
-const ScriptureReader = () => {
-  const { id } = useParams();
+const ScriptureReader: React.FC = () => {
+  const { id } = useParams<{ id?: string }>();
   const navigate = useNavigate();
-  const [currentVerse, setCurrentVerse] = useState(0);
-  const [pageDirection, setPageDirection] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [showMore, setShowMore] = useState(false);
+  const [currentVerse, setCurrentVerse] = useState<number>(0);
+  const [pageDirection, setPageDirection] = useState<number>(0);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [showMore, setShowMore] = useState<boolean>(false);
+  const [verseMeaningExpanded, setVerseMeaningExpanded] = useState<boolean>(false); // 👈 NEW
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
-  const mainRef = useRef<HTMLDivElement>(null);
+  const mainRef = useRef<HTMLDivElement | null>(null);
 
-  const scripture = scripturesData.find((s) => s.id === id);
+  const scripture = scripturesData.find((s) => String(s.id) === String(id));
 
   // 🕉 Missing/empty checks
   if (!scripture) {
@@ -243,7 +245,7 @@ const ScriptureReader = () => {
     );
   }
 
-  if (scripture.verses.length === 0) {
+  if (!scripture.verses || scripture.verses.length === 0) {
     return (
       <section className="min-h-screen flex items-center justify-center px-4 bg-background">
         <div className="text-center w-full max-w-md bg-card/90 p-6 rounded-2xl shadow-lg">
@@ -268,7 +270,7 @@ const ScriptureReader = () => {
   useEffect(() => {
     if (isFullscreen && showMore) setShowMore(false);
     // eslint-disable-next-line
-  }, [isFullscreen]);
+  }, [isFullscreen, showMore]);
 
   // --- Professional custom scrollbar on showMore ---
   useEffect(() => {
@@ -434,7 +436,7 @@ const ScriptureReader = () => {
           }}
         >
           <div className="max-w-screen-xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-2 sm:gap-6 h-full"
-            style={{height: "100%"}}
+            style={{ height: "100%" }}
           >
             {/* Left: Back Button */}
             <div className="flex-0 flex items-center gap-2 min-w-[56px]">
@@ -444,7 +446,7 @@ const ScriptureReader = () => {
                 className="rounded-full flex items-center gap-2 text-sm sm:text-base transition-colors focus:ring-2 focus:ring-accent/60 hover:bg-accent/30"
                 aria-label="Back to Library"
                 tabIndex={isFullscreen ? -1 : 0}
-                style={{pointerEvents: isFullscreen ? "none" : "auto"}}
+                style={{ pointerEvents: isFullscreen ? "none" : "auto" }}
               >
                 <span className="flex items-center justify-center rounded-full p-1">
                   <Home className="w-4 h-4 text-black" />
@@ -473,7 +475,7 @@ const ScriptureReader = () => {
                 className="rounded-full transition-all hover:scale-105 active:scale-95 focus:ring-2 focus:ring-accent/50 hover:bg-accent/30"
                 title={isFullscreen ? "Exit Read Mode" : "Enter Read Mode"}
                 tabIndex={isFullscreen ? -1 : 0}
-                style={{pointerEvents: isFullscreen ? "none" : "auto"}}
+                style={{ pointerEvents: isFullscreen ? "none" : "auto" }}
               >
                 <span className="flex items-center justify-center rounded-full p-1">
                   {isFullscreen ? (
@@ -535,7 +537,7 @@ const ScriptureReader = () => {
           <section className="w-full max-w-3xl xl:max-w-4xl flex flex-col items-center">
             {/* Only show book flip or all as list depending on showMore */}
             {!showMore ? (
-              <div className="w-full relative perspective-1000" style={{perspective: 1000, minHeight: 270}}>
+              <div className="w-full relative perspective-1000" style={{ perspective: 1000, minHeight: 270 }}>
                 <AnimatePresence custom={pageDirection} mode="wait" initial={false}>
                   <motion.div
                     key={currentVerse}
@@ -552,13 +554,21 @@ const ScriptureReader = () => {
                     }}
                   >
                     <div className="verse-pdf-card">
-                      <VerseCard {...verse} />
+                      <VerseCard
+                        {...verse}
+                        showMore={verseMeaningExpanded}
+                        onToggleMore={() => setVerseMeaningExpanded(v => !v)}
+                      />
                     </div>
                   </motion.div>
                 </AnimatePresence>
                 <div className="invisible" aria-hidden>
                   <div className="verse-pdf-card">
-                    <VerseCard {...verse} />
+                    <VerseCard
+                      {...verse}
+                      showMore={verseMeaningExpanded}
+                      onToggleMore={() => setVerseMeaningExpanded(v => !v)}
+                    />
                   </div>
                 </div>
               </div>
@@ -589,233 +599,302 @@ const ScriptureReader = () => {
             )}
 
             {/* Pagination/Navigation - show only on non-desktop in fullscreen, or if not in fullscreen, and not when showMore is on */}
-            {/* For fullscreen desktop ("Read Mode Expand") no arrows/dots: as per instructions */}
-            {!showMore && (!isDesktop || !isFullscreen) && (
-              <nav className="mt-8 w-full flex flex-col gap-6 items-center">
-                <div className="w-full flex items-center justify-between gap-2 px-1">
-                  {/* Arrows, only if not (fullscreen on desktop) */}
-                  {!(isDesktop && isFullscreen) && (
-                    <>
-                      <Button
-                        tabIndex={0}
-                        onClick={goToPrev}
-                        disabled={currentVerse === 0}
-                        size="icon"
-                        className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${
-                          currentVerse === 0 ? "opacity-40 cursor-not-allowed" : ""
+            {/* For fullscreen desktop ("Read Mode Expand") arrows are shown (changed from previous code) */}
+            {!showMore &&
+              ((isFullscreen && isDesktop) ? (
+                <nav className="mt-8 w-full flex flex-col gap-6 items-center">
+                  <div className="w-full flex items-center justify-between gap-2 px-1">
+                    {/* Prev Arrow */}
+                    <Button
+                      tabIndex={0}
+                      onClick={goToPrev}
+                      disabled={currentVerse === 0}
+                      size="icon"
+                      className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${currentVerse === 0 ? "opacity-40 cursor-not-allowed" : ""
                         } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
-                        aria-label="Previous verse"
-                      >
-                        <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                      </Button>
-                    </>
-                  )}
-                  {/* Pager and dots, only if not fullscreen or not desktop */}
-                  {!isFullscreen && (
+                      aria-label="Previous verse"
+                    >
+                      <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                    </Button>
+                    {/* Pager */}
                     <div className="flex flex-col items-center flex-1 px-2 max-w-xs min-w-0">
-                      <div
-                        className="bg-gradient-to-r from-[#f5eddc]/80 via-white/60 to-[#f5eddc]/80 shadow-lg border border-accent/30 rounded-full px-4 py-2 flex items-center justify-center"
-                        style={{
-                          backdropFilter: "blur(2px)",
-                          minWidth: "min(70vw, 215px)",
-                          borderBottomWidth: 3,
-                          borderTopWidth: 3,
-                        }}
-                      >
-                        <span className="font-vedic text-base sm:text-lg text-primary font-semibold tracking-wide select-none">
-                          <span
-                            style={{
-                              color: "#d6be7c",
-                              fontWeight: "bold",
-                              textShadow: "0 1px 3px #a88b37cc, 0 1px #fff7",
-                              letterSpacing: "0.03em",
-                            }}
-                          >
-                            {scripture.verses[currentVerse]?.number !== undefined
-                              ? (scripture.verses[currentVerse]?.number === 0
+                      {/* 👇 CHANGED: Only show when meaning is NOT expanded */}
+                      {!verseMeaningExpanded && (
+                        <div
+                          className="bg-gradient-to-r from-[#f5eddc]/80 via-white/60 to-[#f5eddc]/80 shadow-lg border border-accent/30 rounded-full px-4 py-2 flex items-center justify-center"
+                          style={{
+                            backdropFilter: "blur(2px)",
+                            minWidth: "min(70vw, 215px)",
+                            borderBottomWidth: 3,
+                            borderTopWidth: 3,
+                          }}
+                        >
+                          <span className="font-vedic text-base sm:text-lg text-primary font-semibold tracking-wide select-none">
+                            <span
+                              style={{
+                                color: "#d6be7c",
+                                fontWeight: "bold",
+                                textShadow: "0 1px 3px #a88b37cc, 0 1px #fff7",
+                                letterSpacing: "0.03em",
+                              }}
+                            >
+                              {scripture.verses[currentVerse]?.number !== undefined
+                                ? (scripture.verses[currentVerse]?.number === 0
                                   ? "Doha"
                                   : `Verse ${scripture.verses[currentVerse]?.number}`)
-                              : `Page ${currentVerse + 1}`
-                            }
+                                : `Page ${currentVerse + 1}`
+                              }
+                            </span>
+                            <span className="mx-2 text-muted-foreground/70 font-normal">|</span>
+                            <span className="font-vedic text-base text-muted-foreground">
+                              {currentVerse + 1}
+                            </span>
+                            <span className="mx-1 text-muted-foreground/60 font-normal">/</span>
+                            <span className="font-vedic text-base text-foreground">
+                              {scripture.verses.length}
+                            </span>
                           </span>
-                          <span className="mx-2 text-muted-foreground/70 font-normal">|</span>
-                          <span className="font-vedic text-base text-muted-foreground">
-                            {currentVerse + 1}
-                          </span>
-                          <span className="mx-1 text-muted-foreground/60 font-normal">/</span>
-                          <span className="font-vedic text-base text-foreground">
-                            {scripture.verses.length}
-                          </span>
-                        </span>
-                      </div>
-                      <div
-                        className="mt-3 flex flex-row gap-[2.5px] justify-center w-full overflow-x-auto px-1 py-1"
-                        style={{
-                          scrollbarWidth: "thin",
-                          scrollbarColor: "#eab308 #f4e5bc",
-                          WebkitOverflowScrolling: "touch",
-                        }}
-                      >
-                        <style>
-                          {`
-                            .scripture-dot-scrollbar::-webkit-scrollbar {
-                              height: 7px;
-                              border-radius: 10px;
-                              background: #f5eddc;
-                            }
-                            .scripture-dot-scrollbar::-webkit-scrollbar-thumb {
-                              background: #eab308;
-                              border-radius: 9px;
-                              min-width: 40px;
-                            }
-                            .scripture-dot-scrollbar::-webkit-scrollbar-track {
-                              background: #f8f2d2;
-                            }
-                          `}
-                        </style>
-                        <div className="flex flex-row gap-[2.5px] w-full scripture-dot-scrollbar" style={{ width: "100%", overflowX: "auto" }}>
-                          {scripture.verses.length <= 16 ? (
-                            scripture.verses.map((_, i) => (
-                              <button
-                                key={i}
-                                onClick={() => handleDotClick(i)}
-                                tabIndex={0}
-                                className={`rounded-full border-2 transition-all
-                                  ${
-                                    i === currentVerse
-                                      ? "bg-primary border-accent shadow-md w-7 h-3"
-                                      : "bg-muted-foreground/20 border-accent/30 hover:bg-accent/80 w-2.5 h-2.5"
-                                  }
-                                  focus:ring-2 focus:ring-accent/50 focus:outline-none
-                                `}
-                                aria-label={`Go to ${scripture.verses[i]?.number === 0 ? "Doha" : `verse ${scripture.verses[i]?.number || i+1}`}`}
-                                style={{
-                                  minWidth: i === currentVerse ? "1.2rem" : "0.7rem",
-                                  minHeight: "0.7rem",
-                                }}
-                              />
-                            ))
-                          ) : (
-                            <div className="flex items-center gap-2 w-full">
-                              <button
-                                className="w-6 h-6 rounded-full flex items-center justify-center bg-card border border-accent/20 hover:bg-accent/40 transition"
-                                onClick={() => handleDotClick(Math.max(0, currentVerse - 5))}
-                                disabled={currentVerse <= 2}
-                                aria-label={"Back 5"}
-                                tabIndex={0}
-                              >
-                                <ChevronLeft className="w-4 h-4" />
-                              </button>
-                              {(() => {
-                                const total = scripture.verses.length;
-                                let start = Math.max(0, currentVerse - 2);
-                                let end = Math.min(total, currentVerse + 3);
-                                if (currentVerse < 3) {
-                                  start = 0;
-                                  end = Math.min(6, total);
-                                }
-                                if (currentVerse > total - 4) {
-                                  end = total;
-                                  start = Math.max(0, total - 6);
-                                }
-                                const items = [];
-                                if (start > 0) {
-                                  items.push(
-                                    <button
-                                      key={0}
-                                      onClick={() => handleDotClick(0)}
-                                      tabIndex={0}
-                                      className={`w-2.5 h-2.5 rounded-full bg-muted-foreground/30 border border-accent/30 hover:bg-accent/70`}
-                                      aria-label="Go to first"
-                                    />
-                                  );
-                                  if (start > 1) {
-                                    items.push(
-                                      <span key="start-ellipsis" className="mx-1 text-xs text-accent/70 pb-0.5">…</span>
-                                    );
-                                  }
-                                }
-                                for (let i = start; i < end; i++) {
-                                  items.push(
-                                    <button
-                                      key={i}
-                                      onClick={() => handleDotClick(i)}
-                                      tabIndex={0}
-                                      className={`rounded-full transition-all
-                                        ${
-                                          i === currentVerse
-                                            ? "bg-primary border-accent shadow-md w-7 h-3"
-                                            : "bg-muted-foreground/20 border-accent/30 hover:bg-accent/80 w-2.5 h-2.5"
-                                        }
-                                        focus:ring-2 focus:ring-accent/50 focus:outline-none
-                                      `}
-                                      aria-label={`Go to ${scripture.verses[i]?.number === 0 ? "Doha" : `verse ${scripture.verses[i]?.number || i+1}`}`}
-                                      style={{
-                                        minWidth: i === currentVerse ? "1.2rem" : "0.7rem",
-                                        minHeight: "0.7rem",
-                                      }}
-                                    />
-                                  );
-                                }
-                                if (end < total) {
-                                  if (end < total - 1) {
-                                    items.push(
-                                      <span key="end-ellipsis" className="mx-1 text-xs text-accent/70 pb-0.5">…</span>
-                                    );
-                                  }
-                                  items.push(
-                                    <button
-                                      key={total-1}
-                                      onClick={() => handleDotClick(total-1)}
-                                      tabIndex={0}
-                                      className={`w-2.5 h-2.5 rounded-full bg-muted-foreground/30 border border-accent/30 hover:bg-accent/70`}
-                                      aria-label="Go to last"
-                                    />
-                                  );
-                                }
-                                return items;
-                              })()}
-                              <button
-                                className="w-6 h-6 rounded-full flex items-center justify-center bg-card border border-accent/20 hover:bg-accent/40 transition"
-                                onClick={() => handleDotClick(Math.min(scripture.verses.length - 1, currentVerse + 5))}
-                                disabled={currentVerse >= scripture.verses.length - 3}
-                                aria-label={"Forward 5"}
-                                tabIndex={0}
-                              >
-                                <ChevronRight className="w-4 h-4" />
-                              </button>
-                            </div>
-                          )}
                         </div>
-                      </div>
+                      )}
                     </div>
-                  )}
-                  {!(isDesktop && isFullscreen) && (
+                    {/* Next Arrow */}
                     <Button
                       tabIndex={0}
                       onClick={goToNext}
                       disabled={currentVerse === scripture.verses.length - 1}
                       size="icon"
-                      className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${
-                        currentVerse === scripture.verses.length - 1 ? "opacity-40 cursor-not-allowed" : ""
-                      } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
+                      className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${currentVerse === scripture.verses.length - 1 ? "opacity-40 cursor-not-allowed" : ""
+                        } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
                       aria-label="Next verse"
                     >
                       <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                     </Button>
-                  )}
-                </div>
-                {/* If mobile, hint for swipe gesture */}
-                {!isDesktop && (
-                  <div className="block sm:hidden mt-3 text-xs font-medium text-accent/70 text-center animate-fadeInSlow">
-                    <span className="inline-flex items-center gap-2">
-                      <svg width="21" height="21" fill="none" className="inline" viewBox="0 0 21 21"><path d="M13.5 7.5L17.5 10.5L13.5 13.5" stroke="#d6be7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M7.5 13.5L3.5 10.5L7.5 7.5" stroke="#d6be7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                      Swipe left/right to turn pages
-                    </span>
                   </div>
-                )}
-              </nav>
-            )}
+                </nav>
+              ) : ((!isDesktop || !isFullscreen) && (
+                <nav className="mt-8 w-full flex flex-col gap-6 items-center">
+                  <div className="w-full flex items-center justify-between gap-2 px-1">
+                    {(!(isDesktop && isFullscreen)) && (
+                      <>
+                        <Button
+                          tabIndex={0}
+                          onClick={goToPrev}
+                          disabled={currentVerse === 0}
+                          size="icon"
+                          className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${currentVerse === 0 ? "opacity-40 cursor-not-allowed" : ""
+                            } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
+                          aria-label="Previous verse"
+                        >
+                          <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                        </Button>
+                      </>
+                    )}
+                    {/* Pager and dots, only if not fullscreen or not desktop */}
+                    {!isFullscreen && (
+                      <div className="flex flex-col items-center flex-1 px-2 max-w-xs min-w-0">
+                        {/* 👇 CHANGED: Only show when meaning is NOT expanded */}
+                        {!verseMeaningExpanded && (
+                          <div
+                            className="bg-gradient-to-r from-[#f5eddc]/80 via-white/60 to-[#f5eddc]/80 shadow-lg border border-accent/30 rounded-full px-4 py-2 flex items-center justify-center"
+                            style={{
+                              backdropFilter: "blur(2px)",
+                              minWidth: "min(70vw, 215px)",
+                              borderBottomWidth: 3,
+                              borderTopWidth: 3,
+                            }}
+                          >
+                            <span className="font-vedic text-base sm:text-lg text-primary font-semibold tracking-wide select-none">
+                              <span
+                                style={{
+                                  color: "#d6be7c",
+                                  fontWeight: "bold",
+                                  textShadow: "0 1px 3px #a88b37cc, 0 1px #fff7",
+                                  letterSpacing: "0.03em",
+                                }}
+                              >
+                                {scripture.verses[currentVerse]?.number !== undefined
+                                  ? (scripture.verses[currentVerse]?.number === 0
+                                    ? "Doha"
+                                    : `Verse ${scripture.verses[currentVerse]?.number}`)
+                                  : `Page ${currentVerse + 1}`
+                                }
+                              </span>
+                              <span className="mx-2 text-muted-foreground/70 font-normal">|</span>
+                              <span className="font-vedic text-base text-muted-foreground">
+                                {currentVerse + 1}
+                              </span>
+                              <span className="mx-1 text-muted-foreground/60 font-normal">/</span>
+                              <span className="font-vedic text-base text-foreground">
+                                {scripture.verses.length}
+                              </span>
+                            </span>
+                          </div>
+                        )}
+                        <div
+                          className="mt-3 flex flex-row gap-[2.5px] justify-center w-full overflow-x-auto px-1 py-1"
+                          style={{
+                            scrollbarWidth: "thin",
+                            scrollbarColor: "#eab308 #f4e5bc",
+                            WebkitOverflowScrolling: "touch",
+                          }}
+                        >
+                          <style>
+                            {`
+                              .scripture-dot-scrollbar::-webkit-scrollbar {
+                                height: 7px;
+                                border-radius: 10px;
+                                background: #f5eddc;
+                              }
+                              .scripture-dot-scrollbar::-webkit-scrollbar-thumb {
+                                background: #eab308;
+                                border-radius: 9px;
+                                min-width: 40px;
+                              }
+                              .scripture-dot-scrollbar::-webkit-scrollbar-track {
+                                background: #f8f2d2;
+                              }
+                            `}
+                          </style>
+                          <div className="flex flex-row gap-[2.5px] w-full scripture-dot-scrollbar" style={{ width: "100%", overflowX: "auto" }}>
+                            {scripture.verses.length <= 16 ? (
+                              scripture.verses.map((_, i) => (
+                                <button
+                                  key={i}
+                                  onClick={() => handleDotClick(i)}
+                                  tabIndex={0}
+                                  className={`rounded-full border-2 transition-all
+                                    ${i === currentVerse
+                                      ? "bg-primary border-accent shadow-md w-7 h-3"
+                                      : "bg-muted-foreground/20 border-accent/30 hover:bg-accent/80 w-2.5 h-2.5"
+                                    }
+                                    focus:ring-2 focus:ring-accent/50 focus:outline-none
+                                  `}
+                                  aria-label={`Go to ${scripture.verses[i]?.number === 0 ? "Doha" : `verse ${scripture.verses[i]?.number || i + 1}`}`}
+                                  style={{
+                                    minWidth: i === currentVerse ? "1.2rem" : "0.7rem",
+                                    minHeight: "0.7rem",
+                                  }}
+                                />
+                              ))
+                            ) : (
+                              <div className="flex items-center gap-2 w-full">
+                                <button
+                                  className="w-6 h-6 rounded-full flex items-center justify-center bg-card border border-accent/20 hover:bg-accent/40 transition"
+                                  onClick={() => handleDotClick(Math.max(0, currentVerse - 5))}
+                                  disabled={currentVerse <= 2}
+                                  aria-label={"Back 5"}
+                                  tabIndex={0}
+                                >
+                                  <ChevronLeft className="w-4 h-4" />
+                                </button>
+                                {(() => {
+                                  const total = scripture.verses.length;
+                                  let start = Math.max(0, currentVerse - 2);
+                                  let end = Math.min(total, currentVerse + 3);
+                                  if (currentVerse < 3) {
+                                    start = 0;
+                                    end = Math.min(6, total);
+                                  }
+                                  if (currentVerse > total - 4) {
+                                    end = total;
+                                    start = Math.max(0, total - 6);
+                                  }
+                                  const items = [];
+                                  if (start > 0) {
+                                    items.push(
+                                      <button
+                                        key={0}
+                                        onClick={() => handleDotClick(0)}
+                                        tabIndex={0}
+                                        className={`w-2.5 h-2.5 rounded-full bg-muted-foreground/30 border border-accent/30 hover:bg-accent/70`}
+                                        aria-label="Go to first"
+                                      />
+                                    );
+                                    if (start > 1) {
+                                      items.push(
+                                        <span key="start-ellipsis" className="mx-1 text-xs text-accent/70 pb-0.5">…</span>
+                                      );
+                                    }
+                                  }
+                                  for (let i = start; i < end; i++) {
+                                    items.push(
+                                      <button
+                                        key={i}
+                                        onClick={() => handleDotClick(i)}
+                                        tabIndex={0}
+                                        className={`rounded-full transition-all
+                                          ${i === currentVerse
+                                            ? "bg-primary border-accent shadow-md w-7 h-3"
+                                            : "bg-muted-foreground/20 border-accent/30 hover:bg-accent/80 w-2.5 h-2.5"
+                                          }
+                                          focus:ring-2 focus:ring-accent/50 focus:outline-none
+                                        `}
+                                        aria-label={`Go to ${scripture.verses[i]?.number === 0 ? "Doha" : `verse ${scripture.verses[i]?.number || i + 1}`}`}
+                                        style={{
+                                          minWidth: i === currentVerse ? "1.2rem" : "0.7rem",
+                                          minHeight: "0.7rem",
+                                        }}
+                                      />
+                                    );
+                                  }
+                                  if (end < total) {
+                                    if (end < total - 1) {
+                                      items.push(
+                                        <span key="end-ellipsis" className="mx-1 text-xs text-accent/70 pb-0.5">…</span>
+                                      );
+                                    }
+                                    items.push(
+                                      <button
+                                        key={total - 1}
+                                        onClick={() => handleDotClick(total - 1)}
+                                        tabIndex={0}
+                                        className={`w-2.5 h-2.5 rounded-full bg-muted-foreground/30 border border-accent/30 hover:bg-accent/70`}
+                                        aria-label="Go to last"
+                                      />
+                                    );
+                                  }
+                                  return items;
+                                })()}
+                                <button
+                                  className="w-6 h-6 rounded-full flex items-center justify-center bg-card border border-accent/20 hover:bg-accent/40 transition"
+                                  onClick={() => handleDotClick(Math.min(scripture.verses.length - 1, currentVerse + 5))}
+                                  disabled={currentVerse >= scripture.verses.length - 3}
+                                  aria-label={"Forward 5"}
+                                  tabIndex={0}
+                                >
+                                  <ChevronRight className="w-4 h-4" />
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {(!(isDesktop && isFullscreen)) && (
+                      <Button
+                        tabIndex={0}
+                        onClick={goToNext}
+                        disabled={currentVerse === scripture.verses.length - 1}
+                        size="icon"
+                        className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${currentVerse === scripture.verses.length - 1 ? "opacity-40 cursor-not-allowed" : ""
+                          } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
+                        aria-label="Next verse"
+                      >
+                        <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                      </Button>
+                    )}
+                  </div>
+                  {/* If mobile, hint for swipe gesture */}
+                  {!isDesktop && (
+                    <div className="block sm:hidden mt-3 text-xs font-medium text-accent/70 text-center animate-fadeInSlow">
+                      <span className="inline-flex items-center gap-2">
+                        <svg width="21" height="21" fill="none" className="inline" viewBox="0 0 21 21"><path d="M13.5 7.5L17.5 10.5L13.5 13.5" stroke="#d6be7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M7.5 13.5L3.5 10.5L7.5 7.5" stroke="#d6be7c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        Swipe left/right to turn pages
+                      </span>
+                    </div>
+                  )}
+                </nav>
+              )))}
             {/* ShowMore - navigation: Only one button at the bottom to exit this mode */}
             {showMore && (
               <div className="w-full flex justify-center mt-4">
