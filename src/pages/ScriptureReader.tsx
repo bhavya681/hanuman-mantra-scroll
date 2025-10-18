@@ -534,6 +534,47 @@ const ScriptureReader: React.FC = () => {
             {/* Only show book flip or all as list depending on showMore */}
             {!showMore ? (
               <div className="w-full relative perspective-1000" style={{ perspective: 1000, minHeight: 270 }}>
+                {/* 👇 NEW: Floating Navigation Buttons for Desktop Fullscreen */}
+                {isFullscreen && isDesktop && (
+                  <>
+                    {/* Previous Button - Left Side */}
+                    <Button
+                      tabIndex={0}
+                      onClick={goToPrev}
+                      disabled={currentVerse === 0}
+                      size="icon"
+                      className={`
+                        absolute left-[-70px] top-1/2 -translate-y-1/2 z-10
+                        bg-[#ff9800] hover:bg-[#ffa726] hover:scale-110 
+                        shadow-2xl rounded-full transition-all
+                        ${currentVerse === 0 ? "opacity-40 cursor-not-allowed" : "opacity-90 hover:opacity-100"}
+                        flex items-center justify-center w-14 h-14
+                      `}
+                      aria-label="Previous verse"
+                    >
+                      <ChevronLeft className="w-7 h-7 text-white" />
+                    </Button>
+
+                    {/* Next Button - Right Side */}
+                    <Button
+                      tabIndex={0}
+                      onClick={goToNext}
+                      disabled={currentVerse === scripture.verses.length - 1}
+                      size="icon"
+                      className={`
+                        absolute right-[-70px] top-1/2 -translate-y-1/2 z-10
+                        bg-[#ff9800] hover:bg-[#ffa726] hover:scale-110 
+                        shadow-2xl rounded-full transition-all
+                        ${currentVerse === scripture.verses.length - 1 ? "opacity-40 cursor-not-allowed" : "opacity-90 hover:opacity-100"}
+                        flex items-center justify-center w-14 h-14
+                      `}
+                      aria-label="Next verse"
+                    >
+                      <ChevronRight className="w-7 h-7 text-white" />
+                    </Button>
+                  </>
+                )}
+                
                 <AnimatePresence custom={pageDirection} mode="wait" initial={false}>
                   <motion.div
                     key={currentVerse}
@@ -600,21 +641,9 @@ const ScriptureReader: React.FC = () => {
             {!showMore &&
               ((isFullscreen && isDesktop) ? (
                 <nav className="mt-8 w-full flex flex-col gap-6 items-center">
-                  <div className="w-full flex items-center justify-between gap-2 px-1">
-                    {/* Prev Arrow */}
-                    <Button
-                      tabIndex={0}
-                      onClick={goToPrev}
-                      disabled={currentVerse === 0}
-                      size="icon"
-                      className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${currentVerse === 0 ? "opacity-40 cursor-not-allowed" : ""
-                        } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
-                      aria-label="Previous verse"
-                    >
-                      <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                    </Button>
-                    {/* Pager */}
-                    <div className="flex flex-col items-center flex-1 px-2 max-w-xs min-w-0">
+                  <div className="w-full flex items-center justify-center gap-2 px-1">
+                    {/* Only Pager - arrows are now floating on sides */}
+                    <div className="flex flex-col items-center px-2 max-w-xs min-w-0">
                       {/* 👇 CHANGED: Only show when meaning is NOT expanded */}
                       {!verseMeaningExpanded && (
                         <div
@@ -651,21 +680,9 @@ const ScriptureReader: React.FC = () => {
                               {scripture.verses.length}
                             </span>
                           </span>
-                        </div>
+                          </div>
                       )}
                     </div>
-                    {/* Next Arrow */}
-                    <Button
-                      tabIndex={0}
-                      onClick={goToNext}
-                      disabled={currentVerse === scripture.verses.length - 1}
-                      size="icon"
-                      className={`bg-[#ff9800] hover:bg-[#ffa726] hover:scale-105 shadow-md rounded-full transition ${currentVerse === scripture.verses.length - 1 ? "opacity-40 cursor-not-allowed" : ""
-                        } flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14`}
-                      aria-label="Next verse"
-                    >
-                      <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                    </Button>
                   </div>
                 </nav>
               ) : ((!isDesktop || !isFullscreen) && (
