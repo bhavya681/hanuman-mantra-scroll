@@ -591,11 +591,12 @@ const ScriptureReader: React.FC = () => {
                       backfaceVisibility: "hidden",
                     }}
                   >
-                    <div className="verse-pdf-card">
+                 <div className="verse-pdf-card">
                       <VerseCard
                         {...verse}
                         showMore={verseMeaningExpanded}
                         onToggleMore={() => setVerseMeaningExpanded(v => !v)}
+                        isFullscreen={isFullscreen}
                       />
                     </div>
                   </motion.div>
@@ -606,6 +607,7 @@ const ScriptureReader: React.FC = () => {
                       {...verse}
                       showMore={verseMeaningExpanded}
                       onToggleMore={() => setVerseMeaningExpanded(v => !v)}
+                      isFullscreen={isFullscreen}
                     />
                   </div>
                 </div>

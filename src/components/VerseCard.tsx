@@ -10,8 +10,9 @@ interface VerseCardProps {
   transliteration: string;
   meaning: string;
   imageUrl?: string;
-  showMore?: boolean; // 👈 NEW: Accept from parent
-  onToggleMore?: () => void; // 👈 NEW: Callback to parent
+  showMore?: boolean;
+  onToggleMore?: () => void;
+  isFullscreen?: boolean; // 👈 NEW: Track fullscreen state
 }
 
 export const VerseCard = ({
@@ -20,8 +21,9 @@ export const VerseCard = ({
   transliteration,
   meaning,
   imageUrl,
-  showMore = false, // 👈 NEW: Default value
-  onToggleMore, // 👈 NEW: Callback
+  showMore = false,
+  onToggleMore,
+  isFullscreen = false, // 👈 NEW: Default value
 }: VerseCardProps) => {
   return (
     <Card className="relative overflow-hidden border-2 border-accent/30 bg-card/95 backdrop-blur-sm shadow-2xl animate-verse-reveal max-w-full">
@@ -147,38 +149,40 @@ export const VerseCard = ({
           </div>
         )}
 
-        {/* Professional "Show More" Button */}
-        <div className="flex justify-center mb-2">
-          <button
-            className={`
-              flex items-center gap-2 px-4 py-2
-              rounded-full border border-accent/60
-              bg-background/80 hover:bg-accent/10
-              text-accent font-semibold transition
-              shadow
-              text-xs xs:text-xs sm:text-sm
-              outline-none focus:ring-2 focus:ring-accent/30
-            `}
-            aria-expanded={showMore}
-            aria-controls={`verse-details-${number}`}
-            onClick={onToggleMore} // 👈 CHANGED: Use callback
-            style={{
-              minWidth: 115,
-              userSelect: "none",
-              WebkitTapHighlightColor: "transparent",
-            }}
-          >
-            {showMore ? (
-              <>
-                Hide Meaning <ChevronUp className="w-4 h-4" />
-              </>
-            ) : (
-              <>
-                More <ChevronDown className="w-4 h-4" />
-              </>
-            )}
-          </button>
-        </div>
+     {/* Professional "Show More" Button - Hide in fullscreen */}
+     {!isFullscreen && (
+          <div className="flex justify-center mb-2">
+            <button
+              className={`
+                flex items-center gap-2 px-4 py-2
+                rounded-full border border-accent/60
+                bg-background/80 hover:bg-accent/10
+                text-accent font-semibold transition
+                shadow
+                text-xs xs:text-xs sm:text-sm
+                outline-none focus:ring-2 focus:ring-accent/30
+              `}
+              aria-expanded={showMore}
+              aria-controls={`verse-details-${number}`}
+              onClick={onToggleMore}
+              style={{
+                minWidth: 115,
+                userSelect: "none",
+                WebkitTapHighlightColor: "transparent",
+              }}
+            >
+              {showMore ? (
+                <>
+                  Hide Meaning <ChevronUp className="w-4 h-4" />
+                </>
+              ) : (
+                <>
+                  More <ChevronDown className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
 
         {/* Details Section (Meaning & Translation) */}
         <motion.div
