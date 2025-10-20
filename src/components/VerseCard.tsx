@@ -3,6 +3,7 @@ import parchmentBg from "@/assets/parchment-bg.jpg";
 import { motion } from "framer-motion";
 import manuscriptBg from "@/assets/parchment-bg.jpg";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 interface VerseCardProps {
   number: number;
@@ -13,6 +14,7 @@ interface VerseCardProps {
   showMore?: boolean;
   onToggleMore?: () => void;
   isFullscreen?: boolean; // 👈 NEW: Track fullscreen state
+  scriptureId?: string; // 👈 NEW: For verse-specific translations
 }
 
 export const VerseCard = ({
@@ -24,7 +26,30 @@ export const VerseCard = ({
   showMore = false,
   onToggleMore,
   isFullscreen = false, // 👈 NEW: Default value
+  scriptureId,
 }: VerseCardProps) => {
+  const { t } = useLanguage();
+  
+  // Get translated meaning and transliteration for supported scriptures
+  const getTranslatedContent = () => {
+    const supported = new Set([
+      "hanuman-chalisa",
+      "hanuman-ashtakam",
+      "kalbhairav-ashtakam",
+    ]);
+
+    if (scriptureId && supported.has(scriptureId)) {
+      const meaningKey = `${scriptureId}-${number}-meaning`;
+      const transliterationKey = `${scriptureId}-${number}-transliteration`;
+      return {
+        meaning: t(meaningKey, meaning),
+        transliteration: t(transliterationKey, transliteration),
+      };
+    }
+    return { meaning, transliteration };
+  };
+  
+  const { meaning: translatedMeaning, transliteration: translatedTransliteration } = getTranslatedContent();
   return (
     <Card className="relative overflow-hidden border-2 border-accent/30 bg-card/95 backdrop-blur-sm shadow-2xl animate-verse-reveal max-w-full">
       {/* Sacred Glow */}
@@ -37,7 +62,7 @@ export const VerseCard = ({
             <div className="h-px w-6 xs:w-8 sm:w-12 bg-gradient-to-r from-transparent to-accent" />
             <div className="px-2 xs:px-2.5 sm:px-4 py-1 xs:py-1.5 sm:py-2 bg-gradient-divine rounded-full">
               <span className="font-vedic text-primary-foreground font-bold text-xs xs:text-sm sm:text-sm">
-                {number === 0 ? "Doha" : `Verse ${number}`}
+                {number === 0 ? t("doha", "Doha") : `${t("verse", "Verse")} ${number}`}
               </span>
             </div>
             <div className="h-px w-6 xs:w-8 sm:w-12 bg-gradient-to-l from-transparent to-accent" />
@@ -199,7 +224,7 @@ export const VerseCard = ({
           {/* Transliteration */}
           <div className="mb-4 xs:mb-5 sm:mb-6 p-2 xs:p-3 sm:p-4 bg-muted/40 rounded-lg border border-border/50 max-w-full">
             <p className="font-ancient text-xs xs:text-sm sm:text-lg italic text-center text-muted-foreground leading-relaxed break-words">
-              {transliteration}
+              {translatedTransliteration}
             </p>
           </div>
 
@@ -209,10 +234,10 @@ export const VerseCard = ({
               className="font-vedic text-xs sm:text-sm uppercase tracking-wide text-accent mb-2 xs:mb-2.5 sm:mb-3"
               style={{ color: "#a97c0b" }}
             >
-              Meaning
+              {t("meaning", "Meaning")}
             </h3>
             <p className="font-ancient text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed text-foreground break-words">
-              {meaning}
+              {translatedMeaning}
             </p>
           </div>
         </motion.div>

@@ -4,6 +4,7 @@ import { scripturesData } from "@/data/scripturesData";
 import { VerseCard } from "@/components/VerseCard";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Home, Download, Minimize2, BookOpen } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 import { AnimatePresence, motion } from "framer-motion";
 import parchmentBg from "@/assets/parchment-bg.jpg";
 import lotusMandala from "@/assets/lotus-mandala.png";
@@ -219,6 +220,7 @@ const ScriptureReader: React.FC = () => {
   const mainRef = useRef<HTMLDivElement | null>(null);
 
   const scripture = scripturesData.find((s) => String(s.id) === String(id));
+  const { language, setLanguage, t } = useLanguage();
 
   // 🕉 Missing/empty checks
   if (!scripture) {
@@ -443,8 +445,8 @@ const ScriptureReader: React.FC = () => {
                 <span className="flex items-center justify-center rounded-full p-1">
                   <Home className="w-4 h-4 text-black" />
                 </span>
-                <span className="hidden sm:inline text-foreground">Library</span>
-                <span className="sm:hidden text-foreground">Back</span>
+                <span className="hidden sm:inline text-foreground">{t("library", "Library")}</span>
+                <span className="sm:hidden text-foreground">{t("back", "Back")}</span>
               </Button>
             </div>
             {/* Center: Title */}
@@ -458,6 +460,19 @@ const ScriptureReader: React.FC = () => {
             </div>
             {/* Actions: Right */}
             <div className="flex flex-0 items-center gap-2 min-w-[80px] justify-end">
+              {/* Language selector */}
+              {!isFullscreen && (
+                <select
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value as any)}
+                  className="bg-white/80 text-black border border-accent/40 rounded-full px-3 py-1 text-xs sm:text-sm focus:ring-2 focus:ring-accent/40"
+                  aria-label={t("languageLabel", "Language")}
+                >
+                  <option value="en">English</option>
+                  <option value="hi">हिन्दी</option>
+                  <option value="mr">मराठी</option>
+                </select>
+              )}
               {/* Fullscreen button */}
               <Button
                 variant="ghost"
@@ -593,6 +608,7 @@ const ScriptureReader: React.FC = () => {
                         showMore={verseMeaningExpanded}
                         onToggleMore={() => setVerseMeaningExpanded(v => !v)}
                         isFullscreen={isFullscreen}
+                        scriptureId={scripture.id}
                       />
                     </div>
                   </motion.div>
@@ -604,6 +620,7 @@ const ScriptureReader: React.FC = () => {
                       showMore={verseMeaningExpanded}
                       onToggleMore={() => setVerseMeaningExpanded(v => !v)}
                       isFullscreen={isFullscreen}
+                      scriptureId={scripture.id}
                     />
                   </div>
                 </div>
@@ -628,7 +645,7 @@ const ScriptureReader: React.FC = () => {
                 <style>{showMore ? customShowMoreScrollbar : ""}</style>
                 {scripture.verses.map((v, idx) => (
                   <div key={idx} className="mb-2 verse-pdf-card">
-                    <VerseCard {...v} />
+                    <VerseCard {...v} scriptureId={scripture.id} />
                   </div>
                 ))}
               </div>
@@ -664,8 +681,8 @@ const ScriptureReader: React.FC = () => {
                             >
                               {scripture.verses[currentVerse]?.number !== undefined
                                 ? (scripture.verses[currentVerse]?.number === 0
-                                  ? "Doha"
-                                  : `Verse ${scripture.verses[currentVerse]?.number}`)
+                                  ? t("doha", "Doha")
+                                  : `${t("verse", "Verse")} ${scripture.verses[currentVerse]?.number}`)
                                 : `Page ${currentVerse + 1}`
                               }
                             </span>
@@ -716,7 +733,7 @@ const ScriptureReader: React.FC = () => {
                             }}
                           >
                             <span className="font-vedic text-base sm:text-lg text-primary font-semibold tracking-wide select-none">
-                              <span
+                            <span
                                 style={{
                                   color: "#d6be7c",
                                   fontWeight: "bold",
@@ -724,12 +741,12 @@ const ScriptureReader: React.FC = () => {
                                   letterSpacing: "0.03em",
                                 }}
                               >
-                                {scripture.verses[currentVerse]?.number !== undefined
-                                  ? (scripture.verses[currentVerse]?.number === 0
-                                    ? "Doha"
-                                    : `Verse ${scripture.verses[currentVerse]?.number}`)
-                                  : `Page ${currentVerse + 1}`
-                                }
+                              {scripture.verses[currentVerse]?.number !== undefined
+                                ? (scripture.verses[currentVerse]?.number === 0
+                                  ? t("doha", "Doha")
+                                  : `${t("verse", "Verse")} ${scripture.verses[currentVerse]?.number}`)
+                                : `Page ${currentVerse + 1}`
+                              }
                               </span>
                               <span className="mx-2 text-muted-foreground/70 font-normal">|</span>
                               <span className="font-vedic text-base text-muted-foreground">
