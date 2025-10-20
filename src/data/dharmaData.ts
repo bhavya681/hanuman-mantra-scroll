@@ -22,7 +22,15 @@ export const gotraData: DharmaCard[] = [
     id: "gotra-significance",
     title: "Significance of Gotra",
     titleSanskrit: "गोत्र का महत्व",
-    description: "Learn why Gotra plays an important role in Vedic rituals, marriages, and maintaining genetic diversity.",
+    description: "Why Gotra matters in marriage, rituals, and Vedic tradition.",
+    coverImage: "/logo.png",
+    category: "gotra"
+  },
+  {
+    id: "gotra-origin",
+    title: "Origin of Gotra System",
+    titleSanskrit: "गोत्र की उत्पत्ति",
+    description: "How Gotras originated from the Saptarishis and are preserved within families.",
     coverImage: "/logo.png",
     category: "gotra"
   }
@@ -32,8 +40,8 @@ export const nakshatraData: DharmaCard[] = [
   {
     id: "nakshatra-intro",
     title: "Understanding Janma Nakshatra",
-    titleSanskrit: "जन्म नक्षत्र",
-    description: "Discover the 27 lunar mansions and how your birth star influences personality, destiny, and life path.",
+    titleSanskrit: "जन्म नक्षत्र क्या है?",
+    description: "Meaning, concept, and calculation of your birth star (Janma Nakshatra).",
     coverImage: "/logo.png",
     category: "nakshatra"
   },
@@ -41,7 +49,7 @@ export const nakshatraData: DharmaCard[] = [
     id: "nakshatra-traits",
     title: "Nakshatra Characteristics",
     titleSanskrit: "नक्षत्र गुण",
-    description: "Explore the unique traits, ruling deities, and planetary influences of each Nakshatra.",
+    description: "27 Nakshatras, their presiding deities, planetary influences, and key traits.",
     coverImage: "/logo.png",
     category: "nakshatra"
   }
@@ -52,7 +60,7 @@ export const lagnaData: DharmaCard[] = [
     id: "lagna-basics",
     title: "What is Lagna?",
     titleSanskrit: "लग्न क्या है?",
-    description: "Understanding the Ascendant sign and its crucial role in Vedic astrology and life predictions.",
+    description: "Lagna’s meaning and importance in Kundali and life interpretation.",
     coverImage: "/logo.png",
     category: "lagna"
   },
@@ -60,7 +68,7 @@ export const lagnaData: DharmaCard[] = [
     id: "lagna-types",
     title: "12 Lagna Types",
     titleSanskrit: "बारह लग्न",
-    description: "Learn about the twelve Ascendant signs and how they shape your personality and life journey.",
+    description: "Brief overview of all 12 Ascendants (Mesha to Meena) with key qualities.",
     coverImage: "/logo.png",
     category: "lagna"
   }

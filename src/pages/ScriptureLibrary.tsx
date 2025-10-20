@@ -507,12 +507,12 @@ const ScriptureLibrary = () => {
         <section className="mb-10">
           <div className="flex items-center gap-3 mb-3">
             <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
-              Gotra Knowledge
+              What is Gotra? | गोत्र क्या है?
             </h2>
             <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
           </div>
           <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
-            गोत्र ज्ञान - Understanding the ancient lineage system
+            Understanding the ancient lineage system that traces ancestry through the paternal line to the great Rishis.
           </p>
           <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
             {gotraData.map((item) => (
@@ -531,12 +531,12 @@ const ScriptureLibrary = () => {
         <section className="mb-10">
           <div className="flex items-center gap-3 mb-3">
             <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
-              Janma Nakshatra
+              Janma Nakshatra | जन्म नक्षत्र – Discover your birth star
             </h2>
             <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
           </div>
           <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
-            जन्म नक्षत्र - Discover your birth star
+            Understand your Janma Nakshatra — how it influences personality, destiny, and emotional pattern.
           </p>
           <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
             {nakshatraData.map((item) => (
@@ -555,12 +555,12 @@ const ScriptureLibrary = () => {
         <section className="mb-10">
           <div className="flex items-center gap-3 mb-3">
             <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
-              Lagna (Ascendant)
+              Lagna (Ascendant) | लग्न – The rising sign in Vedic astrology
             </h2>
             <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
           </div>
           <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
-            लग्न - The rising sign in Vedic astrology
+            Explore the meaning of Lagna and how it shapes personality and life path.
           </p>
           <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
             {lagnaData.map((item) => (

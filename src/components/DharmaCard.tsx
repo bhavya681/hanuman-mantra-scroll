@@ -1,6 +1,7 @@
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { BookOpen } from "lucide-react";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 interface DharmaCardProps {
@@ -20,6 +21,7 @@ export const DharmaCard = ({
 }: DharmaCardProps) => {
   const navigate = useNavigate();
   return (
+    <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.35, ease: "easeOut" }}>
     <Card className="group relative overflow-hidden border-2 border-accent/20 bg-card/80 backdrop-blur-sm hover:border-accent/60 hover:shadow-2xl transition-all duration-500 cursor-pointer">
       {/* Cover Image */}
       <div className="relative h-72 overflow-hidden">
@@ -73,5 +75,6 @@ export const DharmaCard = ({
       {/* Decorative Corner */}
       <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
     </Card>
+    </motion.div>
   );
 };

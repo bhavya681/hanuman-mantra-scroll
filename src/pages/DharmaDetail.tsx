@@ -39,7 +39,7 @@ const DharmaDetail = () => {
   return (
     <div className="min-h-screen p-6 container mx-auto">
       <div className="mb-4">
-        <Link to="/" className="text-primary underline">← Back</Link>
+        <Link to="/" className="text-primary underline">← Back to Scriptures</Link>
       </div>
       <div className="max-w-3xl mx-auto bg-card/80 border border-accent/20 rounded-xl overflow-hidden shadow">
         <div className="h-56 w-full overflow-hidden">

@@ -331,7 +331,91 @@ export const scripturesData: Scripture[] = [
     category: "Vedic Wisdom",
     coverImage: "/kalbhairavasktakam.png",
     totalVerses: 8,
-    verses: []
+    verses: [
+      {
+        number: 1,
+        sanskrit: "देवराजसेव्यमानपावनांघ्रिपङ्कजं\nव्यालयज्ञसूत्रमिन्दुशेखरं कृपाकरम् ।\nनारदादियोगिवृन्दवन्दितं दिगंबरं\nकाशिकापुराधिनाथकालभैरवं भजे ॥१॥",
+        transliteration:
+          "Deva-Raaja-Sevyamaana-Paavana-Angghri-Pangkajam\nVyaala-Yajnya-Suutram-Indu-Shekharam Krpaakaram |\nNaarada-[A]adi-Yogi-Vrnda-Vanditam Digambaram\nKaashikaa-Pura-Adhinaatha-Kaalabhairavam Bhaje ||1||",
+        meaning:
+          "I bow to Sri Kalabhairava, whose lotus feet are served by Indra, who wears a snake as his sacred thread, moon on his head, and who is full of compassion. Praised by Narada and the yogis, clothed in the sky, the Lord of Kashi.",
+        imageUrl: "/kalbhairav2.jpeg",
+      },
+      {
+        number: 2,
+        sanskrit: "भानुकोटिभास्वरं भवाब्धितारकं परं\nनीलकण्ठमीप्सितार्थदायकं त्रिलोचनम् ।\nकालकालमंबुजाक्षमक्षशूलमक्षरं\nकाशिकापुराधिनाथकालभैरवं भजे ॥२॥",
+        transliteration:
+          "Bhaanu-Kotti-Bhaasvaram Bhavaabdhi-Taarakam Param\nNiila-Kannttham-Iipsita-Artha-Daayakam Trilocanam |\nKaala-Kaalam-Ambuja-Akssam-Akssa-Shuulam-Akssaram\nKaashikaa-Pura-Adhinaatha-Kaalabhairavam Bhaje ||2||",
+        meaning:
+          "I bow to Sri Kalabhairava, radiant as a million suns, who rescues us from the ocean of worldly life, blue-throated and three-eyed, destroyer of time, lotus-eyed, holding the trident, the imperishable Lord of Kashi.",
+        imageUrl: "/kalbhairav1.jpeg",
+      },
+      {
+        number: 3,
+        sanskrit: "शूलटङ्कपाशदण्डपाणिमादिकारणं\nश्यामकायमादिदेवमक्षरं निरामयम् ।\nभीमविक्रमं प्रभुं विचित्रताण्डवप्रियं\nकाशिकापुराधिनाथकालभैरवं भजे ॥३॥",
+        transliteration:
+          "Shuula-Ttangka-Paasha-Danndda-Paannim-Aadi-Kaarannam\nShyaama-Kaayam-Aadi-Devam-Akssaram Nir-Aamayam |\nBhiima-Vikramam Prabhum Vicitra-Taannddava-Priyam\nKaashikaa-Pura-Adhinaatha-Kaalabhairavam Bhaje ||3||",
+        meaning:
+          "I bow to Sri Kalabhairava, who holds trident, hatchet, noose, and club; the primal cause of creation; dark-bodied, eternal, disease-free, and mighty; who delights in the cosmic Tandava dance.",
+        imageUrl: "/kalbhairav3.jpeg",
+      },
+      {
+        number: 4,
+        sanskrit: "भुक्तिमुक्तिदायकं प्रशस्तचारुविग्रहं\nभक्तवत्सलं स्थितं समस्तलोकविग्रहम् ।\nविनिक्वणन्मनोज्ञहेमकिङ्किणीलसत्कटिं\nकाशिकापुराधिनाथकालभैरवं भजे ॥४॥",
+        transliteration:
+          "Bhukti-Mukti-Daayakam Prashasta-Caaru-Vigraham\nBhakta-Vatsalam Sthitam Samasta-Loka-Vigraham |\nVi-Nikvannan-Manojnya-Hema-Kingkinnii-Lasat-Kattim\nKaashikaa-Pura-Adhinaatha-Kaalabhairavam Bhaje ||4||",
+        meaning:
+          "I bow to Sri Kalabhairava, the giver of both worldly prosperity and liberation; beautiful in form, loving to devotees, the essence of all worlds, adorned with golden tinkling bells around His waist.",
+        imageUrl: "/kalbhairav4.jpeg",
+      },
+      {
+        number: 5,
+        sanskrit: "धर्मसेतुपालकं त्वधर्ममार्गनाशकं\nकर्मपाशमोचकं सुशर्मदायकं विभुम् ।\nस्वर्णवर्णशेषपाशशोभिताङ्गमण्डलं\nकाशिकापुराधिनाथकालभैरवं भजे ॥५॥",
+        transliteration:
+          "Dharma-Setu-Paalakam Tu-Adharma-Maarga-Naashakam\nKarma-Paasha-Mocakam Su-Sharma-Daayakam Vibhum |\nSvarnna-Varnna-Shessa-Paasha-Shobhitaangga-Mannddalam\nKaashikaa-Pura-Adhinaatha-Kaalabhairavam Bhaje ||5||",
+        meaning:
+          "I bow to Sri Kalabhairava, protector of righteousness, destroyer of the path of adharma, liberator from karmic bondage, the giver of true bliss, adorned with golden serpents shining around His body.",
+        imageUrl: "/kalbhairav5.jpeg",
+      },
+      {
+        number: 6,
+        sanskrit: "रत्नपादुकाप्रभाभिरामपादयुग्मकं\nनित्यमद्वितीयमिष्टदैवतं निरंजनम् ।\nमृत्युदर्पनाशनं करालदंष्ट्रमोक्षणं\nकाशिकापुराधिनाथकालभैरवं भजे ॥६॥",
+        transliteration:
+          "Ratna-Paadukaa-Prabhaabhi-Raama-Paada-Yugmakam\nNityam-Advitiiyam-Isstta-Daivatam Niramjanam |\nMrtyu-Darpa-Naashanam Karaala-Damssttra-Mokssannam\nKaashikaa-Pura-Adhinaatha-Kaalabhairavam Bhaje ||6||",
+        meaning:
+          "I bow to Sri Kalabhairava, whose gem-studded sandals shine, the eternal, non-dual, and stainless deity, destroyer of the pride of death, whose terrible fangs liberate souls from fear.",
+        imageUrl: "/kalbhairav6.jpeg",
+      },
+      {
+        number: 7,
+        sanskrit: "अट्टहासभिन्नपद्मजाण्डकोशसंततिं\nदृष्टिपातनष्टपापजालमुग्रशासनम् ।\nअष्टसिद्धिदायकं कपालमालिकाधरं\nकाशिकापुराधिनाथकालभैरवं भजे ॥७॥",
+        transliteration:
+          "Atta-Haasa-Bhinna-Padmaja-Anndda-Kosha-Samtatim\nDrsstti-Paata-Nasstta-Paapa-Jaalam-Ugra-Shaasanam |\nAsstta-Siddhi-Daayakam Kapaala-Maalikaa-Dharam\nKaashikaa-Pura-Adhinaatha-Kaalabhairavam Bhaje ||7||",
+        meaning:
+          "I bow to Sri Kalabhairava, whose loud laughter shatters creation’s shell, whose glance destroys sins, who is the fierce ruler granting the eight siddhis, and who wears a garland of skulls.",
+        imageUrl: "/kalbhairav7.jpeg",
+      },
+      {
+        number: 8,
+        sanskrit: "भूतसंघनायकं विशालकीर्तिदायकं\nकाशिवासलोकपुण्यपापशोधकं विभुम् ।\nनीतिमार्गकोविदं पुरातनं जगत्पतिं\nकाशिकापुराधिनाथकालभैरवं भजे ॥८॥",
+        transliteration:
+          "Bhuuta-Samgha-Naayakam Vishaala-Kiirti-Daayakam\nKaashi-Vaasa-Loka-Punnya-Paapa-Shodhakam Vibhum |\nNiiti-Maarga-Kovidam Puraatanam Jagatpatim\nKaashikaa-Pura-Adhinaatha-Kaalabhairavam Bhaje ||8||",
+        meaning:
+          "I bow to Sri Kalabhairava, ruler of ghosts and celestial beings, who bestows immense glory, purges both the merits and sins of those residing in Kashi, guides beings on the path of righteousness, and is the most ancient and eternal Lord of the universe.",
+        imageUrl: "/kalbhairav8.jpeg",
+      },
+      {
+        number: 9,
+        sanskrit: "कालभैरवाष्टकं पठंति ये मनोहरं\nज्ञानमुक्तिसाधनं विचित्रपुण्यवर्धनम् ।\nशोकमोहदैन्यलोभकोपतापनाशनं\nप्रयान्ति कालभैरवांघ्रिसन्निधिं नरा ध्रुवम् ॥९॥",
+        transliteration:
+          "Kaalabhairavaassttakam Patthamti Ye Manoharam\nJnyaana-Mukti-Saadhanam Vicitra-Punnya-Vardhanam |\nShoka-Moha-Dainya-Lobha-Kopa-Taapa-Naashanam\nPrayaanti Kaalabhairava-Amghri-Sannidhim Naraa Dhruvam ||9||",
+        meaning:
+          "Those who recite this beautiful Kalabhairava Ashtakam, the means to knowledge and liberation, which enhances virtues and destroys sorrow, delusion, greed, anger, and suffering — such devotees surely attain the sacred feet of Sri Kalabhairava.",
+        imageUrl: "/kalbhairavlast.jpeg",
+      },
+      
+    ],
+    
   },
   {
     id: "garud-puran",
@@ -432,7 +516,88 @@ export const scripturesData: Scripture[] = [
     category: "Bhakti Collection",
     coverImage: "/hanumanashtkam.png",
     totalVerses: 8,
-    verses: []
+    verses: [
+      {
+        number: 1,
+        sanskrit:
+          "बाल समय रवि भक्ष लियो तब, तीनहुं लोक भयो अंधियारो।\nताहि सों त्रास भयो जग को, यह संकट काहु सों जात न टारो।\nदेवन आनि करी बिनती तब, छाड़ी दियो रवि कष्ट निवारो।\nको नहीं जानत है जग में कपि, संकटमोचन नाम तिहारो॥",
+        transliteration:
+          "Baala samay ravi bhaksha liyo tab, teenahu loka bhayo andhiyaaro.\nTaahi so traas bhayo jag ko, yah sankat kaahu so jaat na taaro.\nDevan aani kari binati tab, chhaadi diyo ravi kasht nivaaro.\nKo nahin jaanat hai jag mein kapi, sankat mochan naam tihaaro.",
+        meaning:
+          "As a child, you swallowed the Sun, plunging the three worlds into darkness. When the gods prayed, you released it, relieving their distress. O Hanuman! The whole world knows you as the remover of all troubles.",
+        imageUrl: "/hanumanasthak1.jpeg",
+      },
+      {
+        number: 2,
+        sanskrit:
+          "बालि की त्रास कपीस बसैं गिरि, जात महाप्रभु पंथ निहारो।\nचौंकि महामुनि साप दियो तब, चाहिए कौन बिचार बिचारो।\nकैद्विज रूप लिवाय महाप्रभु, सो तुम दास के सोक निवारो।\nको नहीं जानत है जग में कपि, संकटमोचन नाम तिहारो॥",
+        transliteration:
+          "Baali ki traas kapees basai giri, jaat mahaaprabhu panth nihaaro.\nChaunki mahaamuni saap diyo tab, chaahiye kaun bichaar bichaaro.\nKai-dwij roop liyaay mahaaprabhu, so tum daas ke sok nivaaaro.\nKo nahin jaanat hai jag mein kapi, sankat mochan naam tihaaro.",
+        meaning:
+          "When Sugriva was terrified of Bali, you guided him faithfully. You even took a Brahmin’s form to help and relieve your devotee’s sorrow. Truly, O Hanuman, you are the remover of all distress.",
+        imageUrl: "/hanumanasthak2.jpeg",
+      },
+      {
+        number: 3,
+        sanskrit:
+          "अंगद के संग लेन गए सिय, खोज कपीस यह बैन उचारो।\nजीवत ना बचिहौ हम सो जु, बिना सुधि लाये इहां पगु धारो।\nहेरी थके तट सिन्धु सबे तब, लाए सिया-सुधि प्राण उबारो।\nको नहीं जानत है जग में कपि, संकटमोचन नाम तिहारो॥",
+        transliteration:
+          "Angad ke sang len gaye siya, khoj kapees yah bain uchaaro.\nJeevat na bachiho hum so ju, bina sudhi laaye ihaan pagu dhaaro.\nHeri thake tat sindhu sabe tab, laaye siya sudhi praan ubaaro.\nKo nahin jaanat hai jag mein kapi, sankat mochan naam tihaaro.",
+        meaning:
+          "When none could find Sita, you crossed the mighty ocean and brought her news back to Sri Ram, saving the mission and uplifting all. You are truly the life-saver and remover of distress.",
+        imageUrl: "/hanumanasthak3.jpeg",
+      },
+      {
+        number: 4,
+        sanskrit:
+          "रावण त्रास दई सिय को सब, राक्षसी सों कही सोक निवारो।\nताहि समय हनुमान महाप्रभु, जाए महा रजनीचर मारो।\nचाहत सीय असोक सों आगि सु, दै प्रभु मुद्रिका सोक निवारो।\nको नहीं जानत है जग में कपि, संकटमोचन नाम तिहारो॥",
+        transliteration:
+          "Raavan traas daee siya ko sab, raakshasi son kahi sok nivaaaro.\nTaahi samay hanumaan mahaaprabhu, jaaye mahaa rajaneechara maaro.\nChaahat siya asok son aagi su, dai prabhu mudrika sok nivaaaro.\nKo nahin jaanat hai jag mein kapi, sankat mochan naam tihaaro.",
+        meaning:
+          "When Sita was tormented by Ravana, you brought her Lord’s ring and gave her hope. You destroyed the demons in Lanka and became the remover of her sorrow.",
+        imageUrl: "/hanumanasthak6.jpeg",
+      },
+      {
+        number: 5,
+        sanskrit:
+          "बान लाग्यो उर लछिमन के तब, प्राण तजे सूत रावन मारो।\nलै गृह बैद्य सुषेन समेत, तबै गिरि द्रोण सु बीर उपारो।\nआनि सजीवन हाथ दिए तब, लछिमन के तुम प्रान उबारो।\nको नहीं जानत है जग में कपि, संकटमोचन नाम तिहारो॥",
+        transliteration:
+          "Baan laagyo ur lachhiman ke tab, praan taje soot raavan maaro.\nLai grih baidh sushein samet, tabai giri dron su beer upaaro.\nAani sajivan haath diye tab, lachhiman ke tum praan ubaaro.\nKo nahin jaanat hai jag mein kapi, sankat mochan naam tihaaro.",
+        meaning:
+          "When Lakshman was struck by Ravana’s son and lay lifeless, you brought the Sanjeevani mountain itself and revived him. O Hanuman, you truly save life itself.",
+        imageUrl: "/hanumanasthak7.jpeg",
+      },
+      {
+        number: 6,
+        sanskrit:
+          "रावन युद्ध अजान कियो तब, नाग कि फांस सबै सिर डारो।\nश्रीरघुनाथ समेत सबै दल, मोह भयो यह संकट भारो।\nआनि खगेस तबै हनुमान जु, बंधन काटि सुत्रास निवारो।\nको नहीं जानत है जग में कपि, संकटमोचन नाम तिहारो॥",
+        transliteration:
+          "Raavan yudh ajaan kiyo tab, naag ki faans sabai sir daaro.\nShri raghunaath samet sabai dal, moh bhayo yah sankat bhaaro.\nAani khages tabai hanuman ju, bandhan kaati sutraas nivaaaro.\nKo nahin jaanat hai jag mein kapi, sankat mochan naam tihaaro.",
+        meaning:
+          "When Ravana used the serpent weapon, binding Sri Ram and all warriors, you brought Garuda, freeing them and removing the great crisis. Who does not know you, O Hanuman, remover of troubles?",
+        imageUrl: "/hanumanasthak4.jpeg",
+      },
+      {
+        number: 7,
+        sanskrit:
+          "बंधू समेत जबै अहिरावन, लै रघुनाथ पताल सिधारो।\nदेबिन्हीं पूजि भलि विधि सों बलि, देउ सबै मिलि मंत्र विचारो।\nजाये सहाए भयो तब ही, अहिरावन सैन्य समेत संहारो।\nको नहीं जानत है जग में कपि, संकटमोचन नाम तिहारो॥",
+        transliteration:
+          "Bandhu samet jabai ahiraavan, lai raghunaath pataal sidhaaro.\nDebinhi pooji bhali vidhi son bali, deu sabai mili mantra vichaaro.\nJaaye sahaaye bhayo tab hi, ahiraavan sainya samet sanhaaro.\nKo nahin jaanat hai jag mein kapi, sankat mochan naam tihaaro.",
+        meaning:
+          "When Ahiravana took Lord Ram and Lakshman to the underworld, you went there, destroyed the demon army, and rescued them. Thus, you removed their crisis too.",
+        imageUrl: "/hanumanasthak8.jpeg",
+      },
+      {
+        number: 8,
+        sanskrit:
+          "काज किए बड़ देवन के तुम, बीर महाप्रभु देखि बिचारो।\nकौन सो संकट मोर गरीब को, जो तुमसे नहिं जात है टारो।\nबेगि हरो हनुमान महाप्रभु, जो कछु संकट होए हमारो।\nको नहीं जानत है जग में कपि, संकटमोचन नाम तिहारो॥",
+        transliteration:
+          "Kaaj kiye bad devan ke tum, beer mahaaprabhu dekhi bichaaro.\nKaun so sankat mor gareeb ko, jo tumse nahin jaat hai taaro.\nBeg haro hanumaan mahaaprabhu, jo kachu sankat hoye hamaaro.\nKo nahin jaanat hai jag mein kapi, sankat mochan naam tihaaro.",
+        meaning:
+          "You have helped even the greatest of gods. O mighty Lord Hanuman, what trouble can’t you remove for your humble devotees? Remove my sorrows quickly, O Sankat Mochan!",
+        imageUrl: "/hanumanasthak5.jpeg",
+      },
+    ],
   }
 ];
 
