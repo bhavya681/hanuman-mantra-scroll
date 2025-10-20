@@ -1,6 +1,7 @@
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { BookOpen } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface DharmaCardProps {
   id: string;
@@ -11,11 +12,13 @@ interface DharmaCardProps {
 }
 
 export const DharmaCard = ({
+  id,
   title,
   titleSanskrit,
   description,
   coverImage,
 }: DharmaCardProps) => {
+  const navigate = useNavigate();
   return (
     <Card className="group relative overflow-hidden border-2 border-accent/20 bg-card/80 backdrop-blur-sm hover:border-accent/60 hover:shadow-2xl transition-all duration-500 cursor-pointer">
       {/* Cover Image */}
@@ -59,6 +62,7 @@ export const DharmaCard = ({
         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Button
             className="w-full bg-gradient-divine hover:opacity-90 transition-opacity"
+            onClick={() => navigate(`/dharma/${id}`)}
           >
             <BookOpen className="w-4 h-4 mr-2" />
             Explore
