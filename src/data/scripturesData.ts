@@ -408,10 +408,10 @@ export const scripturesData: Scripture[] = [
         number: 9,
         sanskrit: "कालभैरवाष्टकं पठंति ये मनोहरं\nज्ञानमुक्तिसाधनं विचित्रपुण्यवर्धनम् ।\nशोकमोहदैन्यलोभकोपतापनाशनं\nप्रयान्ति कालभैरवांघ्रिसन्निधिं नरा ध्रुवम् ॥९॥",
         transliteration:
-          "Kaalabhairavaassttakam Patthamti Ye Manoharam\nJnyaana-Mukti-Saadhanam Vicitra-Punnya-Vardhanam |\nShoka-Moha-Dainya-Lobha-Kopa-Taapa-Naashanam\nPrayaanti Kaalabhairava-Amghri-Sannidhim Naraa Dhruvam ||9||",
-        meaning:
-          "Those who recite this beautiful Kalabhairava Ashtakam, the means to knowledge and liberation, which enhances virtues and destroys sorrow, delusion, greed, anger, and suffering — such devotees surely attain the sacred feet of Sri Kalabhairava.",
-        imageUrl: "/kalbhairavlast.jpeg",
+        "Kaaj kiye bad devan ke tum, beer mahaaprabhu dekhi bichaaro.\nKaun so sankat mor gareeb ko, jo tumse nahin jaat hai taaro.\nBeg haro hanumaan mahaaprabhu, jo kachu sankat hoye hamaaro.\nKo nahin jaanat hai jag mein kapi, sankat mochan naam tihaaro.",
+      meaning:
+        "You have helped even the greatest of gods. O mighty Lord Hanuman, what trouble can’t you remove for your humble devotees? Remove my sorrows quickly, O Sankat Mochan!",
+       imageUrl: "/kalbhairavlast.jpeg",
       },
       
     ],

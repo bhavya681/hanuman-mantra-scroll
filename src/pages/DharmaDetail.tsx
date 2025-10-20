@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { 
+import {
   gotraData,
   nakshatraData,
   lagnaData,
@@ -43,179 +43,367 @@ const DharmaDetail = () => {
         <Link to="/" className="text-primary underline">← Back to Scriptures</Link>
       </div>
 
-      {/* 🎴 Conditional Rendering for Gotra */}
       {item.category === "gotra" ? (
-        <div className="max-w-4xl mx-auto space-y-10">
-
-          {/* 🪶 Header Card */}
+        <div className="max-w-5xl mx-auto space-y-14">
+          {/* 🪶 Hero Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-card/80 border border-accent/20 rounded-xl overflow-hidden shadow-lg"
+            className="relative rounded-2xl overflow-hidden shadow-2xl border border-accent/20"
           >
-            <img src={item.coverImage} alt={item.title} className="w-full h-64 object-cover" />
-            <div className="p-6">
-              <h1 className="font-vedic text-3xl font-bold mb-1">{item.title}</h1>
-              <p className="font-sanskrit text-primary/80 mb-3">{item.titleSanskrit}</p>
-              <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+            <img
+              src={item.coverImage}
+              alt={item.title}
+              className="w-full h-[360px] object-cover brightness-90"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div className="absolute bottom-0 p-8 text-white">
+              <h1 className="font-vedic text-4xl font-bold mb-1">{item.title}</h1>
+              <p className="font-sanskrit text-primary/90 mb-3 text-lg">{item.titleSansgkrit}</p>
+              <p className="text-sm max-w-3xl leading-relaxed opacity-90">{item.description}</p>
             </div>
           </motion.div>
 
-          {/* 🧭 Content sections for each Gotra type */}
+          {/* 🌿 3-Part “What is Gotra” Section */}
           {item.id === "gotra-basics" && (
-            <>
-              <section>
-                <h2 className="text-2xl font-bold mb-3 text-foreground">What is Gotra?</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  In <strong>Sanatana Dharma</strong>, <strong>Gotra</strong> represents one’s spiritual lineage — 
-                  a sacred ancestral identity tracing back to a specific <strong>Rishi</strong> (seer).
-                  It acts as the <em>spiritual DNA</em> of a family, carrying the wisdom and virtues 
-                  inherited from that ancient sage.
-                </p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-bold mb-3 text-foreground">How Gotra is Determined</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Gotra is passed <strong>paternally</strong> — from father to son — maintaining a direct 
-                  connection to the Rishi who founded that spiritual family. During rituals and marriages, 
-                  reciting the Gotra identifies your spiritual ancestry and preserves purity by 
-                  avoiding unions within the same lineage.
-                </p>
-              </section>
-            </>
+            <div className="space-y-16">
+              {[
+                {
+                  title: "What is Gotra?",
+                  img: "/gotra_scroll.png",
+                  desc: `In Sanatana Dharma, Gotra represents one’s sacred spiritual lineage — a direct
+                  ancestral connection tracing back to an enlightened Rishi. It symbolizes your
+                  soul’s heritage, carrying divine wisdom through generations.`,
+                },
+                {
+                  title: "How Gotra is Determined",
+                  img: "/gotra_lineage.png",
+                  desc: `Gotra is inherited paternally — passed from father to children. This lineage ensures
+                  purity and continuity of Dharma. In Vedic rituals, Gotra identifies your ancient seer
+                  and connects you to that cosmic ancestry.`,
+                },
+                {
+                  title: "Gotra in Modern Life",
+                  img: "/gotra_rituals.png",
+                  desc: `Even today, Gotra defines our ritual identity during pujas and marriages.
+                  By reciting one’s Gotra, individuals honor their origin and express gratitude
+                  to their Rishi ancestors who preserved divine knowledge.`,
+                },
+              ].map((section, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className={`grid md:grid-cols-2 gap-8 items-center ${
+                    i % 2 === 1 ? "md:flex-row-reverse" : ""
+                  }`}
+                >
+                  <div className="rounded-xl overflow-hidden shadow-md border border-accent/20">
+                    <img
+                      src={section.img}
+                      alt={section.title}
+                      className="w-full h-64 object-cover hover:scale-105 transition-transform"
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <h2 className="text-2xl font-bold text-foreground font-vedic">{section.title}</h2>
+                    <p className="text-muted-foreground leading-relaxed">{section.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           )}
 
+          {/* ✨ Gotra Significance */}
           {item.id === "gotra-significance" && (
-            <>
-              <section>
-                <h2 className="text-2xl font-bold mb-3 text-foreground">Why Gotra Matters</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Gotra is not just a name — it is a <strong>living connection</strong> to the sacred Rishis 
-                  who first realized divine truth. It maintains the chain of Dharma, ensuring that 
-                  families remember their origin and uphold Vedic ethics.
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-10"
+            >
+              <div className="text-center">
+                <h2 className="text-3xl font-vedic font-bold mb-4 text-primary">The Deeper Significance of Gotra</h2>
+                <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Gotra is not just a name — it’s a bridge connecting the modern soul to timeless
+                  cosmic wisdom. Every Gotra preserves the vibration of its founding Rishi, guiding
+                  descendants toward dharmic living and spiritual harmony.
                 </p>
-              </section>
+              </div>
 
-              <section>
-                <h2 className="text-2xl font-bold mb-3 text-foreground">Gotra in Rituals & Marriage</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  During <em>Vivaha Samskara</em> (Vedic marriage), both individuals recite their Gotra and Pravara, 
-                  acknowledging their ancestral seers. Marrying within the same Gotra is avoided to honor 
-                  ancient biological and spiritual principles of diversity and sanctity.
-                </p>
-              </section>
-            </>
+              <div className="grid sm:grid-cols-2 gap-8">
+                <img
+                  src="/7rishis.png"
+                  className="rounded-xl object-cover shadow-lg"
+                  alt="Gotra Tree"
+                />
+                <img
+                  src="/gotra_ritual.png"
+                  className="rounded-xl object-cover shadow-lg"
+                  alt="Gotra Ritual"
+                />
+              </div>
+            </motion.div>
           )}
 
+          {/* 🔱 Gotra Origin – Sapta Rishi + Manu + Chart */}
           {item.id === "gotra-origin" && (
-            <>
-              {/* 🌿 Saptarishi Section */}
-              <section>
-                <h2 className="text-2xl font-bold mb-3 text-foreground">Origin of the Gotra System</h2>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  The Gotra system originated from the <strong>Saptarishis</strong> — the Seven Great Seers 
-                  who were enlightened beings guiding early humanity. Each family lineage traces its origin 
-                  to one of these eternal Rishis.
+            <div className="space-y-12">
+              <section className="text-center">
+                <h2 className="text-3xl font-vedic font-bold mb-2">Origin of the Gotra System</h2>
+                <p className="text-muted-foreground max-w-3xl mx-auto">
+                  The sacred Gotra system began with the <strong>Saptarishis</strong> — Seven eternal sages chosen
+                  by Brahma to guide humanity. Every family lineage traces its ancestry to one of these seers.
                 </p>
+              </section>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
-                  {[
-                    { name: "Atri", img: "/images/rishis/atri.jpg" },
-                    { name: "Bhrigu", img: "/images/rishis/bhrigu.jpg" },
-                    { name: "Kashyapa", img: "/images/rishis/kashyapa.jpg" },
-                    { name: "Vashishta", img: "/images/rishis/vasishta.jpg" },
-                    { name: "Vishwamitra", img: "/images/rishis/vishwamitra.jpg" },
-                    { name: "Agastya", img: "/images/rishis/agastya.jpg" },
-                    { name: "Angirasa", img: "/images/rishis/angirasa.jpg" },
-                  ].map((rishi) => (
-                    <div key={rishi.name} className="bg-card/70 rounded-lg border border-accent/20 overflow-hidden hover:shadow-md transition-all">
-                      <img src={rishi.img} alt={rishi.name} className="w-full h-32 object-cover" />
-                      <div className="p-2 font-vedic">{rishi.name}</div>
-                    </div>
-                  ))}
+              {/* 🪷 Sapta Rishi Chart */}
+              <div className="flex justify-center">
+                <div className="rounded-2xl overflow-hidden border border-accent/20 shadow-lg max-w-md w-full">
+                  <img
+                    src="/last7.png"
+                    alt="Saptarishi Chart"
+                    className="w-full h-164 object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* 🕉️ Rishi Grid */}
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
+                {[
+                  "Atri", "Bhrigu", "Kashyapa",
+                  "Vashishta", "Vishwamitra", "Agastya", "Angirasa",
+                ].map((rishi) => (
+                  <div
+                    key={rishi}
+                    className="rounded-xl overflow-hidden border border-accent/20 bg-card/70 hover:shadow-xl transition-all"
+                  >
+                    <img
+                      src={`/${rishi.toLowerCase()}.png`}
+                      alt={rishi}
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="p-3 font-vedic text-lg">{rishi} Rishi</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* ☀️ Manu & Surya Story */}
+              <section className="space-y-8">
+                <div className="text-center">
+                  <h2 className="text-3xl font-vedic font-bold mb-4 text-primary">
+                    Manu & Surya — The First Lineage
+                  </h2>
+                  <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    From the brilliance of <strong>Surya</strong> emerged <strong>Vaivasvata Manu</strong>, the father
+                    of mankind and founder of human civilization. Together, they established the first divine lineage.
+                  </p>
                 </div>
 
-                <p className="text-muted-foreground mt-4 leading-relaxed">
-                  These seven are considered the <strong>founders of all Gotras</strong>, from whom humanity’s spiritual 
-                  and biological lineages evolved.
-                </p>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="rounded-xl overflow-hidden border border-accent/20 shadow-md">
+                    <img src="/manu.png" alt="Manu" className="w-full h-64 object-cover" />
+                    <div className="p-4 text-center">
+                      <h3 className="font-vedic text-xl font-semibold mb-2">Vaivasvata Manu</h3>
+                      <p className="text-muted-foreground text-sm">
+                        The progenitor of mankind, born of Surya, restorer of Dharma after the flood.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl overflow-hidden border border-accent/20 shadow-md">
+                    <img src="/surya.png" alt="Surya" className="w-full h-64 object-cover" />
+                    <div className="p-4 text-center">
+                      <h3 className="font-vedic text-xl font-semibold mb-2">Surya Deva</h3>
+                      <p className="text-muted-foreground text-sm">
+                        The solar deity, source of all vitality and consciousness, father of Vaivasvata Manu.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-card/80 border border-accent/20 rounded-xl p-6 shadow-lg">
+                  <p className="text-muted-foreground leading-relaxed text-center">
+                    From <strong>Surya’s brilliance</strong> came the spark of creation, from
+                    <strong> Manu’s wisdom</strong> came the moral law, and from the <strong>Saptarishis</strong> came
+                    the divine guidance that still sustains humanity. <br />
+                    Every <strong>Gotra</strong> is a luminous thread in this cosmic tapestry.
+                  </p>
+                </div>
               </section>
-
-              {/* ☀️ Storytelling Section — Manu & Surya */}
-              <section>
-                <h2 className="text-2xl font-bold mb-3 text-foreground">The Story of Manu & Surya — The First Lineage</h2>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 1 }}
-                  className="space-y-8"
-                >
-                  {/* Scene 1 */}
-                  <motion.div 
-                    initial={{ y: 40, opacity: 0 }} 
-                    whileInView={{ y: 0, opacity: 1 }} 
-                    transition={{ duration: 0.8 }}
-                    className="bg-card/80 border border-accent/20 rounded-xl overflow-hidden shadow-lg"
-                  >
-                    <img src="/images/vedic/manu.jpg" alt="Manu" className="w-full h-64 object-cover" />
-                    <div className="p-6">
-                      <h3 className="font-vedic text-xl font-semibold mb-2">Scene 1 — Birth of Manu</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        <strong>Vaivasvata Manu</strong>, son of <strong>Surya</strong> and <strong>Sanjna</strong>, 
-                        was the first human progenitor — the father of mankind and the restorer of Dharma 
-                        after the great cosmic flood. His wisdom shaped the moral law for all ages.
-                      </p>
-                    </div>
-                  </motion.div>
-
-                  {/* Scene 2 */}
-                  <motion.div 
-                    initial={{ y: 40, opacity: 0 }} 
-                    whileInView={{ y: 0, opacity: 1 }} 
-                    transition={{ duration: 0.8 }}
-                    className="bg-card/80 border border-accent/20 rounded-xl overflow-hidden shadow-lg"
-                  >
-                    <img src="/images/vedic/surya.jpg" alt="Surya" className="w-full h-64 object-cover" />
-                    <div className="p-6">
-                      <h3 className="font-vedic text-xl font-semibold mb-2">Scene 2 — Surya, The Eternal Ancestor</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        <strong>Surya</strong>, the solar deity, is the divine source of energy and consciousness.  
-                        Through Manu, he became the ancestor of the <strong>Suryavansha</strong> (Solar Dynasty), 
-                        from which great kings like <strong>Ikshvaku</strong> and <strong>Rama</strong> descended.
-                      </p>
-                    </div>
-                  </motion.div>
-
-                  {/* Scene 3 */}
-                  <motion.div 
-                    initial={{ y: 40, opacity: 0 }} 
-                    whileInView={{ y: 0, opacity: 1 }} 
-                    transition={{ duration: 0.8 }}
-                    className="bg-card/80 border border-accent/20 rounded-xl overflow-hidden shadow-lg"
-                  >
-                    <div className="p-6">
-                      <h3 className="font-vedic text-xl font-semibold mb-2">Scene 3 — The Cosmic Lineage</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        From Surya’s brilliance came the first light of life; from Manu’s wisdom, 
-                        the first civilization. The <strong>Saptarishis</strong> carried that light forward, 
-                        shaping humanity’s spiritual evolution.  
-                        Your <strong>Gotra</strong> connects you to that unbroken cosmic chain.
-                      </p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </section>
-            </>
+            </div>
           )}
         </div>
-      ) : (
-        /* 🪔 Default Dharma Detail */
-        <div className="max-w-3xl mx-auto bg-card/80 border border-accent/20 rounded-xl overflow-hidden shadow">
-          <div className="h-56 w-full overflow-hidden">
-            <img src={item.coverImage} alt={item.title} className="w-full h-full object-cover" />
+      )  : item.category === "nakshatra" ? (
+        <div className="max-w-5xl mx-auto space-y-16">
+          {/* 🌠 Hero Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="relative rounded-2xl overflow-hidden shadow-2xl border border-accent/20"
+          >
+            <img
+              src={item.coverImage}
+              alt={item.title}
+              className="w-full h-[360px] object-cover brightness-90"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 p-8 text-white">
+              <h1 className="font-vedic text-4xl font-bold mb-1">{item.title}</h1>
+              <p className="font-sanskrit text-primary/90 mb-3 text-lg">
+                {item.titleSanskrit}
+              </p>
+              <p className="text-sm max-w-3xl leading-relaxed opacity-90">
+                {item.description}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 🌕 1. What is Janma Nakshatra */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="grid md:grid-cols-2 gap-8 items-center"
+          >
+            <img
+              src="/images/nakshatra_moon.png"
+              alt="Janma Nakshatra Moon"
+              className="rounded-xl shadow-md border border-accent/20 object-cover"
+            />
+            <div>
+              <h2 className="text-3xl font-vedic font-bold mb-4">
+                What is Janma Nakshatra?
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Janma Nakshatra</strong> (Birth Star) is the constellation
+                in which the Moon was positioned at the time of your birth. It
+                reveals your emotional nature, instincts, and destiny path.
+                There are <strong>27 Nakshatras</strong>, each carrying its own
+                energy, deity, and symbolism.
+              </p>
+            </div>
+          </motion.section>
+
+          {/* 🌌 2. How Nakshatra is Calculated */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="grid md:grid-cols-2 gap-8 items-center"
+          >
+            <div>
+              <h2 className="text-3xl font-vedic font-bold mb-4">
+                How Nakshatra is Calculated
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                The zodiac (360°) is divided into 27 equal parts of 13°20′ each.
+                The Moon’s placement within these divisions determines your
+                <strong> Janma Nakshatra</strong>. It forms the base of your{" "}
+                <strong>Dasha cycle</strong> and influences your mind, health,
+                and relationships.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mt-3">
+                The Nakshatras are grouped under the deities who rule them —
+                such as Agni, Indra, Varuna, and Vishnu — representing cosmic
+                principles of nature and consciousness.
+              </p>
+            </div>
+            <img
+              src="/images/nakshatra_chart.png"
+              alt="Nakshatra Chart"
+              className="rounded-xl shadow-md border border-accent/20 object-cover"
+            />
+          </motion.section>
+
+          {/* 🌟 3. Nakshatra Characteristics */}
+          <section className="space-y-10">
+            <div className="text-center">
+              <h2 className="text-3xl font-vedic font-bold text-primary mb-3">
+                Characteristics of Nakshatras
+              </h2>
+              <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Each Nakshatra reflects a unique vibration of cosmic energy that
+                shapes your personality and purpose. Below are glimpses of their
+                symbolic meanings.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {[
+                { name: "Ashwini", img: "/images/nakshatras/ashwini.png", trait: "Swift, Healing, Adventurous" },
+                { name: "Bharani", img: "/images/nakshatras/bharani.png", trait: "Creative, Intense, Passionate" },
+                { name: "Krittika", img: "/images/nakshatras/krittika.png", trait: "Fiery, Protective, Leader" },
+                { name: "Rohini", img: "/images/nakshatras/rohini.png", trait: "Attractive, Artistic, Fertile" },
+                { name: "Mrigashira", img: "/images/nakshatras/mrigashira.png", trait: "Curious, Romantic, Seeker" },
+                { name: "Punarvasu", img: "/images/nakshatras/punarvasu.png", trait: "Optimistic, Nurturing, Resilient" },
+              ].map((n, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.05 }}
+                  className="rounded-xl overflow-hidden border border-accent/20 bg-card/70 shadow-md"
+                >
+                  <img
+                    src={n.img}
+                    alt={n.name}
+                    className="w-full h-40 object-cover"
+                  />
+                  <div className="p-3 text-center">
+                    <h3 className="font-vedic text-lg font-semibold mb-1">
+                      {n.name} Nakshatra
+                    </h3>
+                    <p className="text-muted-foreground text-sm">{n.trait}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* 🪔 4. Vedic Stories and Symbolism */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            <h2 className="text-3xl font-vedic font-bold text-center">
+              Nakshatras in Vedic Mythology
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 items-center">
+              <img
+                src="/images/nakshatra_story.png"
+                alt="Nakshatra Mythology"
+                className="rounded-xl shadow-md border border-accent/20"
+              />
+              <p className="text-muted-foreground leading-relaxed">
+                According to the Vedas, Nakshatras are the <strong>divine wives
+                of Chandra (the Moon)</strong>, each representing a unique mood,
+                emotion, and energy of creation.  
+                The Moon’s journey through these stars symbolizes the evolution
+                of human consciousness.  
+                These Nakshatras guide our karmic lessons, shaping the rhythm of
+                destiny and life cycles.
+              </p>
+            </div>
+          </motion.section>
+
+          {/* 🌕 Summary */}
+          <div className="bg-card/80 border border-accent/20 rounded-xl p-6 shadow-lg text-center">
+            <p className="text-muted-foreground leading-relaxed">
+              Your <strong>Janma Nakshatra</strong> is the cosmic fingerprint of
+              your soul — the constellation that sings your birth vibration into
+              the universe. Understanding it helps align your actions with your
+              higher dharmic path.
+            </p>
           </div>
+        </div>
+      ) : (
+        // 🔹 Default Dharma Card for others
+        <div className="max-w-3xl mx-auto bg-card/80 border border-accent/20 rounded-xl overflow-hidden shadow">
+          <img src={item.coverImage} alt={item.title} className="w-full h-56 object-cover" />
           <div className="p-5">
             <h1 className="font-vedic text-2xl font-bold mb-1">{item.title}</h1>
             <p className="font-sanskrit text-primary/80 mb-3">{item.titleSanskrit}</p>
@@ -224,6 +412,9 @@ const DharmaDetail = () => {
           </div>
         </div>
       )}
+
+
+
     </div>
   );
 };
