@@ -2,6 +2,16 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { scripturesData, categories } from "@/data/scripturesData";
+import { 
+  gotraData, 
+  nakshatraData, 
+  lagnaData, 
+  aartiData, 
+  gitaData, 
+  rishiVarnaData, 
+  vedicTimeData,
+} from "@/data/dharmaData";
+import { DharmaCard } from "@/components/DharmaCard";
 import parchmentBg from "@/assets/parchment-bg.jpg";
 import lotusMandala from "@/assets/lotus-mandala.png";
 import {
@@ -492,6 +502,174 @@ const ScriptureLibrary = () => {
             }
           )
         )}
+
+        {/* Gotra Knowledge Section */}
+        <section className="mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
+              Gotra Knowledge
+            </h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
+          </div>
+          <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
+            गोत्र ज्ञान - Understanding the ancient lineage system
+          </p>
+          <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
+            {gotraData.map((item) => (
+              <div
+                key={item.id}
+                className="flex-shrink-0"
+                style={{ width: "75vw", maxWidth: 240, minWidth: 160 }}
+              >
+                <DharmaCard {...item} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Janma Nakshatra Section */}
+        <section className="mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
+              Janma Nakshatra
+            </h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
+          </div>
+          <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
+            जन्म नक्षत्र - Discover your birth star
+          </p>
+          <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
+            {nakshatraData.map((item) => (
+              <div
+                key={item.id}
+                className="flex-shrink-0"
+                style={{ width: "75vw", maxWidth: 240, minWidth: 160 }}
+              >
+                <DharmaCard {...item} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Lagna Section */}
+        <section className="mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
+              Lagna (Ascendant)
+            </h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
+          </div>
+          <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
+            लग्न - The rising sign in Vedic astrology
+          </p>
+          <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
+            {lagnaData.map((item) => (
+              <div
+                key={item.id}
+                className="flex-shrink-0"
+                style={{ width: "75vw", maxWidth: 240, minWidth: 160 }}
+              >
+                <DharmaCard {...item} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Artis for Devas Section */}
+        <section className="mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
+              Artis for Devas
+            </h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
+          </div>
+          <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
+            देवों की आरती - Sacred hymns and prayers
+          </p>
+          <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
+            {aartiData.map((item) => (
+              <div
+                key={item.id}
+                className="flex-shrink-0"
+                style={{ width: "75vw", maxWidth: 240, minWidth: 160 }}
+              >
+                <DharmaCard {...item} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Bhagavad Gita Section */}
+        <section className="mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
+              Bhagavad Gita Shlokas
+            </h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
+          </div>
+          <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
+            भगवद गीता श्लोक - Sacred verses from Krishna
+          </p>
+          <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
+            {gitaData.map((item) => (
+              <div
+                key={item.id}
+                className="flex-shrink-0"
+                style={{ width: "75vw", maxWidth: 240, minWidth: 160 }}
+              >
+                <DharmaCard {...item} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Rishis & Varnas Section */}
+        <section className="mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
+              Sapta Rishis & Varnas
+            </h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
+          </div>
+          <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
+            ऋषि और वर्ण - Seven sages and social system
+          </p>
+          <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
+            {rishiVarnaData.map((item) => (
+              <div
+                key={item.id}
+                className="flex-shrink-0"
+                style={{ width: "75vw", maxWidth: 240, minWidth: 160 }}
+              >
+                <DharmaCard {...item} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Vedic Time Section */}
+        <section className="mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <h2 className="font-vedic text-lg sm:text-xl font-bold text-foreground">
+              Vedic Time Calculation
+            </h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent" />
+          </div>
+          <p className="font-sanskrit text-sm text-primary/80 mb-4 text-center">
+            वैदिक समय गणना - Tithi, Nakshatra & planetary transits
+          </p>
+          <div className="flex overflow-x-auto gap-4 py-2 scrollbar-hide">
+            {vedicTimeData.map((item) => (
+              <div
+                key={item.id}
+                className="flex-shrink-0"
+                style={{ width: "75vw", maxWidth: 240, minWidth: 160 }}
+              >
+                <DharmaCard {...item} />
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );

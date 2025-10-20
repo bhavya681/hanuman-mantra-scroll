@@ -42,10 +42,6 @@ const pageFlipVariants = {
     boxShadow: "0 2px 8px 1px rgba(110,89,62,0.10)",
     scale: 0.98,
     filter: "blur(0.6px) brightness(.95)",
-    transition: {
-      duration: PAGE_TURN_DURATION,
-      ease: [0.65, 0, 0.5, 1],
-    },
   }),
 };
 
