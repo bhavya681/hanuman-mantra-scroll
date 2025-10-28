@@ -324,6 +324,258 @@ export const scripturesData: Scripture[] = [
     ]
   },
   {
+    id: "bajrang-baan",
+    title: "Bajrang Baan",
+    titleSanskrit: "बजरंग बाण",
+    description:
+      "The Bajrang Baan is a powerful hymn dedicated to Lord Hanuman, invoking his divine strength and protection. Chanting it with faith destroys negativity, fear, and evil influences, bringing courage, peace, and success in all endeavors.",
+    category: "Bhakti Collection",
+    coverImage: "/bajrangbaan.png",
+    totalVerses: 24,
+    verses: [
+      {
+        number: 1,
+        sanskrit:
+          "ॐ श्री हनुमते नमः।\nनिश्चय प्रेम प्रतीति ते बिनय करैं सनमान।\nतेहि के कारज सकल शुभ सिद्ध करैं हनुमान॥",
+        transliteration:
+          "Om Shri Hanumate Namah.\nNishchaya prema priti te binaya karai sanman.\nTehi ke karaja sakala shubha siddha karai Hanuman.",
+        meaning:
+          "Those who recite these verses with love and unwavering faith have all their beneficial desires fulfilled by Hanuman.",
+        imageUrl: "/bajrangbaan1.jpeg"
+      },
+      {
+        number: 2,
+        sanskrit:
+          "जय हनुमन्त सन्त हितकारी। सुन लीजै प्रभु अरज हमारी॥\nजन के काज बिलम्ब न कीजै। आतुर दाउरि महा सुख दीजै॥",
+        transliteration:
+          "Jaya Hanumanta santa hitakari, suni lijai Prabhu araja hamari.\nJana ke kaaja bilamba na kijai, atura dauri maha sukha dijai.",
+        meaning:
+          "Glory to Hanuman, the benefactor of saints. Please listen to our prayer. Do not delay in helping your devotees and grant them immense joy.",
+        imageUrl: "/bajrangbaan2.jpeg"
+      },
+      {
+        number: 3,
+        sanskrit:
+          "जैसे कूदि सिन्धु वहि पारा। सुरसा बदन पैठि विस्तार॥\nआगे जाइ लंकिनी रोका। मारेहु लात गई सुरलोक॥",
+        transliteration:
+          "Jaise koodi sindhu vahi para, Surasa badana paithi vistara.\nAage jai Lankini roka, marehu laat gai suroloka.",
+        meaning:
+          "You leapt across the ocean, overcame Surasa’s obstacle, and vanquished the demoness Lankini who tried to stop you in Lanka.",
+        imageUrl: "/bajrangbaan3.jpeg"
+      },
+      {
+        number: 4,
+        sanskrit:
+          "जाय विभीषण को सुख दीन्हा। सीता निरखि परम पद लीन्हा॥\nबाग उजारि सिन्धु महँ बोरा। अति आतुर यम कारज तोरा॥",
+        transliteration:
+          "Jaya Vibhishana ko sukha dinha, Sita nirakhi parama pada linha.\nBaaga ujari sindhu mahan bora, ati atura Yama karaja tora.",
+        meaning:
+          "You gave joy to Vibhishan, received Sita’s blessings, destroyed the Ashoka grove, and symbolically broke the hold of Death itself.",
+        imageUrl: "/bajrangbaan4.jpeg"
+      },
+      {
+        number: 5,
+        sanskrit:
+          "अक्षय कुमार को मारी संहारा। लूमा लपेटि लंका को जारा॥\nलाह समान लंका जरी गई। जय जय धुनि सुरपुर मन भई॥",
+        transliteration:
+          "Akshay Kumar ko maari sanhara, Luma lapeti Lanka ko jara.\nLaaha samana Lanka jari gayi, jaya jaya dhuni surapura man bhayi.",
+        meaning:
+          "You destroyed Akshay Kumar and burned Lanka. The heavens echoed with praises of your valor.",
+        imageUrl: "/bajrangbaan5.jpeg"
+      },
+      {
+        number: 6,
+        sanskrit:
+          "अब बिलम्ब केहि कारण स्वामी। कृपा करहु उर अंतर्यामी॥\nजय जय लखन प्राण के दाता। आतुर होइ दुख करहु निपाता॥",
+        transliteration:
+          "Ab bilamba kehi karana Swami, kripa karahu ura antaryami.\nJaya jaya Lakhan prana ke data, atura hoi dukha karahu nipata.",
+        meaning:
+          "Why delay now, O Lord who knows all hearts? Bestower of Lakshman’s life, swiftly destroy my sorrows.",
+        imageUrl: "/bajrangbaan6.jpeg"
+      },
+      {
+        number: 7,
+        sanskrit:
+          "जय गिरिधर जय जय सुख सागर। सुर समूह समरथ भट नागर॥\nॐ हनु हनु हनु हनुमंत हतीले। बैरिहिं मारु वज्र के कीले॥",
+        transliteration:
+          "Jaya Giridhara jaya jaya sukha sagara, Sura samooha samartha bhata nagara.\nOm Hanu Hanu Hanu Hanumanta hatile, bairihin maru vajra ke kile.",
+        meaning:
+          "Hail Hanuman, lifter of mountains, ocean of happiness, and master of strength. Strike down enemies as if struck by thunderbolts.",
+        imageUrl: "/bajrangbaan7.jpeg"
+      },
+      {
+        number: 8,
+        sanskrit:
+          "गदा वज्र लै बैरिहिं मारो। महाराज प्रभु दास उबारो॥\nॐकार हुंकार महावीर धावौ। वज्र गदा हनु विलम्ब न लावो॥",
+        transliteration:
+          "Gada vajra lai bairihin maro, Maharaja Prabhu das ubaro.\nOmkara hunkara Mahavir dhavo, vajra gada hanu vilamba na lavo.",
+        meaning:
+          "Take your thunderous mace and destroy enemies, O Lord. With the sound of OM, rush and protect your devotee immediately.",
+        imageUrl: "/bajrangbaan8.jpeg"
+      },
+      {
+        number: 9,
+        sanskrit:
+          "ॐ ह्रीं ह्रीं ह्रीं हनुमंत कपिसा। ॐ हुं हुं हुं हनु अरि उर शीशा॥",
+        transliteration:
+          "Om Hreem Hreem Hreem Hanumanta Kapisa, Om Hoom Hoom Hoom Hanu Ari Ura Sheesha.",
+        meaning:
+          "I invoke you with the sacred mantras — strike the enemies on the chest and head, O mighty Lord of the Vanaras.",
+        imageUrl: "/bajrangbaan9.jpeg"
+      },
+      {
+        number: 10,
+        sanskrit:
+          "जय जय जय हनुमंत अगाधा। दुख पावत जन केहि अपराधा॥\nपूजा जप तप नेम अचारा। नहि जानत हौं दास तुम्हारा॥",
+        transliteration:
+          "Jaya jaya jaya Hanumanta agadha, dukha pavat jana kehi aparadha.\nPooja japa tapa nema achara, nahi janata haun das tumhara.",
+        meaning:
+          "Glory to you, O boundless Hanuman! This servant knows not rituals or penance, yet calls upon your mercy.",
+        imageUrl: "/bajrangbaan10.jpeg"
+      },
+      {
+        number: 11,
+        sanskrit:
+          "वन उपवन मग गिरि गृह माहीं। तुम्हरे बल हम डरपत नाहीं॥\nपानि परौं कर जोरि मनावौं। यही अवसर अब केहि गोहरावौं॥",
+        transliteration:
+          "Bana upavana maga giri griha mahi, tumhare bala ham darapata nahi.\nPani parau kara jori manavau, yahi avasara ab kehi goharavau.",
+        meaning:
+          "In forests, paths, mountains, or homes, I fear nothing by your strength. At your feet I bow — whom else shall I call for help?",
+        imageUrl: "/bajrangbaan11.jpeg"
+      },
+      {
+        number: 12,
+        sanskrit:
+          "जय अंजनि कुमार बलवंता। शंकर सुवन वीर हनुमंता॥\nबदन कराल काल कुल घालक। राम सहाय सदा प्रतिपालक॥",
+        transliteration:
+          "Jaya Anjani Kumara Balavanta, Shankara Suvana Veera Hanumanta.\nBadana karala kala kula ghalaka, Rama sahaya sada pratipalaka.",
+        meaning:
+          "Glory to the mighty son of Anjani and Shiva! Fierce destroyer of evil, protector of those devoted to Rama.",
+        imageUrl: "/bajrangbaan12.jpeg"
+      },
+      {
+        number: 13,
+        sanskrit:
+          "भूत प्रेत पिशाच निशाचर। अग्नि बैताल काल मारि मर॥\nइन्हें मारु तोहि शपथ राम की। राखु नाथ मर्यादा नाम की॥",
+        transliteration:
+          "Bhuta preta pishacha nishachara, Agni baitala kala mari mara.\nInhen maru tohi shapatha Rama ki, rakhu natha maryada nama ki.",
+        meaning:
+          "Slay all ghosts, spirits, demons, and calamities in the name of Lord Rama, maintaining the sanctity of his divine name.",
+        imageUrl: "/bajrangbaan13.jpeg"
+      },
+      {
+        number: 14,
+        sanskrit:
+          "जनक सुताहि हरि दास कहावो। ताकी शपथ बिलम्ब न लावो॥",
+        transliteration:
+          "Janaka sutahi Hari das kahavo, taki shapatha bilamba na lavo.",
+        meaning:
+          "You are the servant of Lord Rama and Sita — by their name, delay not in coming to aid.",
+        imageUrl: "/bajrangbaan14.jpeg"
+      },
+      {
+        number: 15,
+        sanskrit:
+          "जय जय जय धुनि होत आकाशा। सुमिरत होत दुषह दुःख नाशा॥",
+        transliteration:
+          "Jaya jaya jaya dhuni hota akasha, sumirata hota dushaha dukha nasha.",
+        meaning:
+          "The skies resound with your glory, and by remembering you, unbearable sorrows vanish instantly.",
+        imageUrl: "/bajrangbaan15.jpeg"
+      },
+      {
+        number: 16,
+        sanskrit:
+          "ॐ छां छां छां छां चपल चलंता। ॐ हनु हनु हनु हनु हनुमंता॥",
+        transliteration:
+          "Om Cham Cham Cham Cham Chapala Chalanta, Om Hanu Hanu Hanu Hanu Hanumanta.",
+        meaning:
+          "I invoke you, O swift and powerful Hanuman! Strike swiftly and dispel negativity with divine speed.",
+        imageUrl: "/bajrangbaan16.jpeg"
+      },
+      {
+        number: 17,
+        sanskrit:
+          "ॐ हं हं हांका देता कपि चंचल। ॐ सं सं सहमी पराने खलदल॥",
+        transliteration:
+          "Om Ham Ham Hanka deta kapi chanchala, Om Sam Sam sahami parane khaladala.",
+        meaning:
+          "When your thundering roar echoes, the hosts of evildoers tremble and flee in fear.",
+        imageUrl: "/bajrangbaan17.jpeg"
+      },
+      {
+        number: 18,
+        sanskrit:
+          "अपने जन को तुरत उबारो। सुमिरत होय आनंद हमारो॥",
+        transliteration:
+          "Apne jana ko turata ubaro, sumirata hoya ananda hamaro.",
+        meaning:
+          "Immediately rescue your devotee, and bless him with joy by the mere remembrance of your name.",
+        imageUrl: "/bajrangbaan18.jpeg"
+      },
+      {
+        number: 19,
+        sanskrit:
+          "यहि बजरंग बाण जेहि मारे। ताहि कहो फिर कौन उबारे॥",
+        transliteration:
+          "Yahi Bajrang Baan jehi mare, tahi kaho phir kauna ubare.",
+        meaning:
+          "Who can save those struck by the thunderous arrow of Hanuman — the Bajrang Baan?",
+        imageUrl: "/bajrangbaan19.jpeg"
+      },
+      {
+        number: 20,
+        sanskrit:
+          "पाठ करै बजरंग बाण की। हनुमत रक्षा करै प्रान की॥",
+        transliteration:
+          "Path karai Bajrang Baan ki, Hanumat raksha karai pran ki.",
+        meaning:
+          "Those who recite the Bajrang Baan are protected for life by Lord Hanuman himself.",
+        imageUrl: "/bajrangbaan20.jpeg"
+      },
+      {
+        number: 21,
+        sanskrit:
+          "यह बजरंग बाण जो जापै। तेहि ते भूत प्रेत सब कांपै॥",
+        transliteration:
+          "Yaha Bajrang Baan jo japai, tehi te bhuta preta saba kanpai.",
+        meaning:
+          "Even spirits and negative forces tremble before those who chant the Bajrang Baan.",
+        imageUrl: "/bajrangbaan21.jpeg"
+      },
+      {
+        number: 22,
+        sanskrit:
+          "धूप देय अरु जापै हमेसा। ताके तन नहिं रहै कलेसा॥",
+        transliteration:
+          "Dhoop dey aru japai hamesha, take tana nahi rahai kalesha.",
+        meaning:
+          "Those who offer incense and recite this hymn are always free from pain and misfortune.",
+        imageUrl: "/bajrangbaan22.jpeg"
+      },
+      {
+        number: 23,
+        sanskrit:
+          "प्रेम प्रतीति कपी भजै। सदा धरै उर ध्यान॥",
+        transliteration:
+          "Prema priti kapi bhajai, sada dharai ura dhyana.",
+        meaning:
+          "Those who worship Hanuman with love and keep his form in their heart are blessed with success.",
+        imageUrl: "/bajrangbaan23.jpeg"
+      },
+      {
+        number: 24,
+        sanskrit:
+          "तेहि के कारज सकल शुभ सिद्ध करैं हनुमान॥",
+        transliteration:
+          "Tehi ke karaja sakala shubha siddha karai Hanuman.",
+        meaning:
+          "For such devotees, Hanuman fulfills all auspicious desires and grants peace and protection.",
+        imageUrl: "/bajrangbaan24.jpeg"
+      }
+    ]
+  },  
+  {
     id: "kalbhairav-ashtakam",
     title: "Kal Bhairav Ashtakam",
     titleSanskrit: "कालभैरवाष्टकम्",
