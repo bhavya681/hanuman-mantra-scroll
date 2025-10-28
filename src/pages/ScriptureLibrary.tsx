@@ -23,6 +23,11 @@ import {
   X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import NaamJaapCounter from "@/components/NaamJaapCounter";
+import { Sparkles } from "lucide-react";
 
 // --- Card Component ---
 const ScriptureCard = ({
@@ -385,6 +390,32 @@ const ScriptureLibrary = () => {
 
       {/* CONTENT */}
       <main className="container mx-auto px-3 sm:px-6 py-8 sm:py-10 relative z-10">
+        {/* Naam Jaap Counter Section */}
+        <section className="mb-10">
+          <Card className="bg-gradient-to-br from-[#3a2416] via-[#2b1d14] to-[#1c1410] border-yellow-500/30">
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-yellow-400" />
+                <CardTitle className="text-yellow-100 font-vedic text-xl">🕉 Naam Jaap Counter</CardTitle>
+              </div>
+              <CardDescription className="text-yellow-200/80">
+                Chant with devotion — choose your mantra and start your Naam Jaap journey.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className="bg-gradient-to-r from-yellow-600 to-amber-500 text-black hover:from-yellow-500 hover:to-amber-400">
+                    Start Jaap
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl border-yellow-500/30">
+                  <NaamJaapCounter />
+                </DialogContent>
+              </Dialog>
+            </CardContent>
+          </Card>
+        </section>
         {filteredScriptures.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 text-center">
             <img src={lotusMandala} alt="" className="w-14 opacity-50 mb-3" />
