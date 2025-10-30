@@ -101,6 +101,36 @@ const ScriptureCard = ({
   );
 };
 
+// --- Custom Modal Cross component (universal style) ---
+function DialogCustomCloseButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      aria-label="Close"
+      style={{
+        position: "fixed",
+        right: 14,
+        top: 14,
+        zIndex: 1002,
+        background: "#fff9da",
+        border: "1.5px solid #efd189",
+        borderRadius: "9999px",
+        padding: 7,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        lineHeight: 0,
+        boxShadow: "0 2px 14px #e5dc97c5",
+        transition: "background .15s, box-shadow .17s",
+      }}
+      className="hover:bg-yellow-50 active:bg-yellow-100"
+      onClick={onClick}
+      type="button"
+    >
+      <X className="w-6 h-6 text-yellow-900" />
+    </button>
+  );
+}
+
 // --- Main Component ---
 const ScriptureLibrary = () => {
   const navigate = useNavigate();
@@ -113,8 +143,9 @@ const ScriptureLibrary = () => {
   }>({});
   // For smooth fade of chevrons on both mouse hover and scroll state
   const [rowHoverStates, setRowHoverStates] = useState<{ [key: string]: boolean }>({});
+  const [forceDialogKey, setForceDialogKey] = useState(0);
 
-  // Filtered + grouped data
+  // FILTERED + GROUPED DATA
   const filteredScriptures = useMemo(() => {
     let filtered = scripturesData;
     if (activeCategory !== "All")
@@ -184,7 +215,6 @@ const ScriptureLibrary = () => {
     "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-accent/20 scrollbar-track-transparent hide-native-scrollbar";
 
   // Global style for hiding native scrollbar but keeping scroll smoothness
-  // Could also use a style tag injection for sticky support
   const HideNativeScrollbar = () => (
     <style>
       {`
@@ -211,9 +241,17 @@ const ScriptureLibrary = () => {
     </style>
   );
 
-  // Add fade-in/fade-out animation to arrow buttons using framer-motion
-  // Also show the chevrons if user hovers over the row, even if not needed (but keep opacity 0 if not able to scroll)
+  // Dialog/nJaap counter logic
+  const [jaapDialogOpen, setJaapDialogOpen] = useState(false);
+  const dialogContentRef = useRef<HTMLDivElement>(null);
 
+  // Re-mount DialogContent if key needed for focus issues
+  // (retaining, maybe needed for some focus/refresh bug in Dialog)
+  useEffect(() => {
+    // For the current implementation, this may be a no-op, but keep for possible edge case support.
+  }, []);
+
+  // Actual UI
   return (
     <div className="min-h-screen relative bg-background font-vedic overflow-hidden">
       <HideNativeScrollbar />
@@ -338,9 +376,7 @@ const ScriptureLibrary = () => {
             <motion.div
               className="fixed top-0 right-0 w-4/5 max-w-sm h-full z-50 border-l border-yellow-400/20 shadow-2xl flex flex-col p-5"
               style={{
-                // Distinct visible bg for better visibility
-                background:
-                  "linear-gradient(135deg, #fdf9ee 80%, #fbe9a9 100%)",
+                background: "linear-gradient(135deg, #fdf9ee 80%, #fbe9a9 100%)",
               }}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -403,14 +439,30 @@ const ScriptureLibrary = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Dialog>
+              <Dialog open={jaapDialogOpen} onOpenChange={(o) => setJaapDialogOpen(o)}>
                 <DialogTrigger asChild>
-                  <Button className="bg-gradient-to-r from-yellow-600 to-amber-500 text-black hover:from-yellow-500 hover:to-amber-400">
+                  <Button
+                    className="bg-gradient-to-r from-yellow-600 to-amber-500 text-black hover:from-yellow-500 hover:to-amber-400"
+                    onClick={() => setJaapDialogOpen(true)}
+                  >
                     Start Jaap
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-2xl border-yellow-500/30">
-                  <NaamJaapCounter />
+                <DialogContent
+                  className="max-w-2xl border-yellow-500/30"
+                  key={forceDialogKey}
+                  ref={dialogContentRef}
+                  style={{
+                    zIndex: 999999,
+                  }}
+                >
+                  {/* Universal custom close button always shown */}
+                  {jaapDialogOpen && (
+                    <DialogCustomCloseButton onClick={() => setJaapDialogOpen(false)} />
+                  )}
+                  <NaamJaapCounter
+                    onCloseModal={() => setJaapDialogOpen(false)}
+                  />
                 </DialogContent>
               </Dialog>
             </CardContent>
