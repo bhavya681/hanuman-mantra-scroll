@@ -103,31 +103,33 @@ const ScriptureCard = ({
 
 // --- Custom Modal Cross component (universal style) ---
 function DialogCustomCloseButton({ onClick }: { onClick: () => void }) {
-  return (
-    <button
-      aria-label="Close"
-      style={{
-        position: "fixed",
-        right: 14,
-        top: 14,
-        zIndex: 1002,
-        background: "#fff9da",
-        border: "1.5px solid #efd189",
-        borderRadius: "9999px",
-        padding: 7,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        lineHeight: 0,
-        boxShadow: "0 2px 14px #e5dc97c5",
-        transition: "background .15s, box-shadow .17s",
-      }}
-      className="hover:bg-yellow-50 active:bg-yellow-100"
-      onClick={onClick}
-      type="button"
-    >
-      <X className="w-6 h-6 text-yellow-900" />
-    </button>
+  // Make the close button position absolute INSIDE DialogContent instead of fixed, so it doesn't float outside
+  return (<>
+    {/* // <button
+    //   aria-label="Close"
+    //   style={{
+    //     position: "absolute", // Changed from fixed to absolute
+    //     right: 14,
+    //     top: 14,
+    //     zIndex: 1002,
+    //     background: "#fff9da",
+    //     border: "1.5px solid #efd189",
+    //     borderRadius: "9999px",
+    //     padding: 7,
+    //     display: "flex",
+    //     alignItems: "center",
+    //     justifyContent: "center",
+    //     lineHeight: 0,
+    //     boxShadow: "0 2px 14px #e5dc97c5",
+    //     transition: "background .15s, box-shadow .17s",
+    //   }}
+    //   className="hover:bg-yellow-50 active:bg-yellow-100"
+    //   onClick={onClick}
+    //   type="button"
+    // >
+    //   <X className="w-6 h-6 text-yellow-900" />
+    // </button> */}
+    </>
   );
 }
 
@@ -456,10 +458,8 @@ const ScriptureLibrary = () => {
                     zIndex: 999999,
                   }}
                 >
-                  {/* Universal custom close button always shown */}
-                  {jaapDialogOpen && (
-                    <DialogCustomCloseButton onClick={() => setJaapDialogOpen(false)} />
-                  )}
+                  {/* Show only one close button inside the DialogContent */}
+                  <DialogCustomCloseButton onClick={() => setJaapDialogOpen(false)} />
                   <NaamJaapCounter
                     onCloseModal={() => setJaapDialogOpen(false)}
                   />

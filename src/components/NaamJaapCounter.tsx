@@ -85,7 +85,7 @@ export default function NaamJaapCounter({ onCloseModal }: { onCloseModal?: () =>
 
   const progressWithinCycle = ((count - 1) % MALA_BEAD_COUNT) + 1;
 
-  // --- Added cross-popup fix for 425x642 only ---
+  // --- Cross-popup fix for 425x642 only -- No longer needed for two cross, but keep for correct styling ---
   const [showSpecialCross, setShowSpecialCross] = useState(false);
   useEffect(() => {
     function updateCrossVis() {
@@ -300,12 +300,12 @@ export default function NaamJaapCounter({ onCloseModal }: { onCloseModal?: () =>
       }}
     >
       <VedicAura />
-      {/* Always-visible cross/close at top-right, on top of all content */}
-      {(typeof onCloseModal === "function" && !showSpecialCross) && (
+      {/* Only ONE cross/close at top-right, INSIDE the Card container */}
+      {typeof onCloseModal === "function" && (
         <button
           onClick={onCloseModal}
           aria-label="Close"
-          className="fixed z-[99] top-2 right-2 sm:top-4 sm:right-4 bg-white/80 hover:bg-white/90 border border-yellow-300 rounded-full p-1 flex items-center justify-center shadow-lg transition-all"
+          className="absolute z-[99] top-2 right-2 sm:top-4 sm:right-4 bg-white/80 hover:bg-white/90 border border-yellow-300 rounded-full p-1 flex items-center justify-center shadow-lg transition-all"
           style={{
             backdropFilter: "blur(3px)",
             lineHeight: 0,
@@ -313,31 +313,6 @@ export default function NaamJaapCounter({ onCloseModal }: { onCloseModal?: () =>
           }}
         >
           <X className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-900" />
-        </button>
-      )}
-      {/* Special fix for 425x642 only */}
-      {(typeof onCloseModal === "function" && showSpecialCross) && (
-        <button
-          onClick={onCloseModal}
-          aria-label="Close"
-          style={{
-            position: "fixed",
-            zIndex: 999,
-            top: 10,
-            right: 10,
-            background: "rgba(255,255,255,0.92)",
-            border: "1.5px solid #fde68a",
-            borderRadius: "9999px",
-            padding: "4.5px",
-            boxShadow: "0 3px 16px #e5dc97a3",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            lineHeight: 0,
-            backdropFilter: "blur(3px)",
-          }}
-        >
-          <X style={{ width: 26, height: 26, color: "#78350f" }} />
         </button>
       )}
 
@@ -477,44 +452,19 @@ export default function NaamJaapCounter({ onCloseModal }: { onCloseModal?: () =>
                 justifyContent: "center",
               }}
             >
-              {/* Always-visible modal cross for mobile/modal case */}
-              {/* Fix modal close button for 425x642 viewport */}
-              {showSpecialCross ? (
-                <button
-                  aria-label="Close"
-                  style={{
-                    position: "fixed",
-                    right: 10,
-                    top: 10,
-                    zIndex: 1002,
-                    background: "rgba(255,255,255,0.96)",
-                    border: "1.5px solid #fde68a",
-                    borderRadius: "9999px",
-                    padding: "4.5px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    lineHeight: 0,
-                    backdropFilter: "blur(3px)",
-                  }}
-                  onClick={onCloseModal}
-                >
-                  <X style={{ width: 26, height: 26, color: "#78350f" }} />
-                </button>
-              ) : (
-                <button
-                  aria-label="Close"
-                  className="fixed right-2 top-2 sm:right-4 sm:top-4 z-[1002] bg-white/90 hover:bg-white border border-yellow-300 rounded-full p-1 flex items-center justify-center shadow"
-                  style={{
-                    display: "block",
-                    backdropFilter: "blur(3px)",
-                    lineHeight: 0,
-                  }}
-                  onClick={onCloseModal}
-                >
-                  <X className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-900" />
-                </button>
-              )}
+              {/* Only one modal close button INSIDE modal div */}
+              <button
+                aria-label="Close"
+                className="absolute right-2 top-2 sm:right-4 sm:top-4 z-[1002] bg-white/90 hover:bg-white border border-yellow-300 rounded-full p-1 flex items-center justify-center shadow"
+                style={{
+                  display: "block",
+                  backdropFilter: "blur(3px)",
+                  lineHeight: 0,
+                }}
+                onClick={onCloseModal}
+              >
+                <X className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-900" />
+              </button>
               <motion.div
                 className="px-4 py-3 sm:px-5 sm:py-4 bg-gradient-to-tr from-yellow-100 to-amber-100 border border-yellow-700/30 rounded-2xl shadow-lg text-amber-800 text-center max-w-[94vw]"
                 initial={{ scale: 0.92 }}
