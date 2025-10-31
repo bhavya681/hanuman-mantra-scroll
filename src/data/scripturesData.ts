@@ -341,7 +341,7 @@ export const scripturesData: Scripture[] = [
           "Om Shri Hanumate Namah.\nNishchaya prema priti te binaya karai sanman.\nTehi ke karaja sakala shubha siddha karai Hanuman.",
         meaning:
           "Those who recite these verses with love and unwavering faith have all their beneficial desires fulfilled by Hanuman.",
-        imageUrl: "/bajrangbaan1.jpeg"
+        imageUrl: "/bb1.png"
       },
       {
         number: 2,
@@ -351,7 +351,7 @@ export const scripturesData: Scripture[] = [
           "Jaya Hanumanta santa hitakari, suni lijai Prabhu araja hamari.\nJana ke kaaja bilamba na kijai, atura dauri maha sukha dijai.",
         meaning:
           "Glory to Hanuman, the benefactor of saints. Please listen to our prayer. Do not delay in helping your devotees and grant them immense joy.",
-        imageUrl: "/bajrangbaan2.jpeg"
+        imageUrl: "/bb2.png"
       },
       {
         number: 3,
@@ -361,7 +361,7 @@ export const scripturesData: Scripture[] = [
           "Jaise koodi sindhu vahi para, Surasa badana paithi vistara.\nAage jai Lankini roka, marehu laat gai suroloka.",
         meaning:
           "You leapt across the ocean, overcame Surasa’s obstacle, and vanquished the demoness Lankini who tried to stop you in Lanka.",
-        imageUrl: "/bajrangbaan3.jpeg"
+        imageUrl: "/bb3.png"
       },
       {
         number: 4,
@@ -371,7 +371,7 @@ export const scripturesData: Scripture[] = [
           "Jaya Vibhishana ko sukha dinha, Sita nirakhi parama pada linha.\nBaaga ujari sindhu mahan bora, ati atura Yama karaja tora.",
         meaning:
           "You gave joy to Vibhishan, received Sita’s blessings, destroyed the Ashoka grove, and symbolically broke the hold of Death itself.",
-        imageUrl: "/bajrangbaan4.jpeg"
+        imageUrl: "/bb4.png"
       },
       {
         number: 5,
@@ -381,7 +381,7 @@ export const scripturesData: Scripture[] = [
           "Akshay Kumar ko maari sanhara, Luma lapeti Lanka ko jara.\nLaaha samana Lanka jari gayi, jaya jaya dhuni surapura man bhayi.",
         meaning:
           "You destroyed Akshay Kumar and burned Lanka. The heavens echoed with praises of your valor.",
-        imageUrl: "/bajrangbaan5.jpeg"
+        imageUrl: "/bb5.png"
       },
       {
         number: 6,
@@ -391,7 +391,7 @@ export const scripturesData: Scripture[] = [
           "Ab bilamba kehi karana Swami, kripa karahu ura antaryami.\nJaya jaya Lakhan prana ke data, atura hoi dukha karahu nipata.",
         meaning:
           "Why delay now, O Lord who knows all hearts? Bestower of Lakshman’s life, swiftly destroy my sorrows.",
-        imageUrl: "/bajrangbaan6.jpeg"
+        imageUrl: "/bb6.png"
       },
       {
         number: 7,
@@ -401,7 +401,7 @@ export const scripturesData: Scripture[] = [
           "Jaya Giridhara jaya jaya sukha sagara, Sura samooha samartha bhata nagara.\nOm Hanu Hanu Hanu Hanumanta hatile, bairihin maru vajra ke kile.",
         meaning:
           "Hail Hanuman, lifter of mountains, ocean of happiness, and master of strength. Strike down enemies as if struck by thunderbolts.",
-        imageUrl: "/bajrangbaan7.jpeg"
+        imageUrl: "/bb7.png"
       },
       {
         number: 8,
@@ -411,7 +411,7 @@ export const scripturesData: Scripture[] = [
           "Gada vajra lai bairihin maro, Maharaja Prabhu das ubaro.\nOmkara hunkara Mahavir dhavo, vajra gada hanu vilamba na lavo.",
         meaning:
           "Take your thunderous mace and destroy enemies, O Lord. With the sound of OM, rush and protect your devotee immediately.",
-        imageUrl: "/bajrangbaan8.jpeg"
+        imageUrl: "/bb8.png"
       },
       {
         number: 9,
