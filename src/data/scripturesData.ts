@@ -421,7 +421,7 @@ export const scripturesData: Scripture[] = [
           "Om Hreem Hreem Hreem Hanumanta Kapisa, Om Hoom Hoom Hoom Hanu Ari Ura Sheesha.",
         meaning:
           "I invoke you with the sacred mantras — strike the enemies on the chest and head, O mighty Lord of the Vanaras.",
-        imageUrl: "/bajrangbaan9.jpeg"
+        imageUrl: "/bb9.png"
       },
       {
         number: 10,
@@ -431,7 +431,7 @@ export const scripturesData: Scripture[] = [
           "Jaya jaya jaya Hanumanta agadha, dukha pavat jana kehi aparadha.\nPooja japa tapa nema achara, nahi janata haun das tumhara.",
         meaning:
           "Glory to you, O boundless Hanuman! This servant knows not rituals or penance, yet calls upon your mercy.",
-        imageUrl: "/bajrangbaan10.jpeg"
+        imageUrl: "/bb10.png"
       },
       {
         number: 11,
@@ -441,7 +441,7 @@ export const scripturesData: Scripture[] = [
           "Bana upavana maga giri griha mahi, tumhare bala ham darapata nahi.\nPani parau kara jori manavau, yahi avasara ab kehi goharavau.",
         meaning:
           "In forests, paths, mountains, or homes, I fear nothing by your strength. At your feet I bow — whom else shall I call for help?",
-        imageUrl: "/bajrangbaan11.jpeg"
+        imageUrl: "/bb11.png"
       },
       {
         number: 12,
@@ -451,7 +451,7 @@ export const scripturesData: Scripture[] = [
           "Jaya Anjani Kumara Balavanta, Shankara Suvana Veera Hanumanta.\nBadana karala kala kula ghalaka, Rama sahaya sada pratipalaka.",
         meaning:
           "Glory to the mighty son of Anjani and Shiva! Fierce destroyer of evil, protector of those devoted to Rama.",
-        imageUrl: "/bajrangbaan12.jpeg"
+        imageUrl: "/bb12.png"
       },
       {
         number: 13,
@@ -461,7 +461,7 @@ export const scripturesData: Scripture[] = [
           "Bhuta preta pishacha nishachara, Agni baitala kala mari mara.\nInhen maru tohi shapatha Rama ki, rakhu natha maryada nama ki.",
         meaning:
           "Slay all ghosts, spirits, demons, and calamities in the name of Lord Rama, maintaining the sanctity of his divine name.",
-        imageUrl: "/bajrangbaan13.jpeg"
+        imageUrl: "/bb13.png"
       },
       {
         number: 14,
@@ -471,7 +471,7 @@ export const scripturesData: Scripture[] = [
           "Janaka sutahi Hari das kahavo, taki shapatha bilamba na lavo.",
         meaning:
           "You are the servant of Lord Rama and Sita — by their name, delay not in coming to aid.",
-        imageUrl: "/bajrangbaan14.jpeg"
+        imageUrl: "/bb14.png"
       },
       {
         number: 15,
@@ -481,7 +481,7 @@ export const scripturesData: Scripture[] = [
           "Jaya jaya jaya dhuni hota akasha, sumirata hota dushaha dukha nasha.",
         meaning:
           "The skies resound with your glory, and by remembering you, unbearable sorrows vanish instantly.",
-        imageUrl: "/bajrangbaan15.jpeg"
+        imageUrl: "/bb15.png"
       },
       {
         number: 16,
@@ -491,7 +491,7 @@ export const scripturesData: Scripture[] = [
           "Om Cham Cham Cham Cham Chapala Chalanta, Om Hanu Hanu Hanu Hanu Hanumanta.",
         meaning:
           "I invoke you, O swift and powerful Hanuman! Strike swiftly and dispel negativity with divine speed.",
-        imageUrl: "/bajrangbaan16.jpeg"
+        imageUrl: "/bb16.png"
       },
       {
         number: 17,
@@ -501,7 +501,7 @@ export const scripturesData: Scripture[] = [
           "Om Ham Ham Hanka deta kapi chanchala, Om Sam Sam sahami parane khaladala.",
         meaning:
           "When your thundering roar echoes, the hosts of evildoers tremble and flee in fear.",
-        imageUrl: "/bajrangbaan17.jpeg"
+        imageUrl: "/bb17.png"
       },
       {
         number: 18,
@@ -511,7 +511,7 @@ export const scripturesData: Scripture[] = [
           "Apne jana ko turata ubaro, sumirata hoya ananda hamaro.",
         meaning:
           "Immediately rescue your devotee, and bless him with joy by the mere remembrance of your name.",
-        imageUrl: "/bajrangbaan18.jpeg"
+        imageUrl: "/bb18.png"
       },
       {
         number: 19,
@@ -521,7 +521,7 @@ export const scripturesData: Scripture[] = [
           "Yahi Bajrang Baan jehi mare, tahi kaho phir kauna ubare.",
         meaning:
           "Who can save those struck by the thunderous arrow of Hanuman — the Bajrang Baan?",
-        imageUrl: "/bajrangbaan19.jpeg"
+        imageUrl: "/bb19.png"
       },
       {
         number: 20,
@@ -531,7 +531,7 @@ export const scripturesData: Scripture[] = [
           "Path karai Bajrang Baan ki, Hanumat raksha karai pran ki.",
         meaning:
           "Those who recite the Bajrang Baan are protected for life by Lord Hanuman himself.",
-        imageUrl: "/bajrangbaan20.jpeg"
+        imageUrl: "/bb20.png"
       },
       {
         number: 21,
@@ -541,7 +541,7 @@ export const scripturesData: Scripture[] = [
           "Yaha Bajrang Baan jo japai, tehi te bhuta preta saba kanpai.",
         meaning:
           "Even spirits and negative forces tremble before those who chant the Bajrang Baan.",
-        imageUrl: "/bajrangbaan21.jpeg"
+        imageUrl: "/bb21.png"
       },
       {
         number: 22,
@@ -551,7 +551,7 @@ export const scripturesData: Scripture[] = [
           "Dhoop dey aru japai hamesha, take tana nahi rahai kalesha.",
         meaning:
           "Those who offer incense and recite this hymn are always free from pain and misfortune.",
-        imageUrl: "/bajrangbaan22.jpeg"
+        imageUrl: "/bb22.png"
       },
       {
         number: 23,
@@ -561,7 +561,7 @@ export const scripturesData: Scripture[] = [
           "Prema priti kapi bhajai, sada dharai ura dhyana.",
         meaning:
           "Those who worship Hanuman with love and keep his form in their heart are blessed with success.",
-        imageUrl: "/bajrangbaan23.jpeg"
+        imageUrl: "/bb23.png"
       },
       {
         number: 24,
@@ -571,7 +571,7 @@ export const scripturesData: Scripture[] = [
           "Tehi ke karaja sakala shubha siddha karai Hanuman.",
         meaning:
           "For such devotees, Hanuman fulfills all auspicious desires and grants peace and protection.",
-        imageUrl: "/bajrangbaan24.jpeg"
+        imageUrl: "/bb24.png"
       }
     ]
   },  
