@@ -728,7 +728,475 @@ export const scripturesData: Scripture[] = [
     category: "Bhakti Collection",
     coverImage: "/shanichalisa.png",
     totalVerses: 40,
-    verses: []
+    verses: [ {
+      number: 0,
+      sanskrit:
+        "दोहा\nजय गणेश गिरिजा सुवन, मंगल करण कृपाल।\nदीनन के दुख दूर करि, कीजै नाथ निहाल॥",
+      transliteration:
+        "Doha\nJai Ganesh Girija Suvan, mangal karan kripal.\nDeenan ke dukh door kari, keejai naath nihaal.",
+      meaning:
+        "Praise to Lord Ganesh, remover of obstacles. O Lord, bless the poor and remove their sorrows.",
+      imageUrl: "/shani1.png"
+    },
+    {
+      number: 0,
+      sanskrit:
+        "जय जय श्री शनिदेव प्रभु, सुनहु विनय महाराज।\nकरहु कृपा हे रवि तनय, राखहु जन की लाज॥",
+      transliteration:
+        "Jai Jai Shri Shanidev Prabhu, sunahu vinay Maharaj.\nKarahu kripa he Ravi Tanay, rakhahu jan ki laaj.",
+      meaning:
+        "Victory to you, Shani Dev. O Son of Surya, listen kindly to our prayer and protect our honor.",
+      imageUrl: "/shani2.png"
+    },
+  
+    {
+      number: 1,
+      sanskrit: "जयति जयति शनिदेव दयाला। करत सदा भक्तन प्रतिपाला॥",
+      transliteration:
+        "Jayati jayati Shanidev dayala. Karat sada bhaktan pratipaala.",
+      meaning:
+        "Victory to compassionate Shani Dev, who always protects his devotees.",
+      imageUrl: "/shani3.png"
+    },
+  
+    {
+      number: 2,
+      sanskrit:
+        "चारि भुजा, तनु श्याम विराजै। माथे रतन मुकुट छबि छाजै॥",
+      transliteration:
+        "Chari bhuja, tanu shyam virajai. Mathe ratan mukut chhavi chhaajai.",
+      meaning:
+        "With four arms and a radiant dark form, he shines with a jeweled crown on his head.",
+      imageUrl: "/shani4.png"
+    },
+  
+    {
+      number: 3,
+      sanskrit: "परम विशाल मनोहर भाला। टेढ़ी दृष्टि भृकुटि विकराला॥",
+      transliteration:
+        "Param vishaal manohar bhaala. Tedhi drishti bhrikuti vikrala.",
+      meaning:
+        "He has a broad, beautiful forehead, and his powerful sideways glance inspires awe.",
+      imageUrl: "/shani5.png"
+    },
+  
+    {
+      number: 4,
+      sanskrit:
+        "कुण्डल श्रवण चमाचम चमके। हिय माल मुक्तन मणि दमके॥",
+      transliteration:
+        "Kundal shravan chamacham chamke. Hiy maal muktan mani damke.",
+      meaning:
+        "His earrings shine brightly and the pearl necklace on his chest glows.",
+      imageUrl: "/shani6.png"
+    },
+  
+    {
+      number: 5,
+      sanskrit:
+        "कर में गदा त्रिशूल कुठारा। पल बिच करैं अरिहिं संहारा॥",
+      transliteration:
+        "Kar mein gada trishool kuthara. Pal bich karain arihin sanhara.",
+      meaning:
+        "He holds a mace, trident, and axe; he destroys enemies instantly.",
+      imageUrl: "/shani7.png"
+    },
+  
+    {
+      number: 6,
+      sanskrit:
+        "पिंगल, कृष्णो, छाया नन्दन। यम, कोणस्थ, रौद्र, दुखभंजन॥",
+      transliteration:
+        "Pingal, Krishno, Chhaya Nandan. Yam, Konastha, Raudra, Dukhbhanjan.",
+      meaning:
+        "He is known by many names—Pingal, Krishna, Chhaya’s son, Yama-like, fierce, and remover of sorrow.",
+      imageUrl: "/shani8.png"
+    },
+  
+    {
+      number: 7,
+      sanskrit:
+        "सौरी, मन्द, शनी, दश नामा। भानु पुत्र पूजहिं सब कामा॥",
+      transliteration:
+        "Sauri, Mand, Shani, dash naama. Bhanu putra poojahin sab kaama.",
+      meaning:
+        "He is Sauri, Mand, Shani—son of Surya—and worshipped for fulfilling wishes.",
+      imageUrl: "/shani9.png"
+    },
+  
+    {
+      number: 8,
+      sanskrit:
+        "जा पर प्रभु प्रसन्न ह्वैं जाहीं। रंकहुँ राव करैं क्षण माहीं॥",
+      transliteration:
+        "Ja par Prabhu prasann hwain jaahin. Rankahun raav karain kshan maahin.",
+      meaning:
+        "When Shani Dev is pleased, he can turn a poor man into a king instantly.",
+      imageUrl: "/shani10.png"
+    },
+  
+    {
+      number: 9,
+      sanskrit:
+        "पर्वतहू तृण होई निहारत। तृणहू को पर्वत करि डारत॥",
+      transliteration:
+        "Parvatahu trin hoi niharat. Trinahu ko parvat kari daarat.",
+      meaning:
+        "He can make a mountain seem like straw and a straw seem like a mountain.",
+      imageUrl: "/shani11.png"
+    },
+  
+    {
+      number: 10,
+      sanskrit:
+        "राज मिलत बन रामहिं दीन्हयो। कैकेइहुँ की मति हरि लीन्हयो॥",
+      transliteration:
+        "Raaj milat ban Ramhin deenhyau. Kaikeyiun ki mati hari leenhyo.",
+      meaning:
+        "He influenced Kaikeyi’s mind, causing Lord Ram to go to the forest.",
+      imageUrl: "/shani10.png"
+    },
+  
+    {
+      number: 11,
+      sanskrit:
+        "बनहूँ में मृग कपट दिखाई। मातु जानकी गई चुराई॥",
+      transliteration:
+        "Banahun mein mrig kapat dikhaayi. Maatu Janki gayi churayi.",
+      meaning:
+        "The illusion of a golden deer led to the abduction of Sita.",
+      imageUrl: "/shani11.png"
+    },
+  
+    {
+      number: 12,
+      sanskrit:
+        "लखनहिं शक्ति विकल करिडारा। मचिगा दल में हाहाकारा॥",
+      transliteration:
+        "Lakhanhin shakti vikal karidaara. Machiga dal mein haahakaara.",
+      meaning:
+        "Lakshman was struck by a divine weapon, causing chaos in the army.",
+      imageUrl: "/shani12.png"
+    },
+  
+    {
+      number: 13,
+      sanskrit:
+        "रावण की गति-मति बौराई। रामचन्द्र सों बैर बढ़ाई॥",
+      transliteration:
+        "Ravan ki gati-mati bauraayi. Ramchandra so bair badhaayi.",
+      meaning:
+        "Ravana lost his sense and invited enmity with Lord Ram.",
+      imageUrl: "/shani13.png"
+    },
+  
+    {
+      number: 14,
+      sanskrit:
+        "दियो कीट करि कंचन लंका। बजि बजरंग बीर की डंका॥",
+      transliteration:
+        "Diyo keet kari kanchan Lanka. Baji Bajrang Veer ki Danka.",
+      meaning:
+        "Golden Lanka was made like dust when Hanuman’s power was revealed.",
+      imageUrl: "/shani14.png"
+    },
+  
+    {
+      number: 15,
+      sanskrit:
+        "नृप विक्रम पर तुहि पगु धारा। चित्र मयूर निगलि गै हारा॥",
+      transliteration:
+        "Nrip Vikram par tuthi pag dhaara. Chitra Mayur nigal gai haara.",
+      meaning:
+        "When King Vikram was tested, his magical garland was swallowed by a mysterious creature.",
+      imageUrl: "/shani15.png"
+    },
+  
+    {
+      number: 16,
+      sanskrit:
+        "हार नौलखा लाग्यो चोरी। हाथ पैर डरवायो तोरी॥",
+      transliteration:
+        "Haar naulakha lagyo chori. Haath pair darvayo tori.",
+      meaning:
+        "A precious necklace was stolen, and fear entered the king’s heart.",
+      imageUrl: "/shani16.png"
+    },
+  
+    {
+      number: 17,
+      sanskrit:
+        "भारी दशा निकृष्ट दिखायो। तेलिहिं घर कोल्हू चलवायो॥",
+      transliteration:
+        "Bhaari dasha nikrisht dikhaayo. Telihin ghar kolhu chalvayo.",
+      meaning:
+        "During Shani’s severe phase, he had to work like a laborer in an oil mill.",
+      imageUrl: "/shani17.png"
+    },
+  
+    {
+      number: 18,
+      sanskrit:
+        "विनय राग दीपक महं कीन्हयों। तब प्रसन्न प्रभु ह्वै सुख दीन्हयों॥",
+      transliteration:
+        "Vinay raag deepak mahin keenhyau. Tab prasann Prabhu hwai sukh deenhyou.",
+      meaning:
+        "Through devotion and humility, the difficulties ended and blessings came.",
+      imageUrl: "/shani18.png"
+    },
+  
+    {
+      number: 19,
+      sanskrit:
+        "हरिश्चन्द्र नृप नारि बिकानी। आपहुं भरे डोम घर पानी॥",
+      transliteration:
+        "Harishchandra nrip naari bikaani. Aaphun bhare dom ghar paani.",
+      meaning:
+        "Even King Harishchandra suffered when Shani influenced his destiny.",
+      imageUrl: "/shani21.png"
+    },
+  
+    {
+      number: 20,
+      sanskrit:
+        "तैसे नल पर दशा सिरानी। भूंजी-मीन कूद गई पानी॥",
+      transliteration:
+        "Taise Nal par dasha sirani. Bhoonji meen kood gai paani.",
+      meaning:
+        "King Nala also faced misfortune; cooked fish jumped back into water.",
+      imageUrl: "/shani22.png"
+    },
+  
+    {
+      number: 21,
+      sanskrit:
+        "श्री शंकरहिं गह्यो जब जाई। पारवती को सती कराई॥",
+      transliteration:
+        "Shri Shankarhin gahyo jab jaayi. Parvati ko sati karaayi.",
+      meaning:
+        "Even Lord Shiva’s family experienced sorrow during Shani’s influence.",
+      imageUrl: "/shani23.png"
+    },
+  
+    {
+      number: 22,
+      sanskrit:
+        "तनिक विलोकत ही करि रीसा। नभ उड़ि गयो गौरिसुत सीसा॥",
+      transliteration:
+        "Tanik vilokat hi kari reesa. Nabh udi gayo Gaurisut seesa.",
+      meaning:
+        "A single glance caused Ganesha’s head to be separated and fly to the sky.",
+      imageUrl: "/shani24.png"
+    },
+  
+    {
+      number: 23,
+      sanskrit:
+        "पाण्डव पर भै दशा तुम्हारी। बची द्रौपदी होति उघारी॥",
+      transliteration:
+        "Pandav par bhai dasha tumhari. Bachi Draupadi hoti ughari.",
+      meaning:
+        "During Mahabharata, Draupadi faced humiliation when Shani’s influence was strong.",
+      imageUrl: "/shani25.png"
+    },
+  
+    {
+      number: 24,
+      sanskrit:
+        "कौरव के भी गति मति मारयो। युद्ध महाभारत करि डारयो॥",
+      transliteration:
+        "Kaurav ke bhi gati mati maaryau. Yuddh Mahabharat kari daaryau.",
+      meaning:
+        "He clouded the judgement of the Kauravas, leading to the great war.",
+      imageUrl: "/shani26.png"
+    },
+  
+    {
+      number: 25,
+      sanskrit:
+        "रवि कहँ मुख महँ धरि तत्काला। लेकर कूदि परयो पाताला॥",
+      transliteration:
+        "Ravi kahen mukh mahen dhari tatkaala. Lekar kudi parayo Patala.",
+      meaning:
+        "Surya swallowed Shani in anger; Shani jumped underground to escape.",
+      imageUrl: "/shani27.png"
+    },
+  
+    {
+      number: 26,
+      sanskrit:
+        "शेष देव-लखि विनती लाई। रवि को मुख ते दियो छुड़ाई॥",
+      transliteration:
+        "Shesh Dev lakh vinati laayi. Ravi ko mukh te diyo chhudayi.",
+      meaning:
+        "Lord Sheshnag intervened and freed Shani from Surya’s mouth.",
+      imageUrl: "/shani28.png"
+    },
+  
+    {
+      number: 27,
+      sanskrit:
+        "वाहन प्रभु के सात सुजाना। जग दिग्गज गर्दभ मृग स्वाना॥",
+      transliteration:
+        "Vahan Prabhu ke saat sujaana. Jag diggaj gardabh mrig swana.",
+      meaning:
+        "Shani Dev has seven vehicles—elephant, donkey, deer, dog and others—each giving different results.",
+      imageUrl: "/shani29.png"
+    },
+  
+    {
+      number: 28,
+      sanskrit:
+        "जम्बुक सिंह आदि नख धारी। सो फल ज्योतिष कहत पुकारी॥",
+      transliteration:
+        "Jambuk Singh aadi nakh dhaari. So phal jyotish kahat pukaari.",
+      meaning:
+        "Jackal, lion, and other animals also serve as his mounts and influence outcomes per astrology.",
+      imageUrl: "/shani30.png"
+    },
+  
+    {
+      number: 29,
+      sanskrit:
+        "गज वाहन लक्ष्मी गृह आवैं। हय ते सुख सम्पति उपजावैं॥",
+      transliteration:
+        "Gaj vahan Lakshmi grih aavain. Hay te sukh sampatti upjaavain.",
+      meaning:
+        "If he comes riding an elephant or horse, he brings prosperity.",
+      imageUrl: "/shani31.png"
+    },
+  
+    {
+      number: 30,
+      sanskrit:
+        "गर्दभ हानि करै बहु काजा। सिंह सिद्धकर राज समाजा॥",
+      transliteration:
+        "Gardabh haani karai bahu kaaaja. Singh siddhkar raaj samaaja.",
+      meaning:
+        "If riding a donkey, troubles come; if on a lion, success and power arise.",
+      imageUrl: "/shani32.png"
+    },
+  
+    {
+      number: 31,
+      sanskrit:
+        "जम्बुक बुद्धि नष्ट कर डारै। मृग दे कष्ट प्राण संहारै॥",
+      transliteration:
+        "Jambuk buddhi nasht kar daare. Mrig de kasht praan sanhaare.",
+      meaning:
+        "If riding a jackal, intellect suffers; if riding a deer, health problems arise.",
+      imageUrl: "/shani33.png"
+    },
+  
+    {
+      number: 32,
+      sanskrit:
+        "जब आवहिं प्रभु स्वान सवारी। चोरी आदि होय डर भारी॥",
+      transliteration:
+        "Jab aavahin Prabhu swan savaari. Chori aadi hoy dar bhaari.",
+      meaning:
+        "If he comes riding a dog, theft or fear may increase.",
+      imageUrl: "/shani34.png"
+    },
+  
+    {
+      number: 33,
+      sanskrit:
+        "तैसहि चारि चरण यह नामा। स्वर्ण लौह चाँदी अरु तामा॥",
+      transliteration:
+        "Taisahi chaar charan yah naama. Swarn louh chaandi aru tama.",
+      meaning:
+        "Shani has four phases—gold, iron, silver, and copper.",
+      imageUrl: "/shani35.png"
+    },
+  
+    {
+      number: 34,
+      sanskrit:
+        "लौह चरण पर जब प्रभु आवैं। धन जन सम्पत्ति नष्ट करावैं॥",
+      transliteration:
+        "Lauh charan par jab Prabhu aavain. Dhan jan sampatti nasht karaavain.",
+      meaning:
+        "When the iron phase comes, wealth and peace may suffer.",
+      imageUrl: "/shani36.png"
+    },
+  
+    {
+      number: 35,
+      sanskrit:
+        "समता ताम्र रजत शुभकारी। स्वर्ण सर्व सुख मंगल भारी॥",
+      transliteration:
+        "Samata taamra rajat shubkaari. Swarn sarv sukh mangal bhaari.",
+      meaning:
+        "Copper and silver phases bring good fortune; gold phase brings great happiness.",
+      imageUrl: "/shani37.png"
+    },
+  
+    {
+      number: 36,
+      sanskrit:
+        "जो यह शनि चरित्र नित गावै। कबहुं न दशा निकृष्ट सतावै॥",
+      transliteration:
+        "Jo yah Shani charitra nit gaavai. Kabahu na dasha nikrisht sataavai.",
+      meaning:
+        "Whoever sings this Shani Chalisa daily is never troubled by bad planetary effects.",
+      imageUrl: "/shani38.png"
+    },
+  
+    {
+      number: 37,
+      sanskrit:
+        "अद्भुत नाथ दिखावैं लीला। करैं शत्रु के नशि बलि ढीला॥",
+      transliteration:
+        "Adbhut Naath dikhaavain leela. Karain shatru ke nash bali dheela.",
+      meaning:
+        "Lord Shani performs miracles and weakens enemies.",
+      imageUrl: "/shani39.png"
+    },
+  
+    {
+      number: 38,
+      sanskrit:
+        "जो पण्डित सुयोग्य बुलवाई। विधिवत शनि ग्रह शांति कराई॥",
+      transliteration:
+        "Jo pandit suyogya bulwaayi. Vidhivat Shani grah shanti karaayi.",
+      meaning:
+        "If a proper Shani Shanti ritual is performed, suffering decreases.",
+      imageUrl: "/shani40.png"
+    },
+  
+    {
+      number: 39,
+      sanskrit:
+        "पीपल जल शनि दिवस चढ़ावत। दीप दान दै बहु सुख पावत॥",
+      transliteration:
+        "Peepal jal Shani divas chadhaavat. Deep daan dai bahu sukh paavat.",
+      meaning:
+        "Offering water to Peepal tree and lighting a lamp on Saturdays brings great peace.",
+      imageUrl: "/shani41.png"
+    },
+  
+    {
+      number: 40,
+      sanskrit:
+        "कहत राम सुन्दर प्रभु दासा। शनि सुमिरत सुख होत प्रकाशा॥",
+      transliteration:
+        "Kahat Ram Sundar Prabhu daasa. Shani sumirat sukh hot prakaasha.",
+      meaning:
+        "The devotee says—remembering Shani Dev brings peace and clarity.",
+      imageUrl: "/shani42.png"
+    },
+  
+    {
+      number: 0,
+      sanskrit:
+        "दोहा\nपाठ शनिश्चर देव को, की हों 'भक्त' तैयार।\nकरत पाठ चालीस दिन, हो भवसागर पार॥",
+      transliteration:
+        "Doha\nPaath Shanichar Dev ko, ki hon bhakt taiyaar.\nKarat paath chaalis din, ho bhavsagar paar.",
+      meaning:
+        "One who recites this Chalisa for 40 days with devotion crosses the ocean of worldly suffering.",
+      imageUrl: "/shani43.png"
+    }]
   },
   {
     id: "rudrashtakam",
