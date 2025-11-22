@@ -756,7 +756,7 @@ export const scripturesData: Scripture[] = [
         "Jayati jayati Shanidev dayala. Karat sada bhaktan pratipaala.",
       meaning:
         "Victory to compassionate Shani Dev, who always protects his devotees.",
-      imageUrl: "/shani3.png"
+      imageUrl: "/shaniverse1.png"
     },
   
     {
@@ -767,7 +767,7 @@ export const scripturesData: Scripture[] = [
         "Chari bhuja, tanu shyam virajai. Mathe ratan mukut chhavi chhaajai.",
       meaning:
         "With four arms and a radiant dark form, he shines with a jeweled crown on his head.",
-      imageUrl: "/shani4.png"
+      imageUrl: "/shaniverse2.png"
     },
   
     {
@@ -777,7 +777,7 @@ export const scripturesData: Scripture[] = [
         "Param vishaal manohar bhaala. Tedhi drishti bhrikuti vikrala.",
       meaning:
         "He has a broad, beautiful forehead, and his powerful sideways glance inspires awe.",
-      imageUrl: "/shani5.png"
+      imageUrl: "/shaniverse3.png"
     },
   
     {
@@ -788,7 +788,7 @@ export const scripturesData: Scripture[] = [
         "Kundal shravan chamacham chamke. Hiy maal muktan mani damke.",
       meaning:
         "His earrings shine brightly and the pearl necklace on his chest glows.",
-      imageUrl: "/shani6.png"
+      imageUrl: "/shaniverse4.png"
     },
   
     {
@@ -799,7 +799,7 @@ export const scripturesData: Scripture[] = [
         "Kar mein gada trishool kuthara. Pal bich karain arihin sanhara.",
       meaning:
         "He holds a mace, trident, and axe; he destroys enemies instantly.",
-      imageUrl: "/shani7.png"
+      imageUrl: "/shaniverse5.png"
     },
   
     {
@@ -832,7 +832,7 @@ export const scripturesData: Scripture[] = [
         "Ja par Prabhu prasann hwain jaahin. Rankahun raav karain kshan maahin.",
       meaning:
         "When Shani Dev is pleased, he can turn a poor man into a king instantly.",
-      imageUrl: "/shani10.png"
+      imageUrl: "/shaniverse8.png"
     },
   
     {
@@ -843,7 +843,7 @@ export const scripturesData: Scripture[] = [
         "Parvatahu trin hoi niharat. Trinahu ko parvat kari daarat.",
       meaning:
         "He can make a mountain seem like straw and a straw seem like a mountain.",
-      imageUrl: "/shani11.png"
+      imageUrl: "/shaniverse9.png"
     },
   
     {
@@ -953,7 +953,7 @@ export const scripturesData: Scripture[] = [
         "Harishchandra nrip naari bikaani. Aaphun bhare dom ghar paani.",
       meaning:
         "Even King Harishchandra suffered when Shani influenced his destiny.",
-      imageUrl: "/shani21.png"
+      imageUrl: "/shaniverse19.png"
     },
   
     {
@@ -964,7 +964,7 @@ export const scripturesData: Scripture[] = [
         "Taise Nal par dasha sirani. Bhoonji meen kood gai paani.",
       meaning:
         "King Nala also faced misfortune; cooked fish jumped back into water.",
-      imageUrl: "/shani22.png"
+      imageUrl: "/shaniverse20.png"
     },
   
     {
@@ -975,7 +975,7 @@ export const scripturesData: Scripture[] = [
         "Shri Shankarhin gahyo jab jaayi. Parvati ko sati karaayi.",
       meaning:
         "Even Lord Shiva’s family experienced sorrow during Shani’s influence.",
-      imageUrl: "/shani23.png"
+      imageUrl: "/shaniverse21.png"
     },
   
     {
@@ -986,7 +986,7 @@ export const scripturesData: Scripture[] = [
         "Tanik vilokat hi kari reesa. Nabh udi gayo Gaurisut seesa.",
       meaning:
         "A single glance caused Ganesha’s head to be separated and fly to the sky.",
-      imageUrl: "/shani24.png"
+      imageUrl: "/shaniverse22.png"
     },
   
     {
@@ -997,7 +997,7 @@ export const scripturesData: Scripture[] = [
         "Pandav par bhai dasha tumhari. Bachi Draupadi hoti ughari.",
       meaning:
         "During Mahabharata, Draupadi faced humiliation when Shani’s influence was strong.",
-      imageUrl: "/shani25.png"
+      imageUrl: "/shaniverse23.png"
     },
   
     {
@@ -1008,7 +1008,7 @@ export const scripturesData: Scripture[] = [
         "Kaurav ke bhi gati mati maaryau. Yuddh Mahabharat kari daaryau.",
       meaning:
         "He clouded the judgement of the Kauravas, leading to the great war.",
-      imageUrl: "/shani26.png"
+      imageUrl: "/shaniverse24.png"
     },
   
     {
@@ -1019,7 +1019,7 @@ export const scripturesData: Scripture[] = [
         "Ravi kahen mukh mahen dhari tatkaala. Lekar kudi parayo Patala.",
       meaning:
         "Surya swallowed Shani in anger; Shani jumped underground to escape.",
-      imageUrl: "/shani27.png"
+      imageUrl: "/shaniverse25.png"
     },
   
     {
@@ -1030,7 +1030,7 @@ export const scripturesData: Scripture[] = [
         "Shesh Dev lakh vinati laayi. Ravi ko mukh te diyo chhudayi.",
       meaning:
         "Lord Sheshnag intervened and freed Shani from Surya’s mouth.",
-      imageUrl: "/shani28.png"
+      imageUrl: "/shaniverse26.png"
     },
   
     {
@@ -1041,7 +1041,7 @@ export const scripturesData: Scripture[] = [
         "Vahan Prabhu ke saat sujaana. Jag diggaj gardabh mrig swana.",
       meaning:
         "Shani Dev has seven vehicles—elephant, donkey, deer, dog and others—each giving different results.",
-      imageUrl: "/shani29.png"
+      imageUrl: "/shaniverse27.png"
     },
   
     {
@@ -1052,7 +1052,7 @@ export const scripturesData: Scripture[] = [
         "Jambuk Singh aadi nakh dhaari. So phal jyotish kahat pukaari.",
       meaning:
         "Jackal, lion, and other animals also serve as his mounts and influence outcomes per astrology.",
-      imageUrl: "/shani30.png"
+      imageUrl: "/shaniverse28.png"
     },
   
     {
@@ -1063,7 +1063,7 @@ export const scripturesData: Scripture[] = [
         "Gaj vahan Lakshmi grih aavain. Hay te sukh sampatti upjaavain.",
       meaning:
         "If he comes riding an elephant or horse, he brings prosperity.",
-      imageUrl: "/shani31.png"
+      imageUrl: "/shaniverse29.png"
     },
   
     {
@@ -1074,7 +1074,7 @@ export const scripturesData: Scripture[] = [
         "Gardabh haani karai bahu kaaaja. Singh siddhkar raaj samaaja.",
       meaning:
         "If riding a donkey, troubles come; if on a lion, success and power arise.",
-      imageUrl: "/shani32.png"
+      imageUrl: "/shaniverse30.png"
     },
   
     {
@@ -1085,7 +1085,7 @@ export const scripturesData: Scripture[] = [
         "Jambuk buddhi nasht kar daare. Mrig de kasht praan sanhaare.",
       meaning:
         "If riding a jackal, intellect suffers; if riding a deer, health problems arise.",
-      imageUrl: "/shani33.png"
+      imageUrl: "/shaniverse31.png"
     },
   
     {
@@ -1096,7 +1096,7 @@ export const scripturesData: Scripture[] = [
         "Jab aavahin Prabhu swan savaari. Chori aadi hoy dar bhaari.",
       meaning:
         "If he comes riding a dog, theft or fear may increase.",
-      imageUrl: "/shani34.png"
+      imageUrl: "/shaniverse32.png"
     },
   
     {
@@ -1107,7 +1107,7 @@ export const scripturesData: Scripture[] = [
         "Taisahi chaar charan yah naama. Swarn louh chaandi aru tama.",
       meaning:
         "Shani has four phases—gold, iron, silver, and copper.",
-      imageUrl: "/shani35.png"
+      imageUrl: "/shaniverse33.png"
     },
   
     {
@@ -1118,7 +1118,7 @@ export const scripturesData: Scripture[] = [
         "Lauh charan par jab Prabhu aavain. Dhan jan sampatti nasht karaavain.",
       meaning:
         "When the iron phase comes, wealth and peace may suffer.",
-      imageUrl: "/shani36.png"
+      imageUrl: "/shaniverse34.png"
     },
   
     {
@@ -1129,7 +1129,7 @@ export const scripturesData: Scripture[] = [
         "Samata taamra rajat shubkaari. Swarn sarv sukh mangal bhaari.",
       meaning:
         "Copper and silver phases bring good fortune; gold phase brings great happiness.",
-      imageUrl: "/shani37.png"
+      imageUrl: "/shaniverse35.png"
     },
   
     {
@@ -1140,7 +1140,7 @@ export const scripturesData: Scripture[] = [
         "Jo yah Shani charitra nit gaavai. Kabahu na dasha nikrisht sataavai.",
       meaning:
         "Whoever sings this Shani Chalisa daily is never troubled by bad planetary effects.",
-      imageUrl: "/shani38.png"
+      imageUrl: "/shaniverse36.png"
     },
   
     {
@@ -1151,7 +1151,7 @@ export const scripturesData: Scripture[] = [
         "Adbhut Naath dikhaavain leela. Karain shatru ke nash bali dheela.",
       meaning:
         "Lord Shani performs miracles and weakens enemies.",
-      imageUrl: "/shani39.png"
+      imageUrl: "/shaniverse38.png"
     },
   
     {
@@ -1162,7 +1162,7 @@ export const scripturesData: Scripture[] = [
         "Jo pandit suyogya bulwaayi. Vidhivat Shani grah shanti karaayi.",
       meaning:
         "If a proper Shani Shanti ritual is performed, suffering decreases.",
-      imageUrl: "/shani40.png"
+      imageUrl: "/shaniverse37.png"
     },
   
     {
@@ -1173,7 +1173,7 @@ export const scripturesData: Scripture[] = [
         "Peepal jal Shani divas chadhaavat. Deep daan dai bahu sukh paavat.",
       meaning:
         "Offering water to Peepal tree and lighting a lamp on Saturdays brings great peace.",
-      imageUrl: "/shani41.png"
+      imageUrl: "/shaniverse39.png"
     },
   
     {
@@ -1184,7 +1184,7 @@ export const scripturesData: Scripture[] = [
         "Kahat Ram Sundar Prabhu daasa. Shani sumirat sukh hot prakaasha.",
       meaning:
         "The devotee says—remembering Shani Dev brings peace and clarity.",
-      imageUrl: "/shani42.png"
+      imageUrl: "/shaniverse40.png"
     },
   
     {
@@ -1195,7 +1195,7 @@ export const scripturesData: Scripture[] = [
         "Doha\nPaath Shanichar Dev ko, ki hon bhakt taiyaar.\nKarat paath chaalis din, ho bhavsagar paar.",
       meaning:
         "One who recites this Chalisa for 40 days with devotion crosses the ocean of worldly suffering.",
-      imageUrl: "/shani43.png"
+      imageUrl: "/shaniverse41.png"
     }]
   },
   {
